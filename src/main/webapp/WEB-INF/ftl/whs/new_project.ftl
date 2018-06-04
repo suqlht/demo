@@ -15,13 +15,6 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="MobileOptimized" content="320">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/js/yui2.9.0/build/menu/css/menu.css" />
-
-
-    <script type="text/javascript" src="${rc.contextPath}/assets/js/yui2.9.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
-    <script type="text/javascript" src="${rc.contextPath}/assets/js/yui2.9.0/build/container/container-min.js"></script>
-    <script type="text/javascript" src="${rc.contextPath}/assets/js/yui2.9.0/build/menu/menu-min.js"></script>
-
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/jquery-ui-1.11.4/jquery-ui.structure.min.css" />
 
 
@@ -50,8 +43,11 @@
 
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/select2/select2_conquer.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/data-tables/DT_bootstrap.css" />
-    <script type="text/javascript" src="${rc.contextPath}/assets/plugins/data-tables/jquery.dataTables.js"></script>
-    <script type="text/javascript" src="${rc.contextPath}/assets/plugins/data-tables/DT_bootstrap.js"></script>
+    <!-- <script type="text/javascript" src="${rc.contextPath}/assets/plugins/data-tables/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="${rc.contextPath}/assets/plugins/data-tables/DT_bootstrap.js"></script> -->
+    <script type="text/javascript" src="${rc.contextPath}/assets/plugins/datatables/jquery.dataTables.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/datatables/jquery.dataTables.css" />
+
     <script type="text/javascript" src="${rc.contextPath}/assets/plugins/select2/select2.min.js"></script>
 
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/bootstrap-datepicker/css/datepicker.css" />
@@ -133,9 +129,7 @@
                                 <li>
                                     <a href="#tab_2" data-toggle="tab">供货范围</a>
                                 </li>
-                                <li>
-                                    <a href="#tab_3" data-toggle="tab">工时计划</a>
-                                </li>
+
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active fade in" id="tab_1">
@@ -202,7 +196,7 @@
                                         <div class="col-md-9">
                                             <div class="input-group input-medium">
                                                 <select class="" name="assurance_duration">
-                                                  <option value=""></option>
+                                                    <option value=""></option>
 
                                                     <option value="1">1年</option>
                                                     <option value="3">3年</option>
@@ -227,113 +221,36 @@
 
                                     <button class="btn btn-default date-set" type="button" onclick="openModalBox('${rc.contextPath}/projects/whs/modal_newequipment')"><i class="fa fa-plus"></i>添加设备</button>
                                     <br/>
-                                    <table class="table table-striped table-bordered table-hover" id="comments-table">
+                                    <table class="table table-striped table-bordered table-hover" id="device-table">
                                         <thead>
                                             <tr>
-                                                <th width="50%">设备型号</th>
-                                                <th>数量</th>
-                                                <th>操作</th>
+                                              <th rowspan="2">序号</th>
+
+                                                <th rowspan="2">子项目号</th>
+                                                <th rowspan="2">基本型号</th>
+                                                <th rowspan="2">规格</th>
+                                                <th rowspan="2">数量</th>
+                                                <th colspan="2">单台车间装配额定工时</th>
+                                                <th colspan="3">额定总工时</th>
+                                                <th rowspan="2">备注</th>
+                                                <th rowspan="2">操作</th>
+                                            </tr>
+                                            <tr>
+                                              <th>机械</th>
+                                              <th>电气</th>
+                                              <th>机械</th>
+                                              <th>电气</th>
+                                              <th>合计</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>
-                                                    abc-xyz-777 </td>
-                                                <td style="white-space:normal">
-                                                    100
-                                                </td>
-                                                <td> <a class="btn btn-default btn-xs purple" onclick="if (confirm('你确定要删除项目吗?')) { return false; };return false;" href="#"><i class="fa fa-trash-o"></i></a>
-                                                    <a href="#" class="btn btn-default btn-xs purple" onClick="openModalBox('${rc.contextPath}/projects/whs/modal_newequipment'); return false;"><i class="fa fa-edit"></i></a>
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>
-                                                    DZL2-1.25-AⅡ </td>
-                                                <td style="white-space:normal">
-                                                    10
-                                                </td>
-                                                <td> <a class="btn btn-default btn-xs purple" onclick="if (confirm('你确定要删除项目吗?')) { return false; };return false;" href="#"><i class="fa fa-trash-o"></i></a>
-                                                    <a href="#" class="btn btn-default btn-xs purple" onClick="openModalBox('${rc.contextPath}/projects/whs/modal_newequipment'); return false;"><i class="fa fa-edit"></i></a>
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>
-                                                    WNS0.7-0.7/95/70-Y </td>
-                                                <td style="white-space:normal">
-                                                    3
-                                                </td>
-                                                <td> <a class="btn btn-default btn-xs purple" onclick="if (confirm('你确定要删除项目吗?')) { return false; };return false;" href="#"><i class="fa fa-trash-o"></i></a>
-                                                    <a href="#" class="btn btn-default btn-xs purple" onClick="openModalBox('${rc.contextPath}/projects/whs/modal_newequipment'); return false;"><i class="fa fa-edit"></i></a>
-                                                </td>
-                                            </tr>
-
-
-
                                         </tbody>
                                     </table>
-
-                                    <div class="modal-footer">
-                                        <button id="btnNext2" type="button" class="btn btn-primary">下一步</button>
-                                    </div>
-
-                                </div>
-
-
-                                <div class="tab-pane fade" id="tab_3">
-
-                                    <table class="table table-striped table-bordered table-hover" id="comments-table">
-                                        <thead>
-                                            <tr>
-                                                <th width="50%">设备型号</th>
-                                                <th>工时</th>
-                                                <th>总共时</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    abc-xyz-777 </td>
-                                                <td style="white-space:normal">
-                                                    100
-                                                </td>
-                                                <td> <a class="btn btn-default btn-xs purple" onclick="if (confirm('你确定要删除项目吗?')) { return false; };return false;" href="#"><i class="fa fa-trash-o"></i></a>
-                                                    <a href="#" class="btn btn-default btn-xs purple" onClick="openModalBox('${rc.contextPath}/projects/whs/modal_newequipment'); return false;"><i class="fa fa-edit"></i></a>
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>
-                                                    DZL2-1.25-AⅡ </td>
-                                                <td style="white-space:normal">
-                                                    10
-                                                </td>
-                                                <td> <a class="btn btn-default btn-xs purple" onclick="if (confirm('你确定要删除项目吗?')) { return false; };return false;" href="#"><i class="fa fa-trash-o"></i></a>
-                                                    <a href="#" class="btn btn-default btn-xs purple" onClick="openModalBox('${rc.contextPath}/projects/whs/modal_newequipment'); return false;"><i class="fa fa-edit"></i></a>
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>
-                                                    WNS0.7-0.7/95/70-Y </td>
-                                                <td style="white-space:normal">
-                                                    3
-                                                </td>
-                                                <td> <a class="btn btn-default btn-xs purple" onclick="if (confirm('你确定要删除项目吗?')) { return false; };return false;" href="#"><i class="fa fa-trash-o"></i></a>
-                                                    <a href="#" class="btn btn-default btn-xs purple" onClick="openModalBox('${rc.contextPath}/projects/whs/modal_newequipment'); return false;"><i class="fa fa-edit"></i></a>
-                                                </td>
-                                            </tr>
-
-
-
-                                        </tbody>
-                                    </table>
-
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-primary">保存</button>
                                         <button type="button" class="btn btn-warning">下达</button>
                                     </div>
+
                                 </div>
 
 
@@ -361,10 +278,72 @@
                                 $('#btnNext1').click(function() {
                                     $('a[href=#tab_2]').click();
                                 });
-                                $('#btnNext2').click(function() {
-                                    $('a[href=#tab_3]').click();
-                                });
+
+                                var dataSet = [
+                                          {
+                                            "index":"01",
+                                            "subid":"HM0100-01",
+                                            "device": [
+                                              "DHQ",
+                                              "3/3",
+                                              "1"
+                                            ],
+                                            "hr": [
+                                              "800",
+                                              "200"
+                                            ],
+                                            "hr2": [
+                                              "800",
+                                              "200",
+                                              "1000"
+                                            ],
+                                            "extn": ""
+                                          }
+                                        ];
+
+                                var dataTable = $('#device-table').dataTable({
+                                  paging: false,
+                                  info:false,
+                                  "bSort": true,
+                                  "bFilter":false,
+                                  "bLengthChange":false,
+                                  "fnInitComplete": function (oSettings, json) { $(this).css('display','') },
+                                  data:dataSet,
+                                  "columns": [
+                                    {
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           "index",
+                "defaultContent": ''
+            },
+                                      { "data": "subid" },
+                                      { "data": "device.0" },
+                                      { "data": "device.1" },
+                                      { "data": "device.2" },
+                                      { "data": "hr.0" },
+                                      { "data": "hr.1" },
+                                      { "data": "hr2.0" },
+                                      { "data": "hr2.1" },
+                                      { "data": "hr2.2" },
+                                      { "data": "extn" },
+                                      { "data": null,
+                                      "defaultContent": '<a>删除</a><a>修改</a>',
+                                      "orderable":      false
+                                     }
+
+                                    ],
+                                    "columnDefs": [ {
+                                       "targets": 0,
+                                       "searchable": false
+                                     } ],
+                                    "order": [[ 1, 'asc' ]]
+                                  });
+
+
+
                             });
+
+
                         </script>
 
                     </form>
