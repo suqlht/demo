@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.falado.whs.dao.WHSProjectMapper">
+  <resultMap id="BaseResultMap" type="xyz.falado.whs.model.WHSProject">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="project_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="customer_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="project_type" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="delivery_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="project_status" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="created_by" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="createdate" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="modifydate" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="project_owner" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="project_phase" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="order_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="assurance_begin" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="assurance_duration" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="assurance_remark" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="reserve" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="xyz.falado.whs.model.WHSProject">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="project_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="customer_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="project_type" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="delivery_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="project_status" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="created_by" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="createdate" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="modifydate" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="project_owner" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="project_phase" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="order_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="assurance_begin" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="assurance_duration" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="assurance_remark" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="reserve" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="remark" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, project_code, customer_name, project_type, delivery_date, project_status, created_by, 
+    createdate, modifydate, project_owner, project_phase, order_date, assurance_begin, 
+    assurance_duration, assurance_remark, reserve
+  </sql>
+  <sql id="Blob_Column_List">
+    remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="xyz.falado.whs.model.WHSProjectExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from WHS_PROJECTS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="xyz.falado.whs.model.WHSProjectExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from WHS_PROJECTS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from WHS_PROJECTS
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from WHS_PROJECTS
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="xyz.falado.whs.model.WHSProjectExample">
+    delete from WHS_PROJECTS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="xyz.falado.whs.model.WHSProject">
+    insert into WHS_PROJECTS (id, project_code, customer_name, 
+      project_type, delivery_date, project_status, 
+      created_by, createdate, modifydate, 
+      project_owner, project_phase, order_date, 
+      assurance_begin, assurance_duration, assurance_remark, 
+      reserve, remark)
+    values (#{id,jdbcType=BIGINT}, #{projectCode,jdbcType=VARCHAR}, #{customerName,jdbcType=VARCHAR}, 
+      #{projectType,jdbcType=VARCHAR}, #{deliveryDate,jdbcType=DATE}, #{projectStatus,jdbcType=VARCHAR}, 
+      #{createdBy,jdbcType=CHAR}, #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, 
+      #{projectOwner,jdbcType=INTEGER}, #{projectPhase,jdbcType=VARCHAR}, #{orderDate,jdbcType=DATE}, 
+      #{assuranceBegin,jdbcType=INTEGER}, #{assuranceDuration,jdbcType=INTEGER}, #{assuranceRemark,jdbcType=VARCHAR}, 
+      #{reserve,jdbcType=VARCHAR}, #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="xyz.falado.whs.model.WHSProject">
+    insert into WHS_PROJECTS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="projectCode != null">
+        project_code,
+      </if>
+      <if test="customerName != null">
+        customer_name,
+      </if>
+      <if test="projectType != null">
+        project_type,
+      </if>
+      <if test="deliveryDate != null">
+        delivery_date,
+      </if>
+      <if test="projectStatus != null">
+        project_status,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="createdate != null">
+        createdate,
+      </if>
+      <if test="modifydate != null">
+        modifydate,
+      </if>
+      <if test="projectOwner != null">
+        project_owner,
+      </if>
+      <if test="projectPhase != null">
+        project_phase,
+      </if>
+      <if test="orderDate != null">
+        order_date,
+      </if>
+      <if test="assuranceBegin != null">
+        assurance_begin,
+      </if>
+      <if test="assuranceDuration != null">
+        assurance_duration,
+      </if>
+      <if test="assuranceRemark != null">
+        assurance_remark,
+      </if>
+      <if test="reserve != null">
+        reserve,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="projectCode != null">
+        #{projectCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null">
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectType != null">
+        #{projectType,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryDate != null">
+        #{deliveryDate,jdbcType=DATE},
+      </if>
+      <if test="projectStatus != null">
+        #{projectStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=CHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null">
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="projectOwner != null">
+        #{projectOwner,jdbcType=INTEGER},
+      </if>
+      <if test="projectPhase != null">
+        #{projectPhase,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDate != null">
+        #{orderDate,jdbcType=DATE},
+      </if>
+      <if test="assuranceBegin != null">
+        #{assuranceBegin,jdbcType=INTEGER},
+      </if>
+      <if test="assuranceDuration != null">
+        #{assuranceDuration,jdbcType=INTEGER},
+      </if>
+      <if test="assuranceRemark != null">
+        #{assuranceRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve != null">
+        #{reserve,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="xyz.falado.whs.model.WHSProjectExample" resultType="java.lang.Long">
+    select count(*) from WHS_PROJECTS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update WHS_PROJECTS
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.projectCode != null">
+        project_code = #{record.projectCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerName != null">
+        customer_name = #{record.customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectType != null">
+        project_type = #{record.projectType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deliveryDate != null">
+        delivery_date = #{record.deliveryDate,jdbcType=DATE},
+      </if>
+      <if test="record.projectStatus != null">
+        project_status = #{record.projectStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdBy != null">
+        created_by = #{record.createdBy,jdbcType=CHAR},
+      </if>
+      <if test="record.createdate != null">
+        createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null">
+        modifydate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.projectOwner != null">
+        project_owner = #{record.projectOwner,jdbcType=INTEGER},
+      </if>
+      <if test="record.projectPhase != null">
+        project_phase = #{record.projectPhase,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderDate != null">
+        order_date = #{record.orderDate,jdbcType=DATE},
+      </if>
+      <if test="record.assuranceBegin != null">
+        assurance_begin = #{record.assuranceBegin,jdbcType=INTEGER},
+      </if>
+      <if test="record.assuranceDuration != null">
+        assurance_duration = #{record.assuranceDuration,jdbcType=INTEGER},
+      </if>
+      <if test="record.assuranceRemark != null">
+        assurance_remark = #{record.assuranceRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve != null">
+        reserve = #{record.reserve,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update WHS_PROJECTS
+    set id = #{record.id,jdbcType=BIGINT},
+      project_code = #{record.projectCode,jdbcType=VARCHAR},
+      customer_name = #{record.customerName,jdbcType=VARCHAR},
+      project_type = #{record.projectType,jdbcType=VARCHAR},
+      delivery_date = #{record.deliveryDate,jdbcType=DATE},
+      project_status = #{record.projectStatus,jdbcType=VARCHAR},
+      created_by = #{record.createdBy,jdbcType=CHAR},
+      createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      modifydate = #{record.modifydate,jdbcType=TIMESTAMP},
+      project_owner = #{record.projectOwner,jdbcType=INTEGER},
+      project_phase = #{record.projectPhase,jdbcType=VARCHAR},
+      order_date = #{record.orderDate,jdbcType=DATE},
+      assurance_begin = #{record.assuranceBegin,jdbcType=INTEGER},
+      assurance_duration = #{record.assuranceDuration,jdbcType=INTEGER},
+      assurance_remark = #{record.assuranceRemark,jdbcType=VARCHAR},
+      reserve = #{record.reserve,jdbcType=VARCHAR},
+      remark = #{record.remark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update WHS_PROJECTS
+    set id = #{record.id,jdbcType=BIGINT},
+      project_code = #{record.projectCode,jdbcType=VARCHAR},
+      customer_name = #{record.customerName,jdbcType=VARCHAR},
+      project_type = #{record.projectType,jdbcType=VARCHAR},
+      delivery_date = #{record.deliveryDate,jdbcType=DATE},
+      project_status = #{record.projectStatus,jdbcType=VARCHAR},
+      created_by = #{record.createdBy,jdbcType=CHAR},
+      createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      modifydate = #{record.modifydate,jdbcType=TIMESTAMP},
+      project_owner = #{record.projectOwner,jdbcType=INTEGER},
+      project_phase = #{record.projectPhase,jdbcType=VARCHAR},
+      order_date = #{record.orderDate,jdbcType=DATE},
+      assurance_begin = #{record.assuranceBegin,jdbcType=INTEGER},
+      assurance_duration = #{record.assuranceDuration,jdbcType=INTEGER},
+      assurance_remark = #{record.assuranceRemark,jdbcType=VARCHAR},
+      reserve = #{record.reserve,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="xyz.falado.whs.model.WHSProject">
+    update WHS_PROJECTS
+    <set>
+      <if test="projectCode != null">
+        project_code = #{projectCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null">
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectType != null">
+        project_type = #{projectType,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryDate != null">
+        delivery_date = #{deliveryDate,jdbcType=DATE},
+      </if>
+      <if test="projectStatus != null">
+        project_status = #{projectStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=CHAR},
+      </if>
+      <if test="createdate != null">
+        createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null">
+        modifydate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="projectOwner != null">
+        project_owner = #{projectOwner,jdbcType=INTEGER},
+      </if>
+      <if test="projectPhase != null">
+        project_phase = #{projectPhase,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDate != null">
+        order_date = #{orderDate,jdbcType=DATE},
+      </if>
+      <if test="assuranceBegin != null">
+        assurance_begin = #{assuranceBegin,jdbcType=INTEGER},
+      </if>
+      <if test="assuranceDuration != null">
+        assurance_duration = #{assuranceDuration,jdbcType=INTEGER},
+      </if>
+      <if test="assuranceRemark != null">
+        assurance_remark = #{assuranceRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve != null">
+        reserve = #{reserve,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="xyz.falado.whs.model.WHSProject">
+    update WHS_PROJECTS
+    set project_code = #{projectCode,jdbcType=VARCHAR},
+      customer_name = #{customerName,jdbcType=VARCHAR},
+      project_type = #{projectType,jdbcType=VARCHAR},
+      delivery_date = #{deliveryDate,jdbcType=DATE},
+      project_status = #{projectStatus,jdbcType=VARCHAR},
+      created_by = #{createdBy,jdbcType=CHAR},
+      createdate = #{createdate,jdbcType=TIMESTAMP},
+      modifydate = #{modifydate,jdbcType=TIMESTAMP},
+      project_owner = #{projectOwner,jdbcType=INTEGER},
+      project_phase = #{projectPhase,jdbcType=VARCHAR},
+      order_date = #{orderDate,jdbcType=DATE},
+      assurance_begin = #{assuranceBegin,jdbcType=INTEGER},
+      assurance_duration = #{assuranceDuration,jdbcType=INTEGER},
+      assurance_remark = #{assuranceRemark,jdbcType=VARCHAR},
+      reserve = #{reserve,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="xyz.falado.whs.model.WHSProject">
+    update WHS_PROJECTS
+    set project_code = #{projectCode,jdbcType=VARCHAR},
+      customer_name = #{customerName,jdbcType=VARCHAR},
+      project_type = #{projectType,jdbcType=VARCHAR},
+      delivery_date = #{deliveryDate,jdbcType=DATE},
+      project_status = #{projectStatus,jdbcType=VARCHAR},
+      created_by = #{createdBy,jdbcType=CHAR},
+      createdate = #{createdate,jdbcType=TIMESTAMP},
+      modifydate = #{modifydate,jdbcType=TIMESTAMP},
+      project_owner = #{projectOwner,jdbcType=INTEGER},
+      project_phase = #{projectPhase,jdbcType=VARCHAR},
+      order_date = #{orderDate,jdbcType=DATE},
+      assurance_begin = #{assuranceBegin,jdbcType=INTEGER},
+      assurance_duration = #{assuranceDuration,jdbcType=INTEGER},
+      assurance_remark = #{assuranceRemark,jdbcType=VARCHAR},
+      reserve = #{reserve,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
