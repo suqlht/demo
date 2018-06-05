@@ -90,7 +90,7 @@
             	<div class="page-content-wrapper">
             		<div class="page-content">
                  <div id="ajax-modal" class="modal fade" tabindex="-1" data-replace="true" data-keyboard="false" data-backdrop="static" data-focus-on=".autofocus"></div>
-                 <h3 class="page-title">项目列表</h1>
+                 <h3 class="page-title">项目计划安排</h1>
 
       <table width="100%">
         <tr>

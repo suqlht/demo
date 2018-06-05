@@ -19,77 +19,76 @@ Import fonts
 @import url(../fonts/font.css);
 
 /***
-Reset and overrides  
+Reset and overrides
 ***/
 /* general body settings */
-body { 
-  color: #000; 
+body {
+  color: #000;
   font-family: 'Open Sans', sans-serif;
   padding: 0px !important;
   margin: 0px !important;
-  font-size:13px; 
   direction: ltr;
 }
 
 /*
-Internet Explorer 10 doesn't differentiate device width from viewport width, and thus doesn't 
-properly apply the media queries in Bootstrap's CSS. To address this, 
+Internet Explorer 10 doesn't differentiate device width from viewport width, and thus doesn't
+properly apply the media queries in Bootstrap's CSS. To address this,
 you can optionally include the following CSS and JavaScript to work around this problem until Microsoft issues a fix.
 */
-@-webkit-viewport { 
-  width: device-width; 
+@-webkit-viewport {
+  width: device-width;
 }
 
-@-moz-viewport { 
-  width: device-width; 
+@-moz-viewport {
+  width: device-width;
 }
 
-@-ms-viewport { 
-  width: device-width; 
+@-ms-viewport {
+  width: device-width;
 }
 
-@-o-viewport { 
-  width: device-width; 
+@-o-viewport {
+  width: device-width;
 }
 
-@viewport { 
-  width: device-width; 
+@viewport {
+  width: device-width;
 }
 
-/* Internet Explorer 10 doesn't differentiate device width from viewport width, 
+/* Internet Explorer 10 doesn't differentiate device width from viewport width,
 and thus doesn't properly apply the media queries in Bootstrap's CSS. To address this, following CSS code applied */
-@-ms-viewport { 
-  width: auto !important; 
+@-ms-viewport {
+  width: auto !important;
 }
 
 
 /***
-General typography 
+General typography
 ***/
 h1 small,
 h2 small,
-h3 small, 
-h4 small, 
+h3 small,
+h4 small,
 h5 small,
 h6 small {
   color: #444;
 }
 
-h1, 
-h2, 
-h3, 
-h4, 
-h5, 
+h1,
+h2,
+h3,
+h4,
+h5,
 h6 {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300 !important;
 }
 
-h1.block, 
-h2.block, 
-h3.block, 
-h4.block, 
-h5.block, 
+h1.block,
+h2.block,
+h3.block,
+h4.block,
+h5.block,
 h6.block {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -251,7 +250,7 @@ ie8 & ie9 modes
 }
 
 /********************
- GENERAL LAYOUT 
+ GENERAL LAYOUT
 *********************/
 
 /***
@@ -259,13 +258,13 @@ Header and header elements.
 ***/
 
 .header {
-  width: 100%; 
+  width: 100%;
   padding: 0 20px 0 20px;
   margin: 0;
   border: 0px;
-  padding: 0px; 
+  padding: 0px;
   box-shadow: none;
-  /*height: 45px;*/ 
+  /*height: 45px;*/
   min-height: 45px;
 }
 
@@ -322,9 +321,9 @@ Header and header elements.
 /* sidebar toggle */
 .header .navbar-toggle {
   margin: 10px 6px 4px 6px;
-  padding: 0; 
+  padding: 0;
   padding-top:2px;
-  padding-bottom: 6px; 
+  padding-bottom: 6px;
   background-image: none;
   filter:none;
   box-shadow: none;
@@ -340,7 +339,7 @@ Header and header elements.
 .header .navbar-nav {
   height: 45px;
   margin-right: 20px;
-  display: block; 
+  display: block;
 }
 
 .header .navbar-nav > li {
@@ -355,9 +354,9 @@ Header and header elements.
   width: 1px !important;
 }
 
-.header .navbar-nav > li.dropdown, 
+.header .navbar-nav > li.dropdown,
 .header .navbar-nav > li.dropdown > a {
-  padding-left: 4px; 
+  padding-left: 4px;
   padding-right: 4px;
 }
 
@@ -463,7 +462,7 @@ Page container
 }
 
 .page-header-fixed .page-container {
-  margin-top: 45px;  
+  margin-top: 45px;
 }
 
 /*** IE 8 Fixes ***/
@@ -486,10 +485,10 @@ Page content
     width: 100%;
   }
 
-.ie8 .page-content { 
-    margin-left: 225px; 
+.ie8 .page-content {
+    margin-left: 225px;
     margin-top: 0px;
-    min-height: 760px; 
+    min-height: 760px;
     padding: 25px 20px 20px 20px;
  }
 /*** IE 8 Fixes ***/
@@ -503,13 +502,13 @@ Page content
   margin: 0;
   padding: 0;
   margin: 0;
-  padding: 0; 
+  padding: 0;
 }
 
 .page-sidebar-menu > li {
   display: block;
   margin: 0;
-  padding: 0; 
+  padding: 0;
   border: 0px;
 }
 
@@ -550,7 +549,7 @@ Page content
 .page-sidebar-menu > li > a i {
   font-size: 16px;
   margin-right: 5px;
-  text-shadow:none; 
+  text-shadow:none;
 }
 
 .page-sidebar-menu > li.break {
@@ -558,15 +557,15 @@ Page content
 }
 
 .page-sidebar-menu > li.active > a {
-  border: none; 
+  border: none;
   text-shadow:none;
-}  
+}
 
 .page-sidebar-menu > li.active  {
   border-right: 4px solid #d12610;
 }
 
-.page-sidebar ul > li > a > .arrow:before {  
+.page-sidebar ul > li > a > .arrow:before {
    float: right;
    margin-top: 0px;
    margin-right: 5px;
@@ -583,7 +582,7 @@ Page content
   margin-right: 1px;
 }
 
-.page-sidebar-menu > li > a > .arrow.open:before {   
+.page-sidebar-menu > li > a > .arrow.open:before {
    float: right;
    margin-top: 0px;
    margin-right: 3px;
@@ -646,7 +645,7 @@ Page content
   margin: 0px 0px 0px 0px;
 }
 
-.page-sidebar-menu > li > ul.sub-menu  li > a > .arrow:before   {  
+.page-sidebar-menu > li > ul.sub-menu  li > a > .arrow:before   {
    float: right;
    margin-top: 1px;
    margin-right: 20px;
@@ -659,7 +658,7 @@ Page content
    text-shadow:none;
 }
 
-.page-sidebar-menu > li > ul.sub-menu  li > a > .arrow.open:before {   
+.page-sidebar-menu > li > ul.sub-menu  li > a > .arrow.open:before {
    float: right;
    margin-top: 1px;
    margin-right: 18px;
@@ -693,11 +692,11 @@ Page content
   background: none;
 }
 
-.page-sidebar-menu > li > ul.sub-menu > li > ul.sub-menu > li > a {  
+.page-sidebar-menu > li > ul.sub-menu > li > ul.sub-menu > li > a {
   padding-left: 60px;
 }
 
-.page-sidebar-menu > li > ul.sub-menu > li > ul.sub-menu > li > ul.sub-menu > li > a {  
+.page-sidebar-menu > li > ul.sub-menu > li > ul.sub-menu > li > ul.sub-menu > li > a {
   padding-left: 80px;
 }
 
@@ -745,7 +744,7 @@ Sidebar toggler(show/hide)
 }
 
 .page-sidebar-reversed.page-sidebar-closed .sidebar-toggler:before {
-  content: "\f104"; 
+  content: "\f104";
   margin: 0px 4px 3px 8px;
 }
 
@@ -763,10 +762,10 @@ Sidebar toggler(show/hide)
 /***
 Page content
 ***/
-.page-content {  
-  margin-top: 0px;   
+.page-content {
+  margin-top: 0px;
   padding: 0px;
-  background-color: #FaFaFa; 
+  background-color: #FaFaFa;
   border-radius: 0 0 0 4px;
 }
 
@@ -784,15 +783,15 @@ Page content
   border-radius: 0 0 0 4px;
 }
 
-.ie8 .page-content { 
+.ie8 .page-content {
     padding: 20px;
-    margin-left: 215px; 
+    margin-left: 215px;
     margin-top: 0px;
     min-height: 760px;
 }
 
 .ie8 .page-sidebar-fixed .page-content {
-    min-height: 600px; 
+    min-height: 600px;
 }
 
 .ie8 .page-content.no-min-height {
@@ -842,9 +841,9 @@ Page breadcrumb
   padding-left: 20px;
   margin-top: 15px;
   margin-bottom: 20px;
-  border:0px !important;  
+  border:0px !important;
   border-top: 1px solid #e6e6e6 !important;
-  border-bottom: 1px solid #e6e6e6 !important;  
+  border-bottom: 1px solid #e6e6e6 !important;
   -webkit-box-shadow: none !important;
      -moz-box-shadow: none !important;
           box-shadow: none !important;
@@ -853,8 +852,8 @@ Page breadcrumb
   margin-right: -20px;
 }
 
-.page-content .page-breadcrumb.breadcrumb > li > a, 
-.page-content .page-breadcrumb.breadcrumb > li > i, 
+.page-content .page-breadcrumb.breadcrumb > li > a,
+.page-content .page-breadcrumb.breadcrumb > li > i,
 .page-content .page-breadcrumb.breadcrumb > li > span {
   font-size: 14px;
   text-shadow:none;
@@ -862,7 +861,7 @@ Page breadcrumb
 
 .page-content .page-breadcrumb.breadcrumb > li > i {
   color: #666;
-} 
+}
 
 .page-content .page-breadcrumb.breadcrumb > li+li:before {
   display: none;
@@ -895,10 +894,10 @@ Page breadcrumb
 
 .page-content .page-breadcrumb.breadcrumb .dashboard-date-range > span {
   font-size: 13px;
-  font-weight: 300; 
+  font-weight: 300;
   color: #fff;
   text-transform: uppercase;
-} 
+}
 
 .page-content .page-breadcrumb.breadcrumb .dashboard-date-range > .icon-calendar {
   text-transform: normal;
@@ -917,7 +916,7 @@ Footer
 ***/
 
 .footer {
-  padding: 10px 20px 5px 20px; 
+  padding: 10px 20px 5px 20px;
   font-size: 12px;
 }
 
@@ -942,7 +941,7 @@ Footer
   display: inline-block;
 }
 
-.footer .footer-tools .go-top { 
+.footer .footer-tools .go-top {
   display: block;
   text-decoration: none;
   cursor: pointer;
@@ -958,12 +957,12 @@ Footer
 
 .footer .footer-tools .go-top i {
   font-size: 22px;
-  margin-bottom: 5px; 
+  margin-bottom: 5px;
 }
 
 
 /********************
- GENERAL UI ELEMENTS 
+ GENERAL UI ELEMENTS
 *********************/
 
 /***
@@ -1069,7 +1068,7 @@ Portlets
   border-radius: 4px;
 }
 
-.portlet > .portlet-title { 
+.portlet > .portlet-title {
   background-color: #eee;
   border-radius: 4px 4px 0 0;
   padding:10px 10px 2px 10px;
@@ -1096,7 +1095,7 @@ Portlets
   font-weight: 400;
   margin: 0;
   padding: 0;
-  margin-top: 1px; 
+  margin-top: 1px;
 }
 
 .portlet > .portlet-title > .caption > i {
@@ -1175,7 +1174,7 @@ Portlets
   -o-transition: all 0.1s ease-in-out;
   -ms-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
-  opacity:.6;  
+  opacity:.6;
   filter:'alpha(opacity=60)';
 }
 
@@ -1211,22 +1210,22 @@ Portlets
 }
 
 .portlet > .portlet-body {
-  clear: both;  
-  padding: 10px;    
-  background-color: #fff;  
+  clear: both;
+  padding: 10px;
+  background-color: #fff;
   border-radius: 0px 0px 4px 4px;
 }
 
 /*  draggable girds */
 
-.ui-sortable-placeholder { 
-    border: 1px dotted black; 
-    visibility: visible !important; 
-    height: 100% !important; 
+.ui-sortable-placeholder {
+    border: 1px dotted black;
+    visibility: visible !important;
+    height: 100% !important;
 }
-  
-.ui-sortable-placeholder * { 
-  visibility: hidden; 
+
+.ui-sortable-placeholder * {
+  visibility: hidden;
 }
 
 .sortable-box-placeholder {
@@ -1313,7 +1312,7 @@ Custom icon buttons
   text-shadow: none !important;
   text-align: center;
   cursor: pointer;
-  position: relative;  
+  position: relative;
   border-radius: 4px;
   -webkit-transition: all 0.3s ease !important;
   -moz-transition: all 0.3s ease !important;
@@ -1328,7 +1327,7 @@ Custom icon buttons
 
 .ie8 .icon-btn:hover {
   filter: none !important;
-} 
+}
 
 .icon-btn:hover {
   text-decoration: none !important;
@@ -1359,7 +1358,7 @@ Custom icon buttons
 .icon-btn div {
   font-family: 'Open Sans', sans-serif;
   margin-top: 5px;
-  margin-bottom: 20px;  
+  margin-bottom: 20px;
   color: #000;
   font-size: 12px;
   font-weight: 300;
@@ -1458,7 +1457,7 @@ Custom icon buttons
 
 .dropdown-menu.extended li.external > a {
   font-size: 13px;
-  font-weight: 400;    
+  font-weight: 400;
   border-bottom: 0 !important;
 }
 
@@ -1596,7 +1595,7 @@ Custom tables
 
 .table .m-btn {
   margin-top: 0px;
-  margin-left: 0px; 
+  margin-left: 0px;
   margin-right: 5px;
 }
 
@@ -1609,21 +1608,21 @@ Custom tables
   margin-bottom: 10px !important;
 }
 
-.table-advance thead { 
-  color: #999; 
+.table-advance thead {
+  color: #999;
 }
 
 .table-advance thead tr th{
-  background-color: #DDD; 
+  background-color: #DDD;
   font-size: 14px;
-  font-weight: 400; 
+  font-weight: 400;
   color: #666;
 }
 
-.table-advance div.success, 
-.table-advance div.info, 
-.table-advance div.important, 
-.table-advance div.warning, 
+.table-advance div.success,
+.table-advance div.info,
+.table-advance div.important,
+.table-advance div.warning,
 .table-advance div.danger {
   position: absolute;
   margin-top:-5px;
@@ -1634,33 +1633,33 @@ Custom tables
 }
 
 .table-advance tr td {
-  border-left-width: 0px; 
+  border-left-width: 0px;
 }
 .table-advance tr td:first-child {
-  border-left-width: 1px !important; 
+  border-left-width: 1px !important;
 }
 
 .table-advance tr td.highlight:first-child a {
   margin-left: 15px;
 }
 
-.table-advance td.highlight div.success {  
+.table-advance td.highlight div.success {
   border-left: 2px solid #66ee66;
 }
 
-.table-advance td.highlight div.info {  
+.table-advance td.highlight div.info {
   border-left: 2px solid #87ceeb;
 }
 
-.table-advance td.highlight div.important {  
+.table-advance td.highlight div.important {
   border-left: 2px solid #f02c71;
 }
 
-.table-advance td.highlight div.warning {  
+.table-advance td.highlight div.warning {
   border-left: 2px solid #fdbb39;
 }
 
-.table-advance td.highlight div.danger {  
+.table-advance td.highlight div.danger {
   border-left: 2px solid #e23e29;
 }
 
@@ -1715,9 +1714,9 @@ Item block with details shown on hover
   padding: 5px;
   text-align: center;
   position: relative;
-  bottom:30px; 
-  margin-bottom:-30px; 
-  overflow: hidden; 
+  bottom:30px;
+  margin-bottom:-30px;
+  overflow: hidden;
   z-index: 6;
 }
 
@@ -1728,7 +1727,7 @@ Item block with details shown on hover
 }
 
 .item:hover .zoom-icon{
-  opacity:0.5;  
+  opacity:0.5;
   filter: alpha(opacity = 50);
 }
 
@@ -1739,7 +1738,7 @@ Zoom icon overlay on images
   cursor: pointer;
   width: 100%;
   height: 100%;
-  position: relative;   
+  position: relative;
   z-index: 5;
 }
 
@@ -1751,10 +1750,10 @@ Zoom icon overlay on images
   position: absolute;
   width: inherit;
   height: inherit;
-  opacity: 0; 
+  opacity: 0;
   filter: alpha(opacity = 0);
-  z-index: 6;  
-  top:0;  
+  z-index: 6;
+  top:0;
 }
 
 /***
@@ -1805,32 +1804,32 @@ Chats
 }
 
 .chats li .message {
-  display: block; 
+  display: block;
   padding: 5px;
   position: relative;
 }
 
-.chats li.in .message {  
+.chats li.in .message {
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
   text-align: left;
   border: 1px solid #ddd;
   margin-left: 65px;
-  background: #fafafa 
+  background: #fafafa
 }
 
 .chats li.in .message .arrow {
   display: block;
   position: absolute;
   top: 5px;
-  left: -8px;  
-  width: 0; 
-  height: 0; 
+  left: -8px;
+  width: 0;
+  height: 0;
 
   border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;  
-  border-right: 8px solid #ddd;  
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid #ddd;
 }
 
 .chats li.out .message .arrow {
@@ -1839,8 +1838,8 @@ Chats
   top: 5px;
   right: -8px;
   border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;  
-  border-left: 8px solid #ddd;  
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid #ddd;
 }
 
 .chats li.out .message {
@@ -1852,13 +1851,13 @@ Chats
   text-align: right;
 }
 
-.chats li.out .name, 
-.chats li.out .datetime  {  
+.chats li.out .name,
+.chats li.out .datetime  {
   text-align: right;
 }
 
 .chats li .message .body {
-  display: block; 
+  display: block;
 }
 
 .chat-form {
@@ -1866,7 +1865,7 @@ Chats
   padding: 10px;
   background-color: #e9eff3;
   overflow: hidden;
-  clear: both;   
+  clear: both;
 }
 
 .chat-form .input-cont {
@@ -1880,7 +1879,7 @@ Chats
 
 .chat-form .input-cont input{
   border: 1px solid #ddd;
-  width: 100%  !important;  
+  width: 100%  !important;
   margin-top: 0;
 }
 
@@ -1904,11 +1903,11 @@ Chats
   top: 17px;
   right: 43px;
   border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;  
-  border-right: 8px solid #428bca;   
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid #428bca;
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
-            box-sizing: border-box; 
+            box-sizing: border-box;
 }
 
 .chat-form .btn-cont:hover .arrow {
@@ -1935,10 +1934,10 @@ System feeds
 
 .feeds li {
   background-color: #fafafa;
-  margin-bottom: 7px;   
+  margin-bottom: 7px;
 }
 
-.feeds li:before, 
+.feeds li:before,
 .feeds li:after {
   display: table;
   line-height: 0;
@@ -1955,7 +1954,7 @@ System feeds
 
 .feeds .col1 {
   float:left;
-  width:100%;  
+  width:100%;
   clear: both;
 }
 
@@ -1992,7 +1991,7 @@ System feeds
   width:100%;
 }
 
-.feeds .col1 .cont .cont-col2 .desc { 
+.feeds .col1 .cont .cont-col2 .desc {
   margin-left:35px;
   padding-top: 4px;
   padding-bottom: 5px;
@@ -2098,7 +2097,7 @@ Vertical inline menu
 
 .ver-inline-menu li.active i,
 .ver-inline-menu li:hover i {
-  background:#0c91e5 !important;  
+  background:#0c91e5 !important;
 }
 
 .ver-inline-menu li.active:after {
@@ -2116,23 +2115,23 @@ Vertical inline menu
 Custom tabs
 ***/
 
-.tabbable-custom { 
-  margin-bottom: 15px; 
-  padding: 0px;  
+.tabbable-custom {
+  margin-bottom: 15px;
+  padding: 0px;
   overflow: hidden;
-}   
+}
 
-.tabbable-custom > .nav-tabs { 
-  border: none; 
+.tabbable-custom > .nav-tabs {
+  border: none;
   margin: 0px;
 }
 
-.tabbable-custom > .tab-content { 
+.tabbable-custom > .tab-content {
    background-color: #fff;
-   border: 1px solid #ddd;  
-   -webkit-border-radius: 0; 
-   -moz-border-radius: 0; 
-   border-radius: 2px; 
+   border: 1px solid #ddd;
+   -webkit-border-radius: 0;
+   -moz-border-radius: 0;
+   border-radius: 2px;
    padding: 10px;
 }
 
@@ -2162,11 +2161,11 @@ Custom portlet tabs
   margin-top: 6px;
   margin-left: 0px;
   margin-right: 0px;
-  border-left: 0;    
+  border-left: 0;
   border-right: 0;
      -webkit-border-radius: 4px 4px 0 0;
         -moz-border-radius: 4px 4px 0 0;
-             border-radius: 4px 4px 0 0;   
+             border-radius: 4px 4px 0 0;
 }
 
 .portlet-tabs > .nav-tabs > li:last-child > a {
@@ -2187,24 +2186,24 @@ Custom portlet tabs
   border-bottom: 0;
   margin-left: 0px;
   margin-right: 0px;
-  border-left: 0;    
+  border-left: 0;
   border-right: 0;
   background-color: none !important;
   border-top-color:transparent !important;
 }
 
-.portlet-tabs > .nav-tabs > li > a:hover {   
+.portlet-tabs > .nav-tabs > li > a:hover {
   color: #333;
   margin-bottom: 0;
   border-bottom-color: transparent;
   margin-left: 0;
   margin-right: 0;
-  border-left: 0;    
+  border-left: 0;
   border-right: 0;
   background-color: none !important;
   border-top-color:transparent;
   background-color: #fff;
-}  
+}
 
 .portlet-tabs > .nav-tabs > .active > a  {
   color: #555555;
@@ -2236,7 +2235,7 @@ Custom portlet tabs
   border: 1px solid #dedede;
  -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
-          border-radius: 4px;  
+          border-radius: 4px;
   line-height: 18px;
   margin: 0 0 20px 0;
   padding: 10px;
@@ -2257,7 +2256,7 @@ Dashboard stats
 .stats-overview-cont {
   padding-top:0px;
   margin-bottom: 15px;
-} 
+}
 .stats-overview {
   clear: both;
   padding: 10px 10px 0px 10px;
@@ -2271,7 +2270,7 @@ Dashboard stats
 }
 
 .stats-overview .details {
-  color:#888;  
+  color:#888;
 }
 
 .stats-overview .details .title {
@@ -2292,7 +2291,7 @@ Dashboard stats
 }
 .stats-overview .progress {
   height: 10px;
-  margin-bottom:10px !important; 
+  margin-bottom:10px !important;
   background: #e6e6e6;
 }
 
@@ -2304,7 +2303,7 @@ Dashboard stats
 }
 
 .stat {
-  margin: 0px; 
+  margin: 0px;
   padding: 0px;
 }
 
@@ -2323,7 +2322,7 @@ Dashboard stats
   margin-left: 10px;
   margin-right: 10px;
   font-size1: 13px;
-} 
+}
 
 .stat.good .percent  {
   color: #52e136;
@@ -2335,13 +2334,13 @@ Dashboard stats
   color: #d12610;
   font-size: 16px;
   font-weight: bold;
- } 
+ }
 
 .stat.ok .percent {
   color: #37b7f3;
   font-size: 16px;
   font-weight: bold;
- } 
+ }
 
  /* Circle stats */
 .circle-stat .knobify {
@@ -2386,17 +2385,17 @@ Dashboard stats
 
 .circle-stat .details {
   display: block;
-  float: left;  
+  float: left;
   margin-left: 5px;
   padding-top: 7px;
 }
 
 .circle-stat .details .title {
   margin: 10px 0px 5px 0px !important;
-  padding: 0px !important; 
-  font-size: 16px;  
+  padding: 0px !important;
+  font-size: 16px;
   color: #777;
-}   
+}
 
 .ie8 .circle-stat .details .title {
   margin-top:5px !important;
@@ -2420,13 +2419,13 @@ Dashboard stats
   margin: 0px !important;
   margin-bottom: 7px !important;
   font-size: 24px;
-  padding: 0px; 
+  padding: 0px;
   font-weight: 300;
   text-shadow: 0 1px rgba(244, 244, 244, 0.85);
   color: #999;
 }
 
-@media (max-width: 1024px) { 
+@media (max-width: 1024px) {
 
   .circle-stat .details .title {
     font-size: 14px;
@@ -2512,7 +2511,7 @@ Theme Panel
   border-top: 0;
 }
 
-.theme-panel > .theme-options > .theme-option > span {  
+.theme-panel > .theme-options > .theme-option > span {
   display: inline-block;
   width: 120px;
   font-size: 14px;
@@ -2628,11 +2627,11 @@ Top News Blocks(new in v1.2.2)
 
 .top-news a .top-news-icon {
   right: 8px;
-  bottom: 15px; 
-  opacity:0.3; 
+  bottom: 15px;
+  opacity:0.3;
   font-size: 35px;
   position: absolute;
-  filter: alpha(opacity=30); /*For IE8*/  
+  filter: alpha(opacity=30); /*For IE8*/
 }
 
 .top-news em {
@@ -2716,12 +2715,12 @@ Social Icons(new in v1.2.2)
 }
 
 .social-icons:after,
-.social-icons:before {  
+.social-icons:before {
   content: "";
   display: table;
 }
 
-.social-icons:after {    
+.social-icons:after {
   clear: both;
 }
 
@@ -2971,7 +2970,7 @@ Demo Utils
 
 
 /***
-Forms 
+Forms
 ****/
 
 input.placeholder,
@@ -3173,7 +3172,7 @@ textarea.placeholder {
   padding-top: 16px;
 }
 
-.form-bordered .form-group > div {  
+.form-bordered .form-group > div {
   padding: 10px;
   border-left: 1px solid #efefef;
 }
@@ -3188,14 +3187,14 @@ textarea.placeholder {
 
 .form-horizontal.form-bordered.form-label-stripped .form-group:nth-child(even) {
   background-color: #fcfcfc;
-} 
+}
 
 .form-horizontal.form-bordered.form-row-stripped .form-control {
   background: #fff !important;
 }
 
 .form-horizontal.form-bordered.form-label-stripped .form-group:nth-child(even) > div {
-  background-color: #ffffff;  
+  background-color: #ffffff;
 }
 
 /***
@@ -3292,46 +3291,46 @@ Responsive Flip Scroll Tables
 .flip-scroll table { width: 100%; }
 
 @media only screen and (max-width: 800px) {
-  
+
   .flip-scroll .flip-content:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
   .flip-scroll * html .flip-content { zoom: 1; }
   .flip-scroll *:first-child+html .flip-content { zoom: 1; }
-  
+
   .flip-scroll table { width: 100%; border-collapse: collapse; border-spacing: 0; }
- 
+
   .flip-scroll th,
   .flip-scroll td { margin: 0; vertical-align: top; }
-  .flip-scroll th { 
-    text-align: left; 
-    border: 0 !important; 
-    border-bottom: 1px solid #ddd !important; 
-    border-right: 1px solid #ddd !important; 
+  .flip-scroll th {
+    text-align: left;
+    border: 0 !important;
+    border-bottom: 1px solid #ddd !important;
+    border-right: 1px solid #ddd !important;
     font-size: 13px !important;
     padding: 5px;
     width: auto !important;
   }
-  
+
   .flip-scroll table { display: block; position: relative; width: 100%; }
-  .flip-scroll thead { 
-    display: block; 
-    float: left; 
+  .flip-scroll thead {
+    display: block;
+    float: left;
   }
-  .flip-scroll tbody { 
-    display: block; 
-    width: auto; 
-    position: relative; 
-    overflow-x: auto; 
-    white-space: nowrap;     
+  .flip-scroll tbody {
+    display: block;
+    width: auto;
+    position: relative;
+    overflow-x: auto;
+    white-space: nowrap;
   }
   .flip-scroll thead tr { display: block; border: !important;  }
   .flip-scroll th { display: block; text-align: right; }
   .flip-scroll tbody tr { display: inline-block; vertical-align: top; margin-left: -5px; }
   .flip-scroll td { display: block; min-height: 1.25em; text-align: left; border-top: 0 !important; border-left: 0 !important; border-right: 0 !important}
   .flip-scroll td:first-child {}
- 
- 
+
+
   /* sort out borders */
- 
+
   .flip-scroll th { border-bottom: 0; border-left: 0; }
   .flip-scroll td { border-left: 0; border-right: 0; border-bottom: 0; }
   .flip-scroll tbody tr { border-left: 1px solid #ddd; }

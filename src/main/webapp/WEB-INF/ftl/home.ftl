@@ -41,7 +41,7 @@
     <link rel="apple-touch-icon" href="${rc.contextPath}/favicon.png" />
 </head>
 
-<body class="page-scale-reduced page-header-fixed">
+<body class="page-header-fixed">
 
     <!-- BEGIN HEADER -->
     <#include "/common/config/top.ftl" />
@@ -65,19 +65,17 @@
 
         <!-- dashboard begin -->
         <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="panel panel-primary">
-
-                    <a href="#">
-                        <div class="panel-heading">
-                            <span class="pull-left"><@spring.message "menu.project.management" /></span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
+            <div class="col-lg-4 col-md-6">
+                <div class="panel panel-primary" style="height:100%">
+                    <div class="panel-heading">
+                        </i>
+                        <span class="pull-right"><i class="fa fa-tasks" style="font-size:28px" ></i></span>
+                        <span><@spring.message "menu.project.management" /></span>
+                        <div class="clearfix"></div>
+                    </div>
                     <div class="panel-footer">
                         <div class="row text-left">
-                            <ul>
+                            <ul class="nav">
                                 <li>
                                     <a href="${rc.contextPath}/projects/new" class="cursor-pointer"><span class="title"><@spring.message "menu.project.new" /></span></a>
                                 </li>
@@ -91,6 +89,21 @@
                                 </li>
                                 <li><a href="#"><span class="title"><@spring.message "menu.project.debugservice" /></span></a>
                                 </li>
+                                <li>
+                                    &nbsp;
+                                </li>
+                                <li>
+                                    &nbsp;
+                                </li>
+                                <li>
+                                    &nbsp;
+                                </li>
+                                <li>
+                                    &nbsp;
+                                </li>
+                                <li>
+                                    &nbsp;
+                                </li>
                             </ul>
 
                         </div>
@@ -99,19 +112,17 @@
             </div>
 
 
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-4 col-md-6">
                 <div class="panel panel-primary">
 
-                    <a href="#">
-                        <div class="panel-heading">
-                            <span class="pull-left"><@spring.message "menu.workhours.management" /></span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
+                    <div class="panel-heading">
+                        <span class="pull-left"><@spring.message "menu.workhours.management" /></span>
+                        <span class="pull-right"><i class="fa fa-calendar" style="font-size:28px"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
                     <div class="panel-footer">
                         <div class="row text-left">
-                            <ul class="sub-menu">
+                            <ul class="nav">
                                 <li>
                                     <a href="${rc.contextPath}/projects/input_workhours"><span class="title"><@spring.message "menu.workhours.apply" /></span></a>
                                 </li>
@@ -125,19 +136,17 @@
             </div>
 
 
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-4 col-md-6">
                 <div class="panel panel-primary">
 
-                    <a href="#">
-                        <div class="panel-heading">
-                            <span class="pull-left"><@spring.message "menu.report.statistics" /></span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
+                    <div class="panel-heading">
+                        <span class="pull-left"><@spring.message "menu.report.statistics" /></span>
+                        <span class="pull-right"><i class="fa fa-bar-chart-o" style="font-size:28px"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
                     <div class="panel-footer">
                         <div class="row text-left">
-                            <ul>
+                            <ul class="nav">
                                 <li>
                                     <a href="${rc.contextPath}/projects/whs/Report1"><span class="title"><@spring.message "menu.report.project" /></span></a>
                                 </li>
@@ -152,19 +161,17 @@
             </div>
 
 
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-4 col-md-6">
                 <div class="panel panel-primary">
 
-                    <a href="#">
-                        <div class="panel-heading">
-                            <span class="pull-left"><@spring.message "menu.device.standard.database" /></span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
+                    <div class="panel-heading">
+                        <span class="pull-left"><@spring.message "menu.device.standard.database" /></span>
+                        <span class="pull-right"><i class="fa fa-cog" style="font-size:28px"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
                     <div class="panel-footer">
                         <div class="row text-left">
-                            <ul>
+                            <ul class="nav">
                                 <li>
                                     <a href="${rc.contextPath}/devices/list"><span class="title"><@spring.message "menu.device.list" /></span></a>
                                 </li>
@@ -183,24 +190,20 @@
             </div>
 
 
-        </div>
-        <div class="row">
 
 
 
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-4 col-md-6">
                 <div class="panel panel-primary">
 
-                    <a href="#">
-                        <div class="panel-heading">
-                            <span class="pull-left"><@spring.message "menu.employee.database" /></span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
+                    <div class="panel-heading">
+                        <span class="pull-left"><@spring.message "menu.employee.database" /></span>
+                        <span class="pull-right"><i class="fa fa-user" style="font-size:28px"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
                     <div class="panel-footer">
                         <div class="row text-left">
-                            <ul>
+                            <ul class="nav">
                                 <li>
                                     <a href="${rc.contextPath}/projects/whs/Report1"><span class="title"><@spring.message "menu.employee.list" /></span></a>
                                 </li>
@@ -208,7 +211,7 @@
                                     <a href="${rc.contextPath}/projects/whs/Report2"><span class="title"><@spring.message "menu.employee.new" /></span></a>
                                 </li>
                                 <li>
-                                    <a href="${rc.contextPath}/projects/whs/Report2"><span class="title">请假&amp;出差</span></a>
+                                  &nbsp;
                                 </li>
 
 
@@ -218,6 +221,7 @@
                 </div>
             </div>
         </div>
+
         <!-- dashboard end -->
 
 
