@@ -80,7 +80,7 @@
                                     <a href="${rc.contextPath}/projects/new" class="cursor-pointer"><span class="title"><@spring.message "menu.project.new" /></span></a>
                                 </li>
                                 <li>
-                                    <a href="${rc.contextPath}/projects/list"><span class="title"><@spring.message "menu.project.plan" /></span></a>
+                                    <a href="${rc.contextPath}/projects/whs/mechanical_plan"><span class="title"><@spring.message "menu.project.plan" /></span></a>
                                 </li>
                                 <li>
                                     <a href="${rc.contextPath}/projects/whs/projects_query" class="cursor-pointer"><span class="title"><@spring.message "menu.project.schedule" /></span></a>
@@ -148,10 +148,10 @@
                         <div class="row text-left">
                             <ul class="nav">
                                 <li>
-                                    <a href="${rc.contextPath}/projects/whs/Report1"><span class="title"><@spring.message "menu.report.project" /></span></a>
+                                    <a href="${rc.contextPath}/projects/whs/projects_report"><span class="title"><@spring.message "menu.report.project" /></span></a>
                                 </li>
                                 <li>
-                                    <a href="${rc.contextPath}/projects/whs/Report2"><span class="title"><@spring.message "menu.report.workhours" /></span></a>
+                                    <a href="${rc.contextPath}/projects/whs/workhours_report"><span class="title"><@spring.message "menu.report.workhours" /></span></a>
                                 </li>
 
                             </ul>
@@ -205,7 +205,7 @@
                         <div class="row text-left">
                             <ul class="nav">
                                 <li>
-                                    <a href="${rc.contextPath}/projects/whs/Report1"><span class="title"><@spring.message "menu.employee.list" /></span></a>
+                                    <a href="${rc.contextPath}/projects/whs/projects_report"><span class="title"><@spring.message "menu.employee.list" /></span></a>
                                 </li>
                                 <li>
                                     <a href="${rc.contextPath}/projects/whs/Report2"><span class="title"><@spring.message "menu.employee.new" /></span></a>
