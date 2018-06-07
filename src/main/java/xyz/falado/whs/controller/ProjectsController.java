@@ -25,7 +25,6 @@ import org.springframework.web.servlet.ModelAndView;
  * *******
  * <p>
  * @author zhou-baicheng
- * @email  i@itboy.net
  * @version 1.0,2016年5月3日 <br/>
  * 
  */
@@ -37,7 +36,6 @@ public class ProjectsController  {
 
 	/**
 	 * 心跳保持会话
-	 * @return
 	 */
 	@RequestMapping(value="check",method =RequestMethod.GET)
 	@ResponseBody
@@ -59,7 +57,6 @@ public class ProjectsController  {
 
 	/**
 	 * 总经办项目主页
-	 * @return
 	 */
 	@RequestMapping(value="list",method=RequestMethod.GET)
 	public ModelAndView managerProjects(){
@@ -68,7 +65,6 @@ public class ProjectsController  {
 	}
 	/**
 	 * 总经办新建项目
-	 * @return
 	 */
 	@RequestMapping(value="new",method=RequestMethod.GET)
 	public ModelAndView newProjects(){
@@ -77,7 +73,6 @@ public class ProjectsController  {
 	}
 	/**
 	 * 模式窗口添加设备信息
-	 * @return
 	 */
 	@RequestMapping(value="add_equipment",method=RequestMethod.GET)
 	public ModelAndView addEquipment(){
@@ -87,7 +82,6 @@ public class ProjectsController  {
 
 	/**
 	 * 项目任务分配
-	 * @return
 	 */
 	@RequestMapping(value="assignlist",method=RequestMethod.GET)
 	public ModelAndView assignProjects(){
@@ -97,7 +91,6 @@ public class ProjectsController  {
 
 	/**
 	 * 项目任务分配
-	 * @return
 	 */
 	@RequestMapping(value="assigngroups",method=RequestMethod.GET)
 	public ModelAndView assignGroup(){
@@ -107,7 +100,6 @@ public class ProjectsController  {
 
 	/**
 	 * 项目任务分配
-	 * @return
 	 */
 	@RequestMapping(value="project_assign",method=RequestMethod.GET)
 	public ModelAndView assignProject(){
@@ -118,7 +110,6 @@ public class ProjectsController  {
 
 	/**
 	 * 项目任务分配
-	 * @return
 	 */
 	@RequestMapping(value="input_workhours",method=RequestMethod.GET)
 	public ModelAndView inputWorkhours(){
@@ -129,7 +120,6 @@ public class ProjectsController  {
 
 	/**
 	 * 项目任务分配
-	 * @return
 	 */
 	@RequestMapping(value="project_report{n}",method=RequestMethod.GET)
 	public ModelAndView report1(@PathVariable(value = "n") String n){
@@ -140,7 +130,6 @@ public class ProjectsController  {
 
 	/**
 	 * 项目任务分配
-	 * @return
 	 */
 	@RequestMapping(value="check_workhours{n}",method=RequestMethod.GET)
 	public ModelAndView check_workhours(@PathVariable(value = "n") String n){

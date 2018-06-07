@@ -39,7 +39,6 @@ import java.util.List;
  * *******
  * <p>
  * @author zhou-baicheng
- * @email  i@itboy.net
  * @version 1.0,2016年5月3日 <br/>
  * 
  */
