@@ -188,12 +188,12 @@
 
       var dataSet = [
         [
-          "1","HM0100","xx公司","",0,"2018-04-01","2018-12-01","","2018-12-31","2018-12-31",
-          ""
+          "1","HM0100","",0,"2018-04-01","2018-12-01","","2018-12-31","2018-12-31",
+          "","1"
         ],
         [
-          "1.01","HM0100-01","xx公司","DHQ-3/3",3,"2018-04-01","2018-12-01","LJG","2018-12-31","2018-12-31",
-          ""
+          "1.01","HM0100-01","DHQ-3/3",3,"2018-04-01","2018-12-01","LJG","2018-12-31","2018-12-31",
+          "","2"
         ]
       ]
         $(document).ready(function(){
@@ -209,11 +209,23 @@
             "bSort": true,
             "bFilter":false,
             "bLengthChange":false,
+            "columnDefs": [ {
+               "targets": 10,
+               "render": function ( data, type, row ) {
+                    return '<a href="#" onclick="updatePlan('+data+')">调整计划</a>';
+                },
+               "searchable": false
+             } ],
             "fnInitComplete": function (oSettings, json) { $(this).css('display','') }
 
         });
 
       });
+
+        function updatePlan(data){
+          console.log(data);
+        }
+
 
       </script>
 

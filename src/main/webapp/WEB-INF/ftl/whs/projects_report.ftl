@@ -100,7 +100,7 @@
 
 <div>
   <form class="form-inline" role="form" action="projects_report" method="post">
-    <div class="form-group pull-right">
+    <div class="pull-right">
       <input type="submit" class="btn btn-default"  value="搜素">
 
 
@@ -115,14 +115,6 @@
    <input type="text" class="form-control" id="name" placeholder="客户名称">
 </div>
 
-
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label"><span class="required">*</span>合同交货日期</label>
-                                        <div class="col-md-9">
-                                            <div class="input-group input-medium date datepicker">
-                                                <input type="text" name="deliverydate" value="" class="form-control" /><span class="input-group-btn"><button class="btn btn-default date-set" type="button"><i class="fa fa-calendar"></i></button></span></div>
-                                        </div>
-                                    </div>
 
 
 <div class="form-group">

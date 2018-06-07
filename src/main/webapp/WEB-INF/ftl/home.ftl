@@ -8,15 +8,15 @@
 <!-- BEGIN HEAD -->
 
 <head>
-    <title>
-        <@spring.message "system.title"/> |
-        <@spring.message "menu.desktop"/>
-    </title>
-
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="MobileOptimized" content="320">
+
+    <title>
+        <@spring.message "system.title"/> |
+        <@spring.message "menu.desktop"/>
+    </title>
 
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/jquery-ui-1.11.4/jquery-ui.structure.min.css" />
 
@@ -41,7 +41,7 @@
     <link rel="apple-touch-icon" href="${rc.contextPath}/favicon.png" />
 </head>
 
-<body class="page-header-fixed">
+<body>
 
     <!-- BEGIN HEADER -->
     <#include "/common/config/top.ftl" />
@@ -50,22 +50,18 @@
 
     <!-- END HEADER -->
 
-    <div class="clearfix">
-    </div>
-    <div class="col-lg-2">
+    <div class="page-container">
+        <div class="row page-header">
 
-    </div>
-    <div class="page-content col-lg-8 text-center">
-        <div class="row">
-            <div class="col-lg-12">
-                <h3 class="page-header text-center"><@spring.message "menu.desktop" /></h3>
-            </div>
-            <!-- /.col-lg-12 -->
+            <h3 class="text-center"><@spring.message "menu.desktop" /></h3>
         </div>
+        <!-- /.col-lg-12 -->
 
-        <!-- dashboard begin -->
-        <div class="row">
-            <div class="col-lg-4 col-md-6">
+
+        <div class=" col-md-8 col-md-offset-2 ">
+
+            <!-- dashboard begin -->
+            <div class="col-lg-4 ">
                 <div class="panel panel-primary" style="height:100%">
                     <div class="panel-heading">
                         </i>
@@ -89,27 +85,14 @@
                                 </li>
                                 <li><a href="#"><span class="title"><@spring.message "menu.project.debugservice" /></span></a>
                                 </li>
-                                <li>
-                                    &nbsp;
-                                </li>
-                                <li>
-                                    &nbsp;
-                                </li>
-                                <li>
-                                    &nbsp;
-                                </li>
-                                <li>
-                                    &nbsp;
-                                </li>
-                                <li>
-                                    &nbsp;
-                                </li>
+
                             </ul>
 
                         </div>
                     </div>
                 </div>
             </div>
+
 
 
             <div class="col-lg-4 col-md-6">
@@ -211,7 +194,7 @@
                                     <a href="${rc.contextPath}/projects/whs/Report2"><span class="title"><@spring.message "menu.employee.new" /></span></a>
                                 </li>
                                 <li>
-                                  &nbsp;
+                                    &nbsp;
                                 </li>
 
 
@@ -220,12 +203,12 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- dashboard end -->
 
 
+            <!-- dashboard end -->
 
+
+      </div>
 
     </div>
 

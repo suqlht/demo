@@ -65,7 +65,15 @@
         var selected_items = new Array();
     </script>
     <link rel="shortcut icon" href="${rc.contextPath}/favicon.ico" />
-    <link rel="apple-touch-icon" href="${rc.contextPath}/favicon.png" />
+    <link rel="apple-touch-icon" href="${rc.contextPath}/favicon.png"/>
+
+
+    <style type="text/css">
+      table.subtable {width:100%};
+      table.subtable th {width:30%};
+      table.subtable td {width:30%};
+    </style>
+
 </head>
 
 <body class="page-scale-reduced page-header-fixed yui-skin-sam " id="yahoo-com">
@@ -159,17 +167,30 @@
       <table class="table table-striped table-bordered table-hover projects-table" id="itmes_listing_4466081"   >
         <thead>
           <tr>
-            <th>序号</th>
-            <th>项目号</th>
-            <th>设备型号</th>
-            <th style="width:8%">订货通报日期</th>
-            <th style="width:8%">合同交货日期</th>
-            <th>人员安排</th>
-            <th>机械实际完成日期</th>
-            <th>电气实际完成日期</th>
+            <th rowspan="2">序号</th>
+            <th rowspan="2">项目号</th>
+            <th rowspan="2"> 设备型号</th>
+            <th rowspan="2" style="width:8%">订货通报日期</th>
+            <th rowspan="2" style="width:8%">合同交货日期</th>
+            <th rowspan="2">机械实际完成日期</th>
+            <th rowspan="2">电气实际完成日期</th>
             <th>主要零件</th>
-            <th>截止到货时间</th>
-            <th>操作</th>
+            <th rowspan="2">截止到货时间</th>
+            <th rowspan="2">操作</th>
+          </tr>
+          <tr>
+            <th>
+              <table class="subtable">
+                <thead>
+                  <tr>
+                    <th>名称</th>
+                    <th>计划到货日期</th>
+                    <th>实际到货日期</th>
+                  </tr>
+                </thead>
+              </table>
+            </th>
+
           </tr>
         </thead>
 
@@ -188,11 +209,10 @@
 
       var dataSet = [
         [
-          "1","HM0100","","2018-04-01","2018-12-01","ZT","2018-04-01","2018-12-01",[],"2018-12-31","2018-12-31",
-          ""
+          "1","HM0100","","2018-04-01","2018-12-01","2018-04-01","2018-12-01",[],"", "" ,"2018-12-31",          ""
         ],
         [
-          "1.01","HM0100-01","DHQ-3/3","2018-04-01","2018-12-01","YXW","2018-04-01","2018-12-01",[['炉壳','2018/1/1',''],['辐射管','2018/1/1',''],['进口电机','2018/1/1','']],"2018-12-31","2018-12-31",
+          "1.01","HM0100-01","DHQ-3/3","2018-04-01","2018-12-01","2018-04-01","2018-12-01",[['炉壳','2018/1/1','2018/1/1'],['辐射管','2018/1/1','2018/1/1'],['进口电机','2018/1/1','']],"", "","2018-12-31",
           ""
         ]
       ]
@@ -217,13 +237,14 @@
                 // this case `data: 0`.
                 "render": function ( data, type, row ) {
                   if(data.length==0){
+
                     return '';
                   }
-                    return '<table><tr><td>'+data[0][0]+'</td><td>'+data[0][1]+'</td><td>'+data[0][2]+'</td></tr>' +
+                    return '<table class="subtable"><tr><td>'+data[0][0]+'</td><td>'+data[0][1]+'</td><td>'+data[0][2]+'</td></tr>' +
                            '<tr><td>'+data[1][0]+'</td><td>'+data[1][1]+'</td><td>'+data[1][2]+'</td></tr>' +
                            '<tr><td>'+data[2][0]+'</td><td>'+data[2][1]+'</td><td>'+data[2][2]+'</td></tr></table>' ;
                 },
-                "targets": 8
+                "targets": 7
             }]
 
         });

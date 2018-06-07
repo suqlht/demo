@@ -10,7 +10,7 @@
 		<a href="${(index==3)?string('#','purchase_plan')}">采购任务分配计划</a>
 	</li>
 	<li class="${(index==4)?string('active',' ')}">
-		<a href="${(index==4)?string('#','#manaufacture_plan')}">车间生产计划</a>
+		<a href="${(index==4)?string('#','manufacture_plan')}">车间生产计划</a>
 	</li>
 </ul>
 
