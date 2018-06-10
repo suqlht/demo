@@ -69,13 +69,10 @@
 								<a href="${rc.contextPath}/devices/list"><span class="title">设备管理</span></a>
 							</li>
 							<li>
-								<a href="${rc.contextPath}/projects/whs/processes"><span class="title">工序流程管理</span></a>
+								<a href="${rc.contextPath}/devices/processes"><span class="title">工序流程管理</span></a>
 							</li>
 							<li>
-								<a href="${rc.contextPath}/projects/whs/Report1"><span class="title"><@spring.message "menu.device.list" /></span></a>
-							</li>
-							<li>
-								<a href="${rc.contextPath}/projects/whs/Report2"><span class="title"><@spring.message "menu.device.new" /></span></a>
+								<a href="${rc.contextPath}/devices/standardtimes"><span class="title"><@spring.message "menu.device.standard.times" /></span></a>
 							</li>
 						</ul>
 					</li>

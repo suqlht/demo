@@ -16,7 +16,6 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="MobileOptimized" content="320">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/jquery-ui-1.11.4/jquery-ui.structure.min.css" />
 
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/uniform/css/uniform.default.css" />
 
@@ -32,16 +31,16 @@
 
     <!-- END THEME STYLES -->
 
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/bootstrap-modal/css/bootstrap-modal.css" />
 
 
+        <!-- END THEME STYLES -->
 
+        <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/bootstrap-modal/css/bootstrap-modal.css" />
     <script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-1.10.2.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/data-tables/DT_bootstrap.css" />
-    <script type="text/javascript" src="${rc.contextPath}/assets/plugins/data-tables/jquery.dataTables.js"></script>
-    <script type="text/javascript" src="${rc.contextPath}/assets/plugins/data-tables/DT_bootstrap.js"></script>
+    <script type="text/javascript" src="${rc.contextPath}/assets/plugins/datatables/jquery.dataTables.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/datatables/jquery.dataTables.css" />
 
     <script type="text/javascript" src="${rc.contextPath}/assets/js/app.js"></script>
 
@@ -50,15 +49,11 @@
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/skins/default/default.css" />
 
 
-    <script>
-        var sf_public_path = '/${rc.contextPath}/';
-        var selected_items = new Array();
-    </script>
     <link rel="shortcut icon" href="${rc.contextPath}/favicon.ico" />
     <link rel="apple-touch-icon" href="${rc.contextPath}/favicon.png" />
 </head>
 
-<body class="page-scale-reduced page-header-fixed yui-skin-sam " id="yahoo-com">
+<body class="page-header-fixed">
 
     <!-- BEGIN HEADER -->
     <#include "/common/config/top.ftl" />
@@ -93,7 +88,7 @@
           <td>
             <table>
               <tr>
-                          <td style="padding-right: 15px;"><button class="btn btn-primary" onClick="openModalBox('${rc.contextPath}/devices/modal_new'); return false;">新建</button></td>
+                          <td style="padding-right: 15px;"><button  onClick="openModalBox('${rc.contextPath}/devices/modal_new'); return false;">新建</button></td>
                           <td style="padding-right: 15px;"></td>
               </tr>
             </table>
@@ -101,11 +96,11 @@
 
           <td align="right">
             <form action="${rc.contextPath}/devices/list" method="GET">
-              <input type="hidden" name="pagelength" value="${pagelength?default(10)}"/>
+              <input type="hidden" name="pagelength" value="${pagelength?default(1)}"/>
               <input type="hidden" name="pagecurrent" value="${pagecurrent?default(1)}"/>
 
               <input type="text" name="search_keywords" value="${search_keywords}" >
-              <input type="submit" class="btn btn-default"  id="searchBtn" value="搜素">
+              <input type="submit"  id="searchBtn" value="搜素">
             </form>
           </td>
 
@@ -116,16 +111,16 @@
       <div>
 
 
-      <table class="table table-striped table-bordered table-hover projects-table" id="device_list"   >
+      <table class="table table-striped table-bordered" id="device_list"   >
         <thead>
           <tr>
-            <th class="table-checkbox"  data-bSortable="false">
-              <input class="group-checkable" data-set="#itmes_listing_6642184 .checkboxes"  type="checkbox"></th>
-            <th><div>设备号</div></th>
+            <th  data-bSortable="false" class="table-checkbox">
+              <input class="group-checkable" type="checkbox"></th>
+            <th>设备号</th>
 
-                  <th><div>设备名称</div></th>
+                  <th>设备名称</th>
 
-            <th data-bSortable="false" style="width: 45px;">操作</th>
+            <th data-bSortable="false">操作</th>
 
           </tr>
         </thead>
@@ -136,7 +131,7 @@
 
 <tr>
 
-<td><input class="checkboxes" name="multiple_selected[]" id="multiple_selected_9" type="checkbox" value="${device.id}"></td>
+<td><input class="checkboxes" name="multiple_selected[]" type="checkbox" value="${device.id}"></td>
 <td>${device.deviceCode}</td>
 <td>${device.deviceName}</td>
 
@@ -148,27 +143,18 @@
       </table>
 <#include "/common/config/pager.ftl" />
       <@pageShow devices.pages, devices.total ,devices.pageNum />
-<!--
-            <ul id="jqPage" class="pagination">
-                <li><a href="${rc.contextPath}/devices">首页</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">尾页</a></li>
-            </ul>
-            总数：${devices.total} -->
+
       </div>
 
-      <br />
 
       <script type="text/javascript">
+
         $(document).ready(function(){
 
-          appHandleUniformCheckboxes()
-
+          appHandleUniformCheckboxes();
           var columnSort = new Array;
+          var selected_items = new Array();
+
           $(this).find('#device_list thead tr th').each(function(){
 
 
@@ -187,6 +173,8 @@
           });
 
 
+
+
           jQuery('#device_list tbody tr .checkboxes').change(function(){
                if($(this).attr('checked'))
                {
@@ -203,11 +191,11 @@
 
           var table = $('#device_list').dataTable({
             "iDisplayLength": 10,
-            "bSort": true,
+            paging:false,
+            info:false,
+            "bSortable":true,
             "bFilter":false,
-            "bLengthChange":false,
-            "aoColumns": columnSort,
-            "fnInitComplete": function (oSettings, json) { $(this).css('display','') }
+            "bLengthChange":false
 
             });
 
@@ -274,6 +262,7 @@
 <script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-ui-1.11.4/jquery-ui.min.js"></script>
 <script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
 <script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js"></script>
 <script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery.blockui.min.js"></script>
@@ -285,10 +274,9 @@
 <script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-modal/js/bootstrap-modal.js"></script>
 <script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
 <script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-validation/dist/additional-methods.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-nestable/jquery.nestable.js"></script>
+
 <script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 <script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-
 <script type="text/javascript" src="${rc.contextPath}/assets/scripts/app.js"></script>
 
 <!-- END JAVASCRIPTS -->

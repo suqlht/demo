@@ -48,10 +48,19 @@
         </#list>
     </#if>
     <#local _htmlNoLinkLine>
-        <li><a href ="#" onclick="getPage(${_firstPageNo})">首页</a></li>
+    <#if _currentPageNo == 1>
+      <li><a href ="#">首页</a></li>
+    <#else>
+    <li><a href ="#" onclick="getPage(${_firstPageNo})">首页</a></li>
+
+    </#if>
         <#if _currentPageNo != _pageStartNo>
-<li><a href = "#${_prePageNo}" onclick="getPage(${_prePageNo})">上一页</a></li>
+          <li><a href = "#${_prePageNo}" onclick="getPage(${_prePageNo})">上一页</a></li>
+        <#else>
+        <li><a href = "#${_prePageNo}">上一页</a></li>
+
         </#if>
+
         <#list _pages as page>
             <#if page.current?default(false)>
                 <li><span class="current" >${page.pageNum}</span></li>
@@ -59,9 +68,15 @@
               <li>  <a href="#" onclick="getPage(${page.pageNum})">${page.pageNum}</a> </li>
             </#if>
         </#list>
-
+        <#if _currentPageNo gte _totalPageNum>
+        <li><a href = "#">下一页</a></li>
+        <li><a href = "#${_lastPageNo}">末页</a></li>
+        <#else>
         <li><a href = "#" onclick="getPage(${_nextPageNo})">下一页</a></li>
         <li><a href = "#${_lastPageNo}" onclick="getPage(${_lastPageNo})">末页</a></li>
+
+        </#if>
+
         <li><span>总数${_totalCount?default(0)}</span></li>
     </#local>
 

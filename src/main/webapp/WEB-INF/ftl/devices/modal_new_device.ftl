@@ -1,4 +1,4 @@
-<div class="modal-header">
+Ò<div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
     <h4 class="modal-title">添加设备</h4>
 </div>
@@ -23,11 +23,11 @@
                       <i class="required"></i>
                         <input type="text" name="model" value="" class="input-mini required" />
 
-                        <i class="icon-minus"></i>                        <i class="required"></i>
+                        <i class="icon-minus" style="font-size:28px"></i>&nbsp;
 
                         <input type="text" name="spec" value="" class="input-mini required" />
 
-                        <i class="icon-minus"></i>                        <i class="icon-minus"></i>
+                        <i class="icon-minus" style="font-size:28px"></i>&nbsp;
 
 
                         <input type="text" name="param" value="" class="input-mini" />

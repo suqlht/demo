@@ -54,13 +54,10 @@ public class WHSDeviceServiceImpl implements WHSDeviceService {
 
     @Override
     public PageInfo<WHSDevice> selectByKeyWord(String keyword, int pageSize, int currentPage) {
-        logger.info(keyword);
-        WHSDevice device = new WHSDevice();
-        device.setDeviceCode("%"+keyword+"%");
-        device.setDeviceName("%"+keyword+"%");
+
         PageHelper.startPage(currentPage, pageSize);
 
-        List<WHSDevice> results = mapper.selectByKeyWord(device);
+        List<WHSDevice> results = mapper.selectByKeyWord("%"+keyword+"%");
         PageInfo<WHSDevice> pageInfo = new PageInfo<>(results);
 
         return pageInfo;

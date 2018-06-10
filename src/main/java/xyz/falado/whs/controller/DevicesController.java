@@ -16,11 +16,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import xyz.falado.whs.model.WHSDevice;
 import xyz.falado.whs.model.WHSDeviceExample;
+import xyz.falado.whs.model.WHSProcess;
+import xyz.falado.whs.model.WHSProcessExample;
+import xyz.falado.whs.service.WHSDeviceProcessService;
 import xyz.falado.whs.service.WHSDeviceService;
+import xyz.falado.whs.service.WHSProcessService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -50,6 +56,10 @@ public class DevicesController {
 
 	@Autowired
 	private WHSDeviceService deviceService;
+	@Autowired
+	private WHSProcessService processService;
+//	@Autowired
+//	private WHSDeviceProcessService deviceProcessService;
 
 	@RequestMapping(value="/list")
 	public String list(HttpServletRequest request, Model model,Integer pagelength,Integer pagecurrent){
@@ -75,6 +85,10 @@ public class DevicesController {
 		model.addAttribute("search_keywords",request.getParameter("search_keywords"));
 		return "devices/devices_list";
 	}
+
+
+
+
 
 	@RequestMapping(value="/page")
 	@ResponseBody
@@ -127,5 +141,79 @@ public class DevicesController {
 		model.addAttribute("device",device);
 		return "redirect:/devices/devices_list";
 	}
+
+	/**
+	 * @Author: apple
+	 * @Date: 2018/6/8
+	 * @param model
+	 * @Description:
+	 * 工序管理页面
+	 */
+	@RequestMapping(value="/processes",method=RequestMethod.GET)
+	public String processes(Model model){
+		return "devices/process_list";
+	}
+
+
+	/**
+	 * @Author: apple
+	 * @Date: 2018/6/8
+	 * @param
+	 * @Description:
+	 * 工序列表
+	 */
+	@RequestMapping(value="/processlist")
+	@ResponseBody
+	public Map process_list(){
+
+		List<WHSProcess> processes;
+		processes = processService.findByExample(new WHSProcessExample());
+		HashMap<String,List> data = new HashMap<String,List>();
+		data.put("data",processes);
+		return data;
+	}
+
+	/**
+	 * @Author: apple
+	 * @Date: 2018/6/8
+	 * @param process, model
+	 * @Description:
+	 * 添加工序
+	 */
+	@RequestMapping(value="/processes", method=RequestMethod.POST)
+	public String create(@Validated WHSProcess process, Model model){
+
+		processService.createNew(process);
+
+		return "devices/process_list";
+	}
+
+	/**
+	 * @Author: apple
+	 * @Date: 2018/6/8
+	 * @param process, model
+	 * @Description:
+	 * 添加工序
+	 */
+	@RequestMapping(value="/updateProcess", method=RequestMethod.POST)
+	public String updateProcess(WHSProcess process, Model model){
+
+		processService.updateSingle(process);
+		model.addAttribute("device",process);
+		return "devices/process_list";
+	}
+
+	@RequestMapping(value="/deleteprocess/{id}")
+	public String deleteProcess(Model model,@PathVariable(value = "id") Integer id){
+		processService.deleteByID(id);
+		return "redirect:/devices/processes";
+	}
+
+	@RequestMapping(value="/standardtimes",method=RequestMethod.GET)
+	public String standtimes(Model model){
+
+		return "/devices/standardtimes";
+	}
+
 
 }

@@ -88,16 +88,13 @@
     </if>
   </select>
 
-  <select id="selectByKeyWord" parameterType="map" resultMap="BaseResultMap">
+  <select id="selectByKeyWord" resultMap="BaseResultMap">
     select
-
     <include refid="Base_Column_List" />
     from WHS_DEVICES
-    <if test="record.deviceName != null">
-      where
-      device_name like #{record.deviceName}
-      or device_code like #{record.deviceCode}
-    </if>
+    where
+    device_name like #{keyword}
+    or device_code like #{keyword}
 
 
   </select>

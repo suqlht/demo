@@ -18,7 +18,7 @@ public interface WHSDeviceMapper {
 
     List<WHSDevice> selectByExample(WHSDeviceExample example);
 
-    List<WHSDevice> selectByKeyWord(@Param("record") WHSDevice record);
+    List<WHSDevice> selectByKeyWord(String keyword);
 
 
     WHSDevice selectByPrimaryKey(Integer id);
