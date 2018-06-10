@@ -16,6 +16,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="MobileOptimized" content="320">
 
+    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/jquery-ui-1.11.4/jquery-ui.structure.min.css" />
 
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/uniform/css/uniform.default.css" />
 
@@ -29,31 +30,46 @@
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/style-responsive.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/plugins.css" />
 
-    <!-- END THEME STYLES -->
-
-
 
     <!-- END THEME STYLES -->
 
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/bootstrap-modal/css/bootstrap-modal.css" />
-    <script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-1.10.2.min.js"></script>
 
+
+
+    <script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-1.10.2.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/select2/select2.css" />
+
+    <script type="text/javascript" src="${rc.contextPath}/assets/plugins/select2/select2.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/data-tables/DT_bootstrap.css" />
     <script type="text/javascript" src="${rc.contextPath}/assets/plugins/datatables/jquery.dataTables.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/datatables/jquery.dataTables.css" />
+    <script type="text/javascript" src="${rc.contextPath}/assets/plugins/FixedColumns-3.2.4/js/dataTables.fixedColumns.js"></script>
+
+
 
     <script type="text/javascript" src="${rc.contextPath}/assets/js/app.js"></script>
+
+
+
+
 
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/app.css" />
 
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/skins/default/default.css" />
 
 
+    <script>
+        var sf_public_path = '/${rc.contextPath}/';
+        var selected_items = new Array();
+    </script>
     <link rel="shortcut icon" href="${rc.contextPath}/favicon.ico" />
     <link rel="apple-touch-icon" href="${rc.contextPath}/favicon.png" />
 </head>
 
-<body class="page-header-fixed">
+<body class="page-scale-reduced page-header-fixed yui-skin-sam " id="yahoo-com">
 
     <!-- BEGIN HEADER -->
     <#include "/common/config/top.ftl" />
@@ -71,7 +87,7 @@
         <!-- BEGIN SIDEBAR -->
         <#include "/common/config/left.ftl" />
 
-        <@menu 4/>
+        <@menu 3/>
 
         <!-- END SIDEBAR -->
 
@@ -81,164 +97,139 @@
             <div class="page-content-wrapper">
                 <div class="page-content">
                     <div id="ajax-modal" class="modal fade" tabindex="-1" data-replace="true" data-keyboard="false" data-backdrop="static" data-focus-on=".autofocus"></div>
-                    <h3 class="page-title">设备列表</h1>
+                    <h3 class="page-title">工时填报</h1>
 
-      <table width="100%">
-        <tr>
-          <td>
-            <table>
-              <tr>
-                          <td style="padding-right: 15px;"><button  onClick="openModalBox('${rc.contextPath}/devices/modal_new'); return false;">新建</button></td>
-                          <td style="padding-right: 15px;"></td>
-              </tr>
-            </table>
-          </td>
-
-          <td align="right">
-            <form action="${rc.contextPath}/devices/list" method="GET">
-              <input type="hidden" name="pagelength" value="${pagelength?default(10)}"/>
-              <input type="hidden" name="pagecurrent" value="${pagecurrent?default(1)}"/>
-
-              <input type="text" name="search_keywords" value="${search_keywords}" >
-              <input type="submit"  id="searchBtn" value="搜素">
-            </form>
-          </td>
-
-        </tr>
-      </table>
+<div>
+  <form class="form-inline" role="form" action="projects_report" method="post">
+    <div class="form-group pull-right">
+      <input type="submit" class="btn btn-default"  value="搜素">
 
 
+    </div>
+
+<div class="form-group">
+  <label class="sr-only" for="name">组员</label>
+  <select id="group_members" class="" name="assurance_duration">
+      <option value="">组员</option>
+
+      <option value="1">张三</option>
+      <option value="3">李四</option>
+  </select>
+</div>
+
+
+
+
+<div class="form-group">
+  <label class="sr-only" for="name">起止日期</label>
+   <input type="text" class="form-control date datepicker" id="name" placeholder="开始日期">
+   <input type="text" class="form-control date datepicker" id="name" placeholder="终止日期">
+</div>
+
+<div class="form-group">
+
+<label class="sr-only" for="name">项目号</label>
+ <input type="text" class="form-control" id="name" placeholder="项目号">
+</div>
+
+<div class="form-group">
+  <label class="sr-only" for="name">设备型号</label>
+  <select id="device_type" class="" name="assurance_duration">
+      <option value="">设备型号</option>
+
+      <option value="1">DHQ-3/3</option>
+      <option value="3">HTS-3/3</option>
+  </select>
+</div>
+<div class="form-group pull-right">
+  <input type="submit" class="btn btn-default"  value="导出">
+  <input type="submit" class="btn btn-default"  value="打印">
+</div>
+  </form>
+</div>
+<br>
       <div>
 
 
-      <table class="table table-striped table-bordered" id="device_list"   >
+      <table class="table table-striped table-bordered table-hover projects-table" id="itmes_listing_4466081"   >
         <thead>
           <tr>
-
-            <th>设备号</th>
-
-                  <th>设备名称</th>
-                    <th>机械装配额定工时</th>
-                      <th>电气装配额定工时</th>
-                      <th>其他额定工时</th>
-
-            <th data-bSortable="false">操作</th>
+            <th rowspan="2">序号</th>
+            <th rowspan="2" style="width:8%">组员工号</th>
+            <th rowspan="2">组员姓名</th>
+            <th rowspan="2" style="width:8%">起始日期</th>
+            <th rowspan="2" style="width:8%">终止日期</th>
+            <th rowspan="2" style="width:8%">项目号</th>
+            <th rowspan="2" style="width:8%">设备名称</th>
+            <th colspan="2">出差</th>
+            <th colspan="8">已完成工时</th>
+          </tr>
+          <tr>
+            <th>出发日期</th>
+            <th>回厂日期</th>
+              <th>周二（2017/12/31）</th>
+              <th>周二（2018/1/1）</th>
+              <th>周二（2018/1/2）</th>
+              <th>周二（2018/1/3）</th>
+              <th>周二（2018/1/4）</th>
+              <th>周二（2018/1/5）</th>
+              <th>周二（2018/1/6）</th>
+              <th>合计完成工时</th>
 
           </tr>
-
         </thead>
 
         <tbody>
-<#if devices.list?? && (devices.list?size > 0) >
-<#list devices.list as device>
 
-<tr>
 
-<td>${device.deviceCode}</td>
-<td>${device.deviceName}</td>
-<td>${device.mechanicalHours}</td>
-<td>${device.electricalHours}</td>
-<td>${device.otherHours}</td>
-
-<td><a class="btn btn-default btn-xs purple" onclick="if(confirm('确定删除吗')){(window.location='${rc.contextPath}/devices/delete/${device.id}')};return false;"><i class="fa fa-trash-o"></i>删除</a> <a href="#" class="btn btn-default btn-xs purple" onClick="openModalBox('${rc.contextPath}/devices/edit/${device.id}'); return false;"><i class="fa fa-edit"></i>修改</a></td>
-</tr>
-</#list>
-</#if>
               </tbody>
       </table>
-<#include "/common/config/pager.ftl" />
-      <@pageShow devices.pages, devices.total ,devices.pageNum />
 
       </div>
+
+      <br />
 
 
       <script type="text/javascript">
 
+      var dataSet = [
+        [
+          "1","1001","张三","2017/12/31","2018/1/6","HM001h6","HDQ 3/3",
+          "","","10","0","0","10","10","10","10","50"
+        ],
+        [
+          "1","1003","李四","2018-04-01","2018-12-01","HM001h6","HDQ 3/3",
+          "2018/1/2","2018/1/3","10","10","0","0","10","10","0","30"
+        ]
+      ]
         $(document).ready(function(){
 
-          appHandleUniformCheckboxes();
-          var columnSort = new Array;
-          var selected_items = new Array();
-
-          $(this).find('#device_list thead tr th').each(function(){
-
-
-              sType = 'html';
-
-              attr = $(this).attr('data-bsType');
-              if (typeof attr !== typeof undefined && attr !== false) {
-                sType = attr;
-              }
-
-              if($(this).attr('data-bSortable') == 'false') {
-                  columnSort.push({ "bSortable": false});
-              } else {
-                  columnSort.push({ "bSortable": true,"sType":sType });
-              }
+          $("#device_type").select2({
           });
-
-
-
-
-          jQuery('#device_list tbody tr .checkboxes').change(function(){
-               if($(this).attr('checked'))
-               {
-                 selected_items.push($(this).attr('value'));
-               }
-               else
-               {
-                 selected_items = array_remove(selected_items,$(this).attr('value'))
-               }
-
-
-               $(this).parents('tr').toggleClass("active");
+          $("#work_groups").select2({
           });
-
-          var table = $('#device_list').DataTable({
+          $("#group_members").select2({
+          });
+          var table = $('#itmes_listing_4466081').dataTable({
+            scrollY:        "300px",
+          scrollX:        true,
+          scrollCollapse: true,
+          paging:         false,
+          fixedColumns:   {
+                      leftColumns: 9
+                  },
+            data:dataSet,
             "iDisplayLength": 10,
             paging:false,
             info:false,
+            "bSort": true,
             "bFilter":false,
             "bLengthChange":false,
-            "columnDefs":[
-              {
-                "bSortable":false,
-                "targets":-1
-              }
-            ]
-
-            });
-
-            jQuery('#device_list .group-checkable').change(function () {
-
-                      var checked = jQuery(this).is(":checked");
-                      selected_items.length = 0;
-
-                      jQuery( "input", table.fnGetNodes() ).each(function(){
-                           if(checked)
-                           {
-                              selected_items.push($(this).attr('value'));
-
-                              $(this).attr("checked", true);
-                              $(this).parents('span').addClass("checked");
-                              $(this).parents('tr').addClass("active");
-                           }
-                           else
-                           {
-                              $(this).attr("checked", false);
-                              $(this).parents('span').removeClass("checked");
-                              $(this).parents('tr').removeClass("active");
-                           }
-                      })
-                });
-
-
+            "fnInitComplete": function (oSettings, json) { $(this).css('display','') }
 
         });
-        function getPage(index){
-          $('[name=pagecurrent]').val(index);
-          $('#searchBtn').click();
-        }
+
+      });
 
       </script>
 
@@ -272,7 +263,6 @@
 <script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-ui-1.11.4/jquery-ui.min.js"></script>
 <script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-
 <script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js"></script>
 <script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery.blockui.min.js"></script>
@@ -284,21 +274,23 @@
 <script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-modal/js/bootstrap-modal.js"></script>
 <script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
 <script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-validation/dist/additional-methods.min.js"></script>
-
+<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-nestable/jquery.nestable.js"></script>
 <script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 <script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+
 <script type="text/javascript" src="${rc.contextPath}/assets/scripts/app.js"></script>
 
+<script>
+jQuery(document).ready(function() {
+   App.init();
+
+   qdpm_app_init();
+
+});
+
+</script>
+
 <!-- END JAVASCRIPTS -->
-
-    <script>
-        jQuery(document).ready(function() {
-            App.init();
-
-            qdpm_app_init();
-
-        });
-    </script>
 
   </body>
 </html>

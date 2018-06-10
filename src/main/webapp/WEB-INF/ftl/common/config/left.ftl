@@ -30,7 +30,7 @@
 								<a href="${rc.contextPath}/projects/whs/mechanical_plan"><span class="title"><@spring.message "menu.project.plan" /></span></a>
 							</li>
 							<li>
-								<a href="${rc.contextPath}/projects/whs/projects_query" class="cursor-pointer"><span class="title"><@spring.message "menu.project.schedule" /></span></a>
+								<a href="${rc.contextPath}/projects/whs/project_status" class="cursor-pointer"><span class="title"><@spring.message "menu.project.schedule" /></span></a>
 							</li>
 							<li><a href="#"><span class="title"><@spring.message "menu.project.delivery" /></span></a>
 							</li>

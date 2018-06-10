@@ -35,6 +35,30 @@
                     </div>
                 </div>
             </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">机械装配额定工时</label>
+                <div class="col-md-9">
+                    <div class="input-group equipment-type">
+                        <input type="text" name="mechanicalHours" value="${device.mechanicalHours}" class="input-large number" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">电气装配额定工时</label>
+                <div class="col-md-9">
+                    <div class="input-group equipment-type">
+                        <input type="text" name="electricalHours" value="${device.electricalHours}" class="input-large number" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">其他额定工时</label>
+                <div class="col-md-9">
+                    <div class="input-group equipment-type">
+                        <input type="text" name="otherHours" value="${device.otherHours}" class="input-large number" />
+                    </div>
+                </div>
+            </div>
 
 
 

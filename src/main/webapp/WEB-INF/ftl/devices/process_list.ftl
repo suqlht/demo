@@ -81,27 +81,26 @@
             <div class="page-content-wrapper">
                 <div class="page-content">
                     <div id="ajax-modal" class="modal fade" tabindex="-1" data-replace="true" data-keyboard="false" data-backdrop="static" data-focus-on=".autofocus"></div>
-                    <h3 class="page-title">设备列表</h1>
+                    <h3 class="page-title">工序列表</h1>
 
       <table width="100%">
         <tr>
           <td>
             <table>
               <tr>
-                          <td style="padding-right: 15px;"><button  onClick="openModalBox('${rc.contextPath}/devices/modal_new'); return false;">新建</button></td>
+                          <td style="padding-right: 15px;">
+                            <form action="${rc.contextPath}/devices/processes" id="processForm" method="POST">
+                              <input type="hidden" name="id" id="process_id" value="" >
+
+                              <input type="text" name="processName" id="process_name" value="" >
+                              <input type="submit" id="addbtn" value="添加" onclick="createProcess()"><input type="submit" id="savebtn" value="修改" onclick="updateProcess()">
+                            </form></td>
                           <td style="padding-right: 15px;"></td>
               </tr>
             </table>
           </td>
 
           <td align="right">
-            <form action="${rc.contextPath}/devices/list" method="GET">
-              <input type="hidden" name="pagelength" value="${pagelength?default(10)}"/>
-              <input type="hidden" name="pagecurrent" value="${pagecurrent?default(1)}"/>
-
-              <input type="text" name="search_keywords" value="${search_keywords}" >
-              <input type="submit"  id="searchBtn" value="搜素">
-            </form>
           </td>
 
         </tr>
@@ -111,133 +110,88 @@
       <div>
 
 
-      <table class="table table-striped table-bordered" id="device_list"   >
+      <table class="display" id="process_list"   >
         <thead>
           <tr>
+              <th>编号</th>
 
-            <th>设备号</th>
-
-                  <th>设备名称</th>
-                    <th>机械装配额定工时</th>
-                      <th>电气装配额定工时</th>
-                      <th>其他额定工时</th>
+                  <th>工序</th>
 
             <th data-bSortable="false">操作</th>
 
           </tr>
-
         </thead>
 
         <tbody>
-<#if devices.list?? && (devices.list?size > 0) >
-<#list devices.list as device>
-
-<tr>
-
-<td>${device.deviceCode}</td>
-<td>${device.deviceName}</td>
-<td>${device.mechanicalHours}</td>
-<td>${device.electricalHours}</td>
-<td>${device.otherHours}</td>
-
-<td><a class="btn btn-default btn-xs purple" onclick="if(confirm('确定删除吗')){(window.location='${rc.contextPath}/devices/delete/${device.id}')};return false;"><i class="fa fa-trash-o"></i>删除</a> <a href="#" class="btn btn-default btn-xs purple" onClick="openModalBox('${rc.contextPath}/devices/edit/${device.id}'); return false;"><i class="fa fa-edit"></i>修改</a></td>
-</tr>
-</#list>
-</#if>
               </tbody>
       </table>
-<#include "/common/config/pager.ftl" />
-      <@pageShow devices.pages, devices.total ,devices.pageNum />
 
       </div>
 
 
       <script type="text/javascript">
 
+      function updateProcess(selector){
+        console.log($(selector));
+      }
         $(document).ready(function(){
+
+
 
           appHandleUniformCheckboxes();
           var columnSort = new Array;
           var selected_items = new Array();
 
-          $(this).find('#device_list thead tr th').each(function(){
 
-
-              sType = 'html';
-
-              attr = $(this).attr('data-bsType');
-              if (typeof attr !== typeof undefined && attr !== false) {
-                sType = attr;
-              }
-
-              if($(this).attr('data-bSortable') == 'false') {
-                  columnSort.push({ "bSortable": false});
-              } else {
-                  columnSort.push({ "bSortable": true,"sType":sType });
-              }
-          });
-
-
-
-
-          jQuery('#device_list tbody tr .checkboxes').change(function(){
-               if($(this).attr('checked'))
-               {
-                 selected_items.push($(this).attr('value'));
-               }
-               else
-               {
-                 selected_items = array_remove(selected_items,$(this).attr('value'))
-               }
-
-
-               $(this).parents('tr').toggleClass("active");
-          });
-
-          var table = $('#device_list').DataTable({
+          var table = $('#process_list').DataTable({
             "iDisplayLength": 10,
-            paging:false,
+            ajax:'${rc.contextPath}/devices/processlist',
             info:false,
-            "bFilter":false,
+            "bSortable":true,
             "bLengthChange":false,
-            "columnDefs":[
-              {
-                "bSortable":false,
-                "targets":-1
+            columns:[
+              {"data":"id", "visible":false},
+              {"data":"processName"},
+              {"data":"id",orderable:false
+
               }
+            ],
+            columnDefs:[
+              {
+                "render": function ( data, type, row ) {
+                  console.log(row);
+                   return '<a class="btn btn-default btn-xs purple" onclick="if(confirm(\'确定删除吗\')){deleteProcess(\''+data+'\')};return false;"><i class="fa fa-trash-o"></i>删除</a> <a href="#" class="btn btn-default btn-xs purple edit"><i class="fa fa-edit"></i>修改</a>';
+                },
+                targets:-1
+
+              }
+
             ]
 
             });
 
-            jQuery('#device_list .group-checkable').change(function () {
-
-                      var checked = jQuery(this).is(":checked");
-                      selected_items.length = 0;
-
-                      jQuery( "input", table.fnGetNodes() ).each(function(){
-                           if(checked)
-                           {
-                              selected_items.push($(this).attr('value'));
-
-                              $(this).attr("checked", true);
-                              $(this).parents('span').addClass("checked");
-                              $(this).parents('tr').addClass("active");
-                           }
-                           else
-                           {
-                              $(this).attr("checked", false);
-                              $(this).parents('span').removeClass("checked");
-                              $(this).parents('tr').removeClass("active");
-                           }
-                      })
-                });
+            $('#process_list tbody').on('click', 'a.edit', function () {
+              console.log($(this).parents('tr'));
+                   var data = table.row($(this).parents('tr')).data();
+                   $('#process_id').val(data.id);
+                   $('#process_name').val(data.processName);
+               } );
 
 
 
         });
-        function getPage(index){
-          $('[name=pagecurrent]').val(index);
-          $('#searchBtn').click();
+
+
+        function createProcess(){
+          $('#processForm').attr('action','${rc.contextPath}/devices/processes');
+          $('#process_id').val();
+        }
+
+        function updateProcess(){
+          $('#processForm').attr('action','${rc.contextPath}/devices/updateProcess');
+        }
+        function deleteProcess(id){
+          window.location = '${rc.contextPath}/devices/deleteprocess/'+id;
         }
 
       </script>

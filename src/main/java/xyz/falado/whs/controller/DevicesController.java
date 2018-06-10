@@ -64,7 +64,7 @@ public class DevicesController {
 	@RequestMapping(value="/list")
 	public String list(HttpServletRequest request, Model model,Integer pagelength,Integer pagecurrent){
 		PageInfo<WHSDevice> devices;
-		logger.info(request.getParameter("search_keywords"));
+//		logger.info(request.getParameter("search_keywords"));
 
 		if(pagelength==null){
 			pagelength = 10;
@@ -75,7 +75,9 @@ public class DevicesController {
 
 		}
 		if(StringUtils.isEmpty(request.getParameter("search_keywords"))) {
+			logger.info("no key word.");
 			devices = deviceService.selectByPage(new WHSDeviceExample(), pagelength, pagecurrent);
+
 
 		}else{
 			devices = deviceService.selectByKeyWord(request.getParameter("search_keywords"), pagelength, pagecurrent);
@@ -116,7 +118,7 @@ public class DevicesController {
 		}
 		device.setDeviceCode(deviceCode);
 		deviceService.createNew(device);
-		return "redirect:list";
+		return "redirect:/devices/list";
 	}
 
 
@@ -139,7 +141,7 @@ public class DevicesController {
 	public String updateDevice(Model model, WHSDevice device){
 		deviceService.updateSingle(device);
 		model.addAttribute("device",device);
-		return "redirect:/devices/devices_list";
+		return "redirect:/devices/list";
 	}
 
 	/**

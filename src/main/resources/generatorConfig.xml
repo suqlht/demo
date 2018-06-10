@@ -75,27 +75,18 @@
         </javaClientGenerator>
 
 
-        <table tableName="WHS_PROCESSES" domainObjectName="WHSProcess">
+        <table tableName="WHS_PROJECT_PLAN" domainObjectName="WHSProjectPlan">
         </table>
-        <table tableName="WHS_DEVICES" domainObjectName="WHSDevice">
+        <table tableName="WHS_PLAN_ASSET" domainObjectName="WHSPlanAsset">
         </table>
-        <table tableName="WHS_DEVICE_PROCESS" domainObjectName="WHSDeviceProcess">
-        </table>
-        <table tableName="WHS_PROJECT_DEVICES" domainObjectName="WHSProjectDevice">
-        </table>
-        <table tableName="WHS_EMPLOYEE_GROUPS" domainObjectName="WHSEmployeeGroup">
+        <table tableName="WHS_PLAN_MEMBERS" domainObjectName="WHSPlanMember">
         </table>
         <table tableName="WHS_EMPLOYEES" domainObjectName="WHSEmployee">
         </table>
-        <table tableName="WHS_PROJECTS" domainObjectName="WHSProject">
+        <table tableName="WHS_SUB_PROJECTS" domainObjectName="WHSSubProject">
         </table>
-        <table tableName="WHS_TICKETS" domainObjectName="WHSTicket">
+        <table tableName="WHS_DEVICES" domainObjectName="WHSDevice">
         </table>
-        <table tableName="WHS_PROJECT_LOG" domainObjectName="WHSProjectLog">
-        </table>
-        <table tableName="WHS_EMPLOYEE_LEAVE" domainObjectName="WHSEmployeeLeave">
-        </table>
-        <table tableName="WHS_SYSTEM_LOG" domainObjectName="WHSSystemLog">
-        </table>
+
     </context>
 </generatorConfiguration>

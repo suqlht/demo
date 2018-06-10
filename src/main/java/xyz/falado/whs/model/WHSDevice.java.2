@@ -1,18 +1,15 @@
 package xyz.falado.whs.model;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 import java.io.Serializable;
 
 public class WHSDevice implements Serializable {
     private Integer id;
 
-    @NotEmpty
+
     private String deviceName;
 
     private String deviceCode;
 
-    @NotEmpty
     private String model;
 
     private String spec;
