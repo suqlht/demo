@@ -81,10 +81,10 @@
                                 <li>
                                     <a href="${rc.contextPath}/projects/whs/project_status" class="cursor-pointer"><span class="title"><@spring.message "menu.project.schedule" /></span></a>
                                 </li>
-                                <li><a href="#"><span class="title"><@spring.message "menu.project.delivery" /></span></a>
-                                </li>
-                                <li><a href="#"><span class="title"><@spring.message "menu.project.debugservice" /></span></a>
-                                </li>
+                                <li><a href="${rc.contextPath}/projects/whs/project_delivery"><span class="title"><@spring.message "menu.project.delivery" /></span></a>
+                  							</li>
+                  							<li><a href="${rc.contextPath}/projects/whs/project_debugNassurance"><span class="title"><@spring.message "menu.project.debugservice" /></span></a>
+                  							</li>
 
                             </ul>
 
@@ -107,7 +107,7 @@
                         <div class="row text-left">
                             <ul class="nav">
                                 <li>
-                                    <a href="${rc.contextPath}/projects/input_workhours"><span class="title"><@spring.message "menu.workhours.apply" /></span></a>
+                                    <a href="${rc.contextPath}/projects/whs/workhours_input"><span class="title"><@spring.message "menu.workhours.apply" /></span></a>
                                 </li>
                                 <li>
                                     <a href="${rc.contextPath}/projects/check_workhours" class="cursor-pointer"><span class="title"><@spring.message "menu.workhours.approval" /></span></a>
@@ -156,13 +156,7 @@
                         <div class="row text-left">
                             <ul class="nav">
                                 <li>
-                                    <a href="${rc.contextPath}/devices/list"><span class="title"><@spring.message "menu.device.list" /></span></a>
-                                </li>
-                                <li>
-                                    <a href="${rc.contextPath}/devices/processes"><span class="title">工序流程管理</span></a>
-                                </li>
-                                <li>
-                                    <a href="${rc.contextPath}/devices/standardtimes"><span class="title"><@spring.message "menu.device.standard.times" /></span></a>
+                                    <a href="${rc.contextPath}/devices/list"><span class="title"><@spring.message "menu.device.standard.times" /></span></a>
                                 </li>
 
 
@@ -188,10 +182,10 @@
                         <div class="row text-left">
                             <ul class="nav">
                                 <li>
-                                    <a href="${rc.contextPath}/projects/whs/projects_report"><span class="title"><@spring.message "menu.employee.list" /></span></a>
+                                    <a href="#"><span class="title"><@spring.message "menu.employee.list" /></span></a>
                                 </li>
                                 <li>
-                                    <a href="${rc.contextPath}/projects/whs/Report2"><span class="title"><@spring.message "menu.employee.new" /></span></a>
+                                    <a href="#"><span class="title"><@spring.message "menu.employee.new" /></span></a>
                                 </li>
                                 <li>
                                     &nbsp;

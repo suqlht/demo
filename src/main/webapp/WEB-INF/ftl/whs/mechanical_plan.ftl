@@ -86,7 +86,7 @@
         <!-- BEGIN SIDEBAR -->
         <#include "/common/config/left.ftl" />
 
-        <@menu 3/>
+        <@menu 1/>
 
         <!-- END SIDEBAR -->
 
