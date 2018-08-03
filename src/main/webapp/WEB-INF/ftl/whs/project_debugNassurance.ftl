@@ -1,4 +1,3 @@
-<!--  -->
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
@@ -76,7 +75,7 @@
 
 </head>
 
-<body class="page-scale-reduced page-header-fixed yui-skin-sam " id="yahoo-com">
+<body class="page-scale-reduced yui-skin-sam " id="yahoo-com">
 
     <!-- BEGIN HEADER -->
     <#include "/common/config/top.ftl" />

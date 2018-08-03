@@ -22,21 +22,29 @@
 */
 
 var is_mobile = navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i);
+var tableLang_zh_CN = {
+  "decimal":        "",
+"emptyTable":     "无记录",
+"loadingRecords": "正在加载...",
+"processing":     "正在处理...",
+"zeroRecords":    "未找到记录"
+};
 
 function qdpm_app_init()
 {
   $('.datepicker').datepicker({
             rtl: App.isRTL(),
             autoclose: true,
-            format: 'yyyy-mm-dd',
+            language:"zh-CN",
+            format: 'yyyy-mm-dd'
         });
-
- $(".datetimepicker").datetimepicker({
-        autoclose: true,
-        isRTL: App.isRTL(),
-        format: "yyyy-mm-dd hh:ii",
-        pickerPosition: (App.isRTL() ? "bottom-right" : "bottom-left")
-    });
+ //
+ // $(".datetimepicker").datetimepicker({
+ //        autoclose: true,
+ //        isRTL: App.isRTL(),
+ //        format: "yyyy-mm-dd hh:ii",
+ //        pickerPosition: (App.isRTL() ? "bottom-right" : "bottom-left")
+ //    });
 
 
 
@@ -98,7 +106,6 @@ function appHandleUniformCheckboxes()
   var test = $("input[type=checkbox]:not(.toggle), input[type=radio]:not(.toggle, .star)");
   if (test.size() > 0) {
       test.each(function () {
-
           if ($(this).parents(".checker").size() == 0) {
               $(this).show();
               $(this).uniform();
@@ -123,6 +130,9 @@ function appHandleUniform()
               rtl: App.isRTL(),
               autoclose: true,
               format: 'yyyy-mm-dd',
+
+                  todayHighlight: true,
+                  language: "zh-CN"
           });
 
  $(".datetimepicker").datetimepicker({
@@ -148,8 +158,8 @@ function openModalBox(url)
   $('body').modalmanager('loading');
 
   setTimeout(function(){
-      $modal.load(url, '', function(){
 
+      $modal.load(url, '', function(){
       //remove autofocus when we edit item
       if(url.search('/edit')>0)
       {

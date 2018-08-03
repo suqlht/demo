@@ -21,13 +21,16 @@
 						<a href="${rc.contextPath}/home"><i class="fa fa-home"></i> <span class="title"><@spring.message "menu.desktop" /></span></a>
 					</li>
 					<li class="${(index==1)?string('open',' ')}">
-						<a href="#"><i class="fa fa-sitemap"></i> <span class="title"><@spring.message "menu.project.management" /></span><span class="arrow ${(index==1)?string('open',' ')}"></span></a>
+						<a href="${rc.contextPath}/projects/list"><i class="fa fa-sitemap"></i> <span class="title"><@spring.message "menu.project.management" /></span><span class="arrow ${(index==1)?string('open',' ')}"></span></a>
 						<ul class="sub-menu" style="display:${(index==1)?string('block','none')}">
+							<li>
+								<a href="${rc.contextPath}/projects/list" class="cursor-pointer"><span class="title">项目列表</span></a>
+							</li>
 							<li>
 								<a href="${rc.contextPath}/projects/new" class="cursor-pointer"><span class="title"><@spring.message "menu.project.new" /></span></a>
 							</li>
 							<li>
-								<a href="${rc.contextPath}/projects/whs/mechanical_plan"><span class="title"><@spring.message "menu.project.plan" /></span></a>
+								<a href="${rc.contextPath}/projects/mechanical_plan"><span class="title"><@spring.message "menu.project.plan" /></span></a>
 							</li>
 							<li>
 								<a href="${rc.contextPath}/projects/whs/project_status" class="cursor-pointer"><span class="title"><@spring.message "menu.project.schedule" /></span></a>

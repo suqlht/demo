@@ -40,7 +40,7 @@ public class CustomRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
 
-        String userName = (String) principalCollection.getPrimaryPrincipal();
+        String userName = ((XUser) principalCollection.getPrimaryPrincipal()).getNickname();
         List<String> permissionList = new ArrayList<String>();
         permissionList.add("user:add");
         permissionList.add("user:delete");
@@ -62,7 +62,7 @@ public class CustomRealm extends AuthorizingRealm {
         }
 
         logger.info("pswd:{}",user.getPswd());
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(userName, user.getPswd(), this.getName());
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, user.getPswd(), this.getName());
         return info;
     }
 }

@@ -4,9 +4,9 @@
   <resultMap id="BaseResultMap" type="xyz.falado.whs.model.WHSPlanMember">
     <constructor>
       <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="subproject_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="employee_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="executor_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="plan_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="employee_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="executor_id" javaType="java.lang.Long" jdbcType="BIGINT" />
       <arg column="group_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
     </constructor>
   </resultMap>
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, subproject_id, employee_id, executor_id, group_id
+    id, plan_id, employee_id, executor_id, group_id
   </sql>
   <select id="selectByExample" parameterType="xyz.falado.whs.model.WHSPlanMemberExample" resultMap="BaseResultMap">
     select
@@ -102,9 +102,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="xyz.falado.whs.model.WHSPlanMember">
-    insert into WHS_PLAN_MEMBERS (id, subproject_id, employee_id, 
+    insert into WHS_PLAN_MEMBERS (id, plan_id, employee_id,
       executor_id, group_id)
-    values (#{id,jdbcType=INTEGER}, #{subprojectId,jdbcType=INTEGER}, #{employeeId,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{planId,jdbcType=INTEGER}, #{employeeId,jdbcType=INTEGER},
       #{executorId,jdbcType=INTEGER}, #{groupId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="xyz.falado.whs.model.WHSPlanMember">
@@ -113,8 +113,8 @@
       <if test="id != null">
         id,
       </if>
-      <if test="subprojectId != null">
-        subproject_id,
+      <if test="planId != null">
+        plan_id,
       </if>
       <if test="employeeId != null">
         employee_id,
@@ -130,8 +130,8 @@
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="subprojectId != null">
-        #{subprojectId,jdbcType=INTEGER},
+      <if test="planId != null">
+        #{planId,jdbcType=INTEGER},
       </if>
       <if test="employeeId != null">
         #{employeeId,jdbcType=INTEGER},
@@ -156,8 +156,8 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.subprojectId != null">
-        subproject_id = #{record.subprojectId,jdbcType=INTEGER},
+      <if test="record.planId != null">
+        plan_id = #{record.planId,jdbcType=INTEGER},
       </if>
       <if test="record.employeeId != null">
         employee_id = #{record.employeeId,jdbcType=INTEGER},
@@ -176,7 +176,7 @@
   <update id="updateByExample" parameterType="map">
     update WHS_PLAN_MEMBERS
     set id = #{record.id,jdbcType=INTEGER},
-      subproject_id = #{record.subprojectId,jdbcType=INTEGER},
+      plan_id = #{record.planId,jdbcType=INTEGER},
       employee_id = #{record.employeeId,jdbcType=INTEGER},
       executor_id = #{record.executorId,jdbcType=INTEGER},
       group_id = #{record.groupId,jdbcType=INTEGER}
@@ -187,8 +187,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="xyz.falado.whs.model.WHSPlanMember">
     update WHS_PLAN_MEMBERS
     <set>
-      <if test="subprojectId != null">
-        subproject_id = #{subprojectId,jdbcType=INTEGER},
+      <if test="planId != null">
+        plan_id = #{planId,jdbcType=INTEGER},
       </if>
       <if test="employeeId != null">
         employee_id = #{employeeId,jdbcType=INTEGER},
@@ -204,7 +204,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="xyz.falado.whs.model.WHSPlanMember">
     update WHS_PLAN_MEMBERS
-    set subproject_id = #{subprojectId,jdbcType=INTEGER},
+    set plan_id = #{planId,jdbcType=INTEGER},
       employee_id = #{employeeId,jdbcType=INTEGER},
       executor_id = #{executorId,jdbcType=INTEGER},
       group_id = #{groupId,jdbcType=INTEGER}

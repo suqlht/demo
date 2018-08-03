@@ -100,6 +100,16 @@ public class DevicesController {
 		return devices;
 	}
 
+
+	@RequestMapping(value="/list4select")
+	@ResponseBody
+	public List<WHSDevice> list4selectw(Model model){
+		List<WHSDevice> devices = deviceService.findByExample(new WHSDeviceExample());
+		model.addAttribute("devices",devices);
+		return devices;
+	}
+
+
 	@RequestMapping(value="/new")
 	public String newdevice(Model model){
 		return "devices/devices_new";
@@ -112,9 +122,9 @@ public class DevicesController {
 
 	@RequestMapping(value="/create",method=RequestMethod.POST)
 	public String createdevice(@Validated WHSDevice device, Model model){
-		String deviceCode = device.getModel()+"-"+device.getSpec();
+		String deviceCode = device.getModel();
 		if(!StringUtils.isEmpty(device.getParam())){
-			deviceCode = deviceCode + "-" +  device.getParam();
+			deviceCode = deviceCode;
 		}
 		device.setDeviceCode(deviceCode);
 		deviceService.createNew(device);

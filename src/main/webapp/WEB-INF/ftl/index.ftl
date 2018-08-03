@@ -11,7 +11,7 @@
   $('#btnSave').click(function(){
     //要发送的参数
     var params = {
-        "nickname": "ttt",
+        "username": "ttt",
         "email": "ttt@falado.xyz"
     }
   ;

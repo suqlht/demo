@@ -16,6 +16,46 @@
       <arg column="week_days" javaType="java.lang.Integer" jdbcType="INTEGER" />
     </constructor>
   </resultMap>
+  <resultMap id="BaseResultMapJoin" type="xyz.falado.whs.model.WHSProjectPlan">
+    <id property="id" column="plan_id"/>
+    <result property="planBegin" column="plan_begin"/>
+    <result property="planEnd" column="plan_end"/>
+    <result property="acturalBegin" column="actural_begin"/>
+    <result property="acturalEnd" column="actural_end"/>
+    <association property="project" javaType="xyz.falado.whs.model.WHSProject">
+      <id property="id" column="project_id"/>
+      <result property="projectCode" column="project_code"/>
+      <result property="customerName" column="customer_name"/>
+      <result property="projectType" column="project_type"/>
+      <result property="deliveryDate" column="delivery_date"/>
+      <result property="projectStatus" column="project_status"/>
+      <result property="createdBy" column="created_by"/>
+      <result property="createdUser" column="created_user"/>
+      <result property="createdate" column="createdate"/>
+      <result property="modifydate" column="modifydate"/>
+      <result property="orderDate" column="order_date"/>
+      <result property="assuranceBegin" column="assurance_begin"/>
+      <result property="assuranceDuration" column="assurance_duration"/>
+      <result property="assuranceRemark" column="assurance_remark"/>
+    </association>
+    <association property="subproject" javaType="xyz.falado.whs.model.WHSSubProject">
+      <id property="id" column="subs_id"/>
+      <result property="deviceQuantity" column="device_quantity"/>
+      <result property="remark" column="remark"/>
+      <result property="subProjectId" column="sub_project_id"/>
+
+
+    </association>
+    <association property="device" javaType="xyz.falado.whs.model.WHSDevice">
+      <id property="id" column="device_id"/>
+      <result property="model" column="device_model"/>
+    </association>
+    <collection property="members" ofType="xyz.falado.whs.model.WHSEmployee">
+      <id property="id" column="employee_id"/>
+      <result property="name" column="employee_name"/>
+    </collection>
+
+  </resultMap>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -92,6 +132,59 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectByProjectExample" parameterType="xyz.falado.whs.model.WHSProjectPlanExample" resultMap="BaseResultMapJoin">
+    select
+    pp.id as plan_id,
+    pp.plan_end,
+    pp.actural_end,
+    pp.actural_begin,
+    pp.plan_begin,
+    p.id as project_id,
+    p.project_code,
+    p.project_owner,
+    project_code,
+    customer_name,
+    project_type,
+    delivery_date,
+    project_status,
+    e.id as employee_id,
+    e.name as employee_name,
+    createdate,
+    modifydate,
+    order_date,
+    assurance_begin,
+    assurance_duration,
+    assurance_remark,
+    sp.id as subs_id,
+    sp.project_id as refer_project_id,
+    sp.sub_project_id as sub_project_id,
+    sp.device_id,
+    sp.device_quantity,
+    sp.remark,
+    sp.mechanical_hours,
+    sp.electrical_hours,
+    sp.total_mechanical_hours,
+    sp.total_electrical_hours,
+    sp.device_spec,
+    d.device_name,
+    d.device_code ,
+    d.model as device_model,
+    d.mechanical_hours as device_mechanical_hours,
+    d.electrical_hours as device_electrical_hours ,
+    d.remark as device_remark
+    from
+    WHS_PROJECTS p
+    left join
+    WHS_SUB_PROJECTS sp on p.id = sp.project_id
+    left join
+    WHS_DEVICES d on d.id=sp.device_id
+    left join
+    WHS_PROJECT_PLAN pp on sp.id=pp.subproject_id
+    left join
+    WHS_PLAN_MEMBERS pm on pp.id=pm.plan_id
+    left join
+    WHS_EMPLOYEES e on pm.executor_id = e.id
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -108,7 +201,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="xyz.falado.whs.model.WHSProjectPlan">
+  <insert id="insert" keyProperty="id" useGeneratedKeys="true" parameterType="xyz.falado.whs.model.WHSProjectPlan">
     insert into WHS_PROJECT_PLAN (id, subproject_id, plan_begin, 
       plan_end, actural_begin, actural_end, 
       assigner_id, plan_type, work_number, 

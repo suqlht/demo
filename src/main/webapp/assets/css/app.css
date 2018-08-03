@@ -26,27 +26,27 @@
   margin-left: 20px;
 }
 
-label.error, div.error { 
-  float: none; 
-  color: #b94a48; 
-  padding-left: 5px; 
+label.error, div.error {
+  float: none;
+  color: #b94a48;
+  padding-left: 5px;
   padding-top: 5px;
-  vertical-align: top;   
+  vertical-align: top;
   font-size: 13px;
 }
-input.error, textarea.error{ 
-  border: 1px solid #b94a48; 
-  color: #b94a48; 
+input.error, textarea.error{
+  border: 1px solid #b94a48;
+  color: #b94a48;
 }
 
 .form-control.error:focus{
   border: 1px solid #b94a48;
-  color: #b94a48;  
+  color: #b94a48;
 }
 
 .header-inner #navbar-brand-logo{
-  
-} 
+
+}
 
 .dd-dragel{
   z-index: 10051;
@@ -62,7 +62,7 @@ input.error, textarea.error{
 
 .breadcrumb li{
   vertical-align: middle;
-  padding-right: 5px;  
+  padding-right: 5px;
   border
 }
 
@@ -89,7 +89,7 @@ input.error, textarea.error{
 }
 
 .filter-preview .panel-heading{
-  padding: 5px 5px;  
+  padding: 5px 5px;
 }
 
 #goToMenuContainer {
@@ -109,7 +109,7 @@ input.error, textarea.error{
   font-size: 13px
 }
 
-#search_menu .yuimenuitem-selected {	 
+#search_menu .yuimenuitem-selected {
   background-color: #fff;
 }
 
@@ -123,8 +123,8 @@ input.error, textarea.error{
   width: auto;
 }
 
-.ui-cluetip-header { 
-  font-size: 14px;   
+.ui-cluetip-header {
+  font-size: 14px;
 }
 
 /*project menu*/
@@ -136,20 +136,20 @@ input.error, textarea.error{
 #projectMenuBox .yuimenubaritemlabel-selected { color:#white; background: #084e78; }
 #projectMenuBox .yuimenu .bd {background: #0b679e; border: 1px solid #0d77b6;}
 #projectMenuBox .yuimenu ul {border-color: #0d77b6}
-#projectMenuBox .yuimenuitemlabel {color: white;} 
+#projectMenuBox .yuimenuitemlabel {color: white;}
 #projectMenuBox .yuimenuitemlabel-selected{background:#0d77b6}
 #projectMenuBox .yuimenubaritemlabel-hassubmenu {}
 
 /*projects short info*/
 
-.project-short-info{    
+.project-short-info{
   padding: 10px 0;
   border-top: 1px solid #ddd;
 }
 
 .project-short-info td{
   padding-right: 10px;
-  
+
 }
 
 .user-photo{
@@ -161,7 +161,7 @@ input.error, textarea.error{
   border-radius: 0px;
   max-width: 50px;
   max-height: 28px;
-  width: auto;  
+  width: auto;
 }
 
 .header .navbar-nav li.dropdown .dropdown-toggle{
@@ -173,7 +173,7 @@ input.error, textarea.error{
 }
 
 .navbar-nav .open .dropdown-menu > li > a {
-  padding-right: 15px;  
+  padding-right: 15px;
 }
 
 .footer a{
@@ -188,7 +188,7 @@ input.error, textarea.error{
 
 .table-scrollable .table-item-details-users thead th{
   font-weight: bold;
-  
+
 }
 
 
@@ -257,8 +257,8 @@ div.skinsList ul li {float: left;text-align: center;padding-top: 10px; }
   height: 45px;
   margin-left: -50%;
   margin-top: -25px;
-  padding-top: 20px;    
-  background: url(img/ajax-loading.gif) center no-repeat;  
+  padding-top: 20px;
+  background: url(img/ajax-loading.gif) center no-repeat;
 }
 
 
@@ -272,32 +272,32 @@ blockquote p {
 }
 
 
-@media (min-width: 992px) { 
+@media (min-width: 992px) {
   /* reduced scale */
   .page-scale-reduced {
     font-size: 12px;
   }
-  
+
   .page-scale-reduced .table thead tr th{
-    font-size: 12px;  
+    font-size: 12px;
   }
-  
+
   .page-scale-reduced .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
     padding: 5px;
   }
-  
+
   .page-scale-reduced .page-sidebar-menu > li > a{
     font-size: 13px;
   }
-  
+
   .page-scale-reduced .page-sidebar-menu > li > ul.sub-menu > li > a{
     font-size: 13px;
-  } 
-  
-  .page-scale-reduced label{
-    font-size: 13px;  
   }
-  
+
+  .page-scale-reduced label{
+    font-size: 13px;
+  }
+
   .page-scale-reduced .form-control{
     font-size: 13px;
     padding: 4px 12px;
@@ -305,32 +305,32 @@ blockquote p {
   .page-scale-reduced .btn{
     padding: 4px 12px;
   }
-  
+
   .page-scale-reduced .btn-xs{
     padding: 1px 5px;
   }
-    
+
   .page-scale-reduced .form-control{
     height: 30px;
   }
-  
+
   .page-scale-reduced textarea.form-control{
     height: 82px;
   }
-  
+
   .page-scale-reduced .dropdown-menu{
     font-size: 13px;
-  } 
-  
+  }
+
   .page-scale-reduced .navbar-brand{
     padding: 10px 15px;
   }
-  
+
   .page-scale-reduced .navbar-nav>li>a{
     padding-top: 10px;
     padding-bottom: 10px;
   }
-  
+
   .page-scale-reduced .navbar{
     min-height: 40px;
   }
@@ -338,30 +338,37 @@ blockquote p {
   .page-scale-reduced .page-title{
     font-size: 22px;
   }
-  
+
   .page-scale-reduced .popover-title{
     font-size: 12px;
     padding: 4px 14px;
   }
-  
+
   .page-scale-reduced .taskEditRow input{
     font-size: 13px;
   }
-  
+
   .page-scale-reduced .panel-title{
     font-size: 14px;
-  } 
-  
+  }
+
   .page-scale-reduced .alert{
     padding: 8px;
-  } 
-  
+  }
+
   .page-scale-reduced .multiple-select-tag{
     height: 200px;
-  }   
-}  
+  }
+}
 
+.panel-title a:before {
+    content: "\f068";
+    font-family: FontAwesome;
 
+}
 
+.panel-title a.collapsed:before {
+    content: "\f067";
+    font-family: FontAwesome;
 
-
+}

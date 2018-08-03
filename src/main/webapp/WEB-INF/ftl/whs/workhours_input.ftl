@@ -1,4 +1,3 @@
-<!--  -->
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
@@ -69,7 +68,7 @@
     <link rel="apple-touch-icon" href="${rc.contextPath}/favicon.png" />
 </head>
 
-<body class="page-scale-reduced page-header-fixed yui-skin-sam " id="yahoo-com">
+<body class="page-scale-reduced yui-skin-sam ">
 
     <!-- BEGIN HEADER -->
     <#include "/common/config/top.ftl" />
@@ -101,10 +100,16 @@
 
 <div>
   <form class="form-inline" role="form" action="projects_report" method="post">
-    <div class="form-group pull-right">
-      <input type="submit" class="btn btn-default"  value="搜素">
 
+    <div class="form-group">
+      <label class="sr-only" for="name">起始日期</label>
+      <select name="">
+        <option value="">起始日期</option>
 
+        <option value="1001" selected>2018/6/4	</option>
+        <option value="1001">2018/6/11</option>
+
+      </select>
     </div>
 
 <div class="form-group">
@@ -118,20 +123,6 @@
 </div>
 
 
-
-
-<div class="form-group">
-  <label class="sr-only" for="name">起止日期</label>
-   <input type="text" class="form-control date datepicker" id="name" placeholder="开始日期">
-   <input type="text" class="form-control date datepicker" id="name" placeholder="终止日期">
-</div>
-
-<div class="form-group">
-
-<label class="sr-only" for="name">项目号</label>
- <input type="text" class="form-control" id="name" placeholder="项目号">
-</div>
-
 <div class="form-group">
   <label class="sr-only" for="name">设备型号</label>
   <select id="device_type" class="" name="assurance_duration">
@@ -141,9 +132,27 @@
       <option value="3">HTS-3/3</option>
   </select>
 </div>
+
+
+
+<div class="form-group">
+
+<label class="sr-only" for="name">项目号</label>
+ <input type="text" class="form-control" id="name" placeholder="项目号">
+</div>
+<div class="form-group">
+  <input type="submit" class="btn btn-default"  value="搜素">
+
+
+</div>
 <div class="form-group pull-right">
-  <input type="submit" class="btn btn-default"  value="导出">
-  <input type="submit" class="btn btn-default"  value="打印">
+  <input type="button" class="btn btn-default" id="btn_add_new_row"  value="增加">
+  <input type="button" class="btn btn-default" id="btn_delete_row"  value="删除">
+
+  <input type="submit" class="btn btn-default"  value="保存">
+
+  <input type="submit" class="btn btn-default"  value="提交审核">
+
 </div>
   </form>
 </div>
@@ -151,37 +160,32 @@
       <div>
 
 
-      <table class="table table-striped table-bordered table-hover projects-table" id="itmes_listing_4466081"   >
+      <table class="table table-striped table-bordered table-hover projects-table" id="items_list"   >
         <thead>
           <tr>
+            <th rowspan="2">                                    <input class="group-checkable" data-set="#items_list .checkboxes" type="checkbox">
+</th>
             <th rowspan="2">序号</th>
-            <th rowspan="2" style="width:8%">组员工号</th>
             <th rowspan="2">组员姓名</th>
-            <th rowspan="2" style="width:8%">起始日期</th>
-            <th rowspan="2" style="width:8%">终止日期</th>
-            <th rowspan="2" style="width:8%">项目号</th>
-            <th rowspan="2" style="width:8%">设备名称</th>
-            <th colspan="2">出差</th>
-            <th colspan="8">已完成工时</th>
+            <th rowspan="2">起始日期</th>
+            <th rowspan="2">终止日期</th>
+            <th rowspan="2">项目号</th>
+            <th rowspan="2">设备名称</th>
+            <th colspan="8" class="text-center">已完成工时</th>
           </tr>
           <tr>
-            <th>出发日期</th>
-            <th>回厂日期</th>
-              <th>周二（2017/12/31）</th>
-              <th>周二（2018/1/1）</th>
-              <th>周二（2018/1/2）</th>
-              <th>周二（2018/1/3）</th>
-              <th>周二（2018/1/4）</th>
-              <th>周二（2018/1/5）</th>
-              <th>周二（2018/1/6）</th>
-              <th>合计完成工时</th>
+              <th class="text-center">星期一</th>
+              <th class="text-center">星期二</th>
+              <th class="text-center">星期三</th>
+              <th class="text-center">星期四</th>
+              <th class="text-center">星期五</th>
+              <th class="text-center">星期六</th>
+              <th class="text-center">星期日</th>
+              <th class="text-center" style="min-width:30px">合计</th>
 
           </tr>
         </thead>
-
         <tbody>
-
-
               </tbody>
       </table>
 
@@ -191,16 +195,52 @@
 
 
       <script type="text/javascript">
+      function change_row_selected(this_tr) {
+          console.log($(this_tr));
+          if ($(this_tr).attr('checked')) {
+              selected_items.push($(this_tr).attr('value'));
+              $(this_tr).parents('tr').addClass("selected");
 
+          } else {
+              $(this_tr).parents('tr').removeClass("selected");
+              selected_items = array_remove(selected_items, $(this_tr).attr('value'));
+          }
+
+
+      }
+      function renderWorkTimes(data, type, row, meta){
+        $('#time_selection_template').find('select').find('option').attr("selected",false);
+
+        $('#time_selection_template').find('select').find('option[value='+data+']').attr("selected",true);
+        return $('#time_selection_template').html();
+      }
+      function renderEmployeeSelection(data, type, row, meta){
+        $('#employee_selection_template').find('select').val(data);
+        return $('#employee_selection_template').html();
+      }
+      function renderProjectList(data, type, row, meta){
+        $('#project_selection_template').find('select').val(data);
+        return $('#project_selection_template').html();
+      }
+      function renderDeviceList(data, type, row, meta){
+        $('#device_selection_template').find('select').val(data);
+        return $('#device_selection_template').html();
+      }
+      function renderTotalTimes(data, type, row, meta) {
+          var cols = ['mon','tue','wed','thu','fri','sat','sun']
+          var total=0;
+          for(var i=0;i<cols.length;i++){
+            if(parseInt(row[cols[i]])>=0){
+              total += parseInt(row[cols[i]]);
+            }
+          }
+          return total;
+      }
+      var table;
       var dataSet = [
-        [
-          "1","1001","张三","2017/12/31","2018/1/6","HM001h6","HDQ 3/3",
-          "","","10","0","0","10","10","10","10","50"
-        ],
-        [
-          "1","1003","李四","2018-04-01","2018-12-01","HM001h6","HDQ 3/3",
-          "2018/1/2","2018/1/3","10","10","0","0","10","10","0","30"
-        ]
+        {"employeeId":"1001","beginDate":"2018/6/4","endDate":"2018/6/10","projectCode":"HM001h6","device_model":"HDQ 3/3",
+          "mon":"8","tue":"8","wed":"8","thu":"8","fri":"8","sat":"0","sun":"0"
+        }
       ]
         $(document).ready(function(){
 
@@ -210,26 +250,131 @@
           });
           $("#group_members").select2({
           });
-          var table = $('#itmes_listing_4466081').dataTable({
-            scrollY:        "300px",
-          scrollX:        true,
-          scrollCollapse: true,
-          paging:         false,
-          fixedColumns:   {
-                      leftColumns: 9
-                  },
+
+         table = $('#items_list').DataTable({
+            paging:false,
             data:dataSet,
             "iDisplayLength": 10,
             paging:false,
             info:false,
-            "bSort": true,
+            "bSort": false,
             "bFilter":false,
             "bLengthChange":false,
-            "fnInitComplete": function (oSettings, json) { $(this).css('display','') }
+            "fnInitComplete": function (oSettings, json) { $(this).css('display','') },
+            columns:[
+              {data:null,
+              "render":function(){
+                return '<input class="checkboxes" type="checkbox" onchange="change_row_selected(this)">';
+              }
+
+              },
+              {data:null},
+              {data:"employeeId",
+              "render":renderEmployeeSelection},
+              {data:"beginDate"},
+              {data:"endDate"},
+              {data:"projectCode",
+              "render":renderProjectList},
+              {data:"device_model",
+              "render":renderDeviceList
+            },
+              {data:"mon",
+              "render":renderWorkTimes},
+              {data:"tue",
+              "render":renderWorkTimes},
+              {data:"wed",
+              "render":renderWorkTimes},
+              {data:"thu",
+              "render":renderWorkTimes},
+              {data:"fri",
+              "render":renderWorkTimes},
+              {data:"sat",
+              "render":renderWorkTimes},
+              {data:"sun",
+              "render":renderWorkTimes},
+              {data:null,
+              "render":renderTotalTimes}
+            ],
+            "columnDefs": [ {
+                "searchable": false,
+                "orderable": false,
+                "targets": 0
+            } ]
+
+        });
+        renderIndexes();
+        jQuery('#items_list tbody tr .checkboxes').change(function() {
+            if ($(this).attr('checked')) {
+                selected_items.push($(this).attr('value'));
+            } else {
+                selected_items = array_remove(selected_items, $(this).attr('value'))
+            }
+
+
+            $(this).parents('tr').toggleClass("selected");
+        });
+        jQuery('#items_list .group-checkable').change(function() {
+
+            var checked = jQuery(this).is(":checked");
+            selected_items.length = 0;
+
+            jQuery(".checkboxes").each(function() {
+                if (checked) {
+                    selected_items.push($(this).attr('value'));
+
+                    $(this).attr("checked", true);
+                    $(this).parents('span').addClass("checked");
+                    $(this).parents('tr').addClass("selected");
+                } else {
+                    $(this).attr("checked", false);
+                    $(this).parents('span').removeClass("checked");
+                    $(this).parents('tr').removeClass("selected");
+                }
+            })
+        });
+
+
+    $('#btn_delete_row').click( function () {
+        table.rows('.selected').remove().draw( false );
+        renderIndexes();
+    } );
+
+
+        $('#btn_add_new_row').click(function(e){
+          var new_row = {"employeeId":"1001","beginDate":"2018/6/4","endDate":"2018/6/10","projectCode":"HM001h6","device_model":"HDQ 3/3",
+            "mon":"8","tue":"8","wed":"8","thu":"8","fri":"8","sat":"0","sun":"0"
+          }
+          table.row.add(new_row).draw(false);
+          renderIndexes();
+          appHandleUniformCheckboxes();
 
         });
 
+        function renderIndexes(){
+
+          table.column(1,"").nodes().each( function (cell, i) {
+              cell.innerHTML = i+1;
+          } );
+          table.draw( false );;
+        }
+
       });
+
+
+      function  changeProject(target){
+          index = $(target).get(0).selectedIndex;
+          console.log(index)
+
+          $(target).parents('tr').find('select.device').selectedIndex = index;
+          console.log($(target).parents('tr').find('select.device'));
+        }
+
+        function  changeTimes(target){
+
+            renderTotalTimes($(target).parents('tr'));
+
+          }
+
 
       </script>
 
@@ -291,6 +436,38 @@ jQuery(document).ready(function() {
 </script>
 
 <!-- END JAVASCRIPTS -->
+<div id="time_selection_template" style="display:block"><select class="times" name="" onchange="changeTimes(this)">
+  <option value="-1">出差</option>
+  <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+  </select></div>
+  <div id="project_selection_template" style="display:none">
+    <select class="project" name="" onchange="changeProject(this)">
+      <option value="">项目号</option>
+      <option value="HM001h6" selected>HM001h6-01</option>
+      <option value="HM001h7">HM001h6-02</option>
 
+    </select>
+  </div>
+    <div id="device_selection_template" style="display:none">
+      <select class="device" name="">
+        <option value="">设备</option>
+        <option value="HM001h6" selected>HDHQ-3/3</option>
+        <option value="HM001h7">HM001h6-02</option>
+      </select></div>
+      <div id="employee_selection_template" style="display:none">
+        <select class="" name="">
+          <option value="">选择组员</option>
+          <option value="1001" selected>张三（1001）</option>
+          <option value="1001">李四（1002）</option>
+        </select>
+      </div>
   </body>
 </html>

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import xyz.falado.whs.model.XUser;
 import xyz.falado.whs.service.XUserService;
+import xyz.falado.whs.utils.OperationResult;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
@@ -102,11 +103,14 @@ public class HomeController {
         return "user/reg";
     }
 
-//    @RequestMapping(value="/user/logout",method=RequestMethod.GET)
-//    public String logout(){
-//        org.apache.shiro.subject.Subject subject = SecurityUtils.getSubject();
-//        subject.logout();
-//        return "redirect:/login";
-//    }
+    @RequestMapping(value="/myName",method=RequestMethod.GET)
+    @ResponseBody
+    public OperationResult getMyName(){
+        org.apache.shiro.subject.Subject subject = SecurityUtils.getSubject();
+        OperationResult op = new OperationResult();
+        op.setCode("0000");
+        op.setMessage(((XUser) subject.getPrincipal()).getNickname());
+        return op;
+    }
 
 }

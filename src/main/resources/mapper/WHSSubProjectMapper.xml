@@ -8,7 +8,11 @@
       <arg column="device_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="device_quantity" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="remark" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="device_option" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="device_spec" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mechanical_hours" javaType="java.lang.Integer" jdbcType="INTEGER" />
+
+      <arg column="electrical_hours" javaType="java.lang.Integer" jdbcType="INTEGER" />
+
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -70,7 +74,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, project_id, device_id, device_quantity, remark, device_option
+    id, project_id, device_id, device_quantity, remark, device_spec
   </sql>
   <select id="selectByExample" parameterType="xyz.falado.whs.model.WHSSubProjectExample" resultMap="BaseResultMap">
     select
@@ -104,12 +108,23 @@
   </delete>
   <insert id="insert" parameterType="xyz.falado.whs.model.WHSSubProject">
     insert into WHS_SUB_PROJECTS (id, project_id, device_id, 
-      device_quantity, remark, device_option
+      device_quantity, remark, device_spec
       )
     values (#{id,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{deviceId,jdbcType=INTEGER}, 
-      #{deviceQuantity,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{deviceOption,jdbcType=INTEGER}
+      #{deviceQuantity,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{deviceSpec,jdbcType=INTEGER}
       )
   </insert>
+  <insert id="insertBatchSubs">
+    insert into WHS_SUB_PROJECTS (project_id,sub_project_id, device_id,
+    device_quantity, remark,mechanical_hours,electrical_hours,total_mechanical_hours,total_electrical_hours
+    )
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{newProjectId},#{item.subProjectId},#{item.deviceId},#{item.deviceQuantity,jdbcType=INTEGER},#{item.remark},
+      #{item.mechanicalHours,jdbcType=INTEGER},#{item.electricalHours,jdbcType=INTEGER},#{item.totalMechanicalHours},#{item.totalElectricalHours})
+    </foreach>
+  </insert>
+
   <insert id="insertSelective" parameterType="xyz.falado.whs.model.WHSSubProject">
     insert into WHS_SUB_PROJECTS
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -128,8 +143,8 @@
       <if test="remark != null">
         remark,
       </if>
-      <if test="deviceOption != null">
-        device_option,
+      <if test="deviceSpec != null">
+        device_spec,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -148,8 +163,8 @@
       <if test="remark != null">
         #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="deviceOption != null">
-        #{deviceOption,jdbcType=INTEGER},
+      <if test="deviceSpec != null">
+        #{deviceSpec,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -177,8 +192,8 @@
       <if test="record.remark != null">
         remark = #{record.remark,jdbcType=VARCHAR},
       </if>
-      <if test="record.deviceOption != null">
-        device_option = #{record.deviceOption,jdbcType=INTEGER},
+      <if test="record.deviceSpec != null">
+        device_spec = #{record.deviceSpec,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -192,7 +207,7 @@
       device_id = #{record.deviceId,jdbcType=INTEGER},
       device_quantity = #{record.deviceQuantity,jdbcType=INTEGER},
       remark = #{record.remark,jdbcType=VARCHAR},
-      device_option = #{record.deviceOption,jdbcType=INTEGER}
+      device_spec = #{record.deviceSpec,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -212,19 +227,24 @@
       <if test="remark != null">
         remark = #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="deviceOption != null">
-        device_option = #{deviceOption,jdbcType=INTEGER},
+      <if test="deviceSpec != null">
+        device_spec = #{deviceSpec,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="xyz.falado.whs.model.WHSSubProject">
     update WHS_SUB_PROJECTS
-    set project_id = #{projectId,jdbcType=INTEGER},
+    set sub_project_id = #{subProjectId,jdbcType=INTEGER},
       device_id = #{deviceId,jdbcType=INTEGER},
       device_quantity = #{deviceQuantity,jdbcType=INTEGER},
       remark = #{remark,jdbcType=VARCHAR},
-      device_option = #{deviceOption,jdbcType=INTEGER}
+      device_spec = #{deviceSpec,jdbcType=VARCHAR},
+    mechanical_hours=#{mechanicalHours},
+    electrical_hours=#{electricalHours},
+    total_mechanical_hours=#{totalMechanicalHours},
+    total_electrical_hours=#{totalElectricalHours}
+
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

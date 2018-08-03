@@ -149,7 +149,7 @@ public class WHSSubProjectExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Integer> values) {
+        public Criteria andIdNotIn(List<Long> values) {
             addCriterion("id not in", values, "id");
             return (Criteria) this;
         }
@@ -174,7 +174,7 @@ public class WHSSubProjectExample {
             return (Criteria) this;
         }
 
-        public Criteria andProjectIdEqualTo(Integer value) {
+        public Criteria andProjectIdEqualTo(Long value) {
             addCriterion("project_id =", value, "projectId");
             return (Criteria) this;
         }
@@ -204,7 +204,7 @@ public class WHSSubProjectExample {
             return (Criteria) this;
         }
 
-        public Criteria andProjectIdIn(List<Integer> values) {
+        public Criteria andProjectIdIn(List<Long> values) {
             addCriterion("project_id in", values, "projectId");
             return (Criteria) this;
         }

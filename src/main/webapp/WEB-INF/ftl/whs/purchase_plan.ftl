@@ -1,4 +1,3 @@
-<!--  -->
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
@@ -76,7 +75,7 @@
 
 </head>
 
-<body class="page-scale-reduced page-header-fixed yui-skin-sam " id="yahoo-com">
+<body class="page-scale-reduced yui-skin-sam " id="yahoo-com">
 
     <!-- BEGIN HEADER -->
     <#include "/common/config/top.ftl" />
@@ -115,50 +114,27 @@
 
 
 <div>
-  <form class="form-inline" role="form" action="projects_report" method="post">
-    <div class="form-group pull-right">
-      <input type="submit" class="btn btn-default"  value="搜素">
+  <table width="100%">
+      <tr>
+          <td>
+          </td>
 
+          <td align="right">
+              <form class="form-search" method="GET">
+                  <input type="hidden" name="pagelength" value="${pagelength?default(10)}" />
+                  <input type="hidden" name="pagecurrent" value="${pagecurrent?default(1)}" />
 
-    </div>
-<div class="form-group">
+                  <div class="input-group col-md-4">
+                      <input type="text" name="search_keyword" value="${search_keyword}" class="form-control input-small">
+                      <span class="input-group-btn">
+          <button class="btn btn-default" type="submit" id="searchBtn"><i class="fa fa-search"></i>搜索</button>
+      </span>
+                  </div>
+              </form>
+          </td>
 
-    <label class="sr-only" for="name">项目号</label>
-     <input type="text" class="form-control" id="name" placeholder="项目号">
-</div>
-
-
-<div class="form-group">
-  <label class="sr-only" for="name">订货通报日期</label>
-  <div class="input-group input-medium date datepicker">
-    <input type="text" class="form-control" id="name" placeholder="最小订货通报日期">
-<span class="input-group-btn"><button class="btn btn-default date-set" type="button"><i class="fa fa-calendar"></i></button></span>
-</div>
-   <input type="text" class="form-control date datepicker" id="name" placeholder="最大订货通报日期">
-
-</div>
-
-<div class="form-group">
-  <label class="sr-only" for="name">合同交货日期</label>
-   <input type="text" class="form-control date datepicker" id="name" placeholder="最小合同交货日期">
-   <input type="text" class="form-control date datepicker" id="name" placeholder="最大合同交货日期">
-</div>
-
-<div class="form-group">
-  <label class="sr-only" for="name">设备型号</label>
-  <select id="device_type" class="" name="assurance_duration">
-      <option value="">设备型号</option>
-
-      <option value="1">DHQ-3/3</option>
-      <option value="3">HTS-3/3</option>
-  </select>
-</div>
-
-<div class="form-group pull-right">
-  <input type="submit" class="btn btn-default"  value="导出">
-  <input type="submit" class="btn btn-default"  value="打印">
-</div>
-  </form>
+      </tr>
+  </table>
 </div>
 <br>
       <div>
@@ -167,16 +143,18 @@
       <table class="table table-striped table-bordered table-hover projects-table" id="itmes_listing_4466081"   >
         <thead>
           <tr>
+            <th rowspan="2"></th>
+            <th rowspan="2">操作</th>
             <th rowspan="2">序号</th>
             <th rowspan="2">项目号</th>
+            <th rowspan="2">项目号</th>
             <th rowspan="2"> 设备型号</th>
-            <th rowspan="2" style="width:8%">订货通报日期</th>
-            <th rowspan="2" style="width:8%">合同交货日期</th>
-            <th rowspan="2">机械实际完成日期</th>
-            <th rowspan="2">电气实际完成日期</th>
+            <th rowspan="2">订货通<br/>报日期</th>
+            <th rowspan="2">合同交<br/>货日期</th>
+            <th rowspan="2">机械实际<br/>完成日期</th>
+            <th rowspan="2">电气实际<br/>完成日期</th>
             <th>主要零件</th>
-            <th rowspan="2">截止到货时间</th>
-            <th rowspan="2">操作</th>
+            <th rowspan="2">截止<br/>到货<br/>时间</th>
           </tr>
           <tr>
             <th>
@@ -184,8 +162,8 @@
                 <thead>
                   <tr>
                     <th>名称</th>
-                    <th>计划到货日期</th>
-                    <th>实际到货日期</th>
+                    <th>计划到货<br/>日期</th>
+                    <th>实际到货<br/>日期</th>
                   </tr>
                 </thead>
               </table>
@@ -207,45 +185,154 @@
 
       <script type="text/javascript">
 
-      var dataSet = [
-        [
-          "1","HM0100","","2018-04-01","2018-12-01","2018-04-01","2018-12-01",[],"", "" ,"2018-12-31",          ""
-        ],
-        [
-          "1.01","HM0100-01","DHQ-3/3","2018-04-01","2018-12-01","2018-04-01","2018-12-01",[['炉壳','2018/1/1','2018/1/1'],['辐射管','2018/1/1','2018/1/1'],['进口电机','2018/1/1','']],"", "","2018-12-31",
-          ""
-        ]
-      ]
+      var dataTable;
+
         $(document).ready(function(){
 
-          $("#device_type").select2({
-              });
+          var groupColumn = 3;
+          var columns = [{data:"id"},
+            {data:"id",
+            render:function(data, type, row, meta){
+              return '<a href="plan/assets?id='+data+'" title="调整计划"> <i class="fa fa-edit"></i> </a>'
+            }
+            },
+            {data:null},
+            {data:"project.projectCode"},
+            {data:"subproject.subProjectId"},
+            {data:"device.model"},
+            {data:"project.orderDate"},
+            {data:"project.deliveryDate"},
+            {data:"macturalEnd"},
+            {data:"eacturalEnd"},
+            {data:"assets",
+              render:function(data, type, row, meta) {
+                  if(data.length>0){
+                    var subtable='<table style="width:100%"><tbody>'
+                    for(i=0;i<data.length;i++){
+                      subtable += '<tr><td>' + data[i].name
+                                  +'</td><td>'+ data[i].planEnd
+                                  +'</td><td>'+ data[i].acturalEnd
+                                  +'</td></tr>'
+                    }
+                    subtable += '</tbody></table>'
+                    return subtable;
+                  }else{
+                    return "";
+                  }
 
-          var table = $('#itmes_listing_4466081').dataTable({
-            data:dataSet,
+              }
+            },
+            {data:"planEnd"}
+          ];
+          var dataSet = [{
+              "id": 2,
+              "subprojectId": null,
+              "macturalEnd": "2018-07-16",
+              "eacturalEnd": "2018-07-26",
+              "planBegin": null,
+              "planEnd": "2018-07-16",
+              "acturalBegin": null,
+              "acturalEnd": "2018-07-26",
+              "assignerId": null,
+              "planType": null,
+              "workNumber": null,
+              "dayhours": null,
+              "weekDays": null,
+              "assets": [{
+                  "id": 2,
+                  "name": "炉壳",
+                  "planBegin": null,
+                  "planEnd": "2018-07-16",
+                  "acturalBegin": null,
+                  "acturalEnd": "2018-07-26",
+                  "groupId": null
+              }],
+              "project": {
+                  "id": 47,
+                  "projectCode": "XM2",
+                  "customerName": "客户名称2",
+                  "projectType": "已签订合同",
+                  "deliveryDate": "2018-06-27",
+                  "projectStatus": "新建",
+                  "createdBy": null,
+                  "createdate": null,
+                  "modifydate": null,
+                  "projectOwner": null,
+                  "projectPhase": null,
+                  "orderDate": "2018-06-26",
+                  "createdUser": null,
+                  "assuranceBegin": "SAT验收结束",
+                  "assuranceDuration": "6个月",
+                  "assuranceRemark": "不含电机",
+                  "reserve": null,
+                  "remark": null
+              },
+              "device": {
+                  "id": 31,
+                  "deviceName": null,
+                  "deviceCode": null,
+                  "model": "IU180/1H 1266-2bar",
+                  "spec": null,
+                  "param": null,
+                  "remark": null,
+                  "mechanicalHours": null,
+                  "electricalHours": null,
+                  "otherHours": null
+              },
+              "subproject": {
+                  "id": 32,
+                  "projectId": null,
+                  "deviceId": null,
+                  "deviceQuantity": 1,
+                  "remark": "标准",
+                  "subProjectId": "XM2-01",
+                  "deviceSpec": null,
+                  "mechanicalHours": null,
+                  "electricalHours": null,
+                  "totalMechanicalHours": null,
+                  "totalElectricalHours": null,
+                  "device": null
+              }
+          }];
+          dataTable = $('#itmes_listing_4466081').DataTable({
             "iDisplayLength": 10,
             paging:false,
             info:false,
             "bSort": true,
             "bFilter":false,
             "bLengthChange":false,
-            "fnInitComplete": function (oSettings, json) { $(this).css('display','') },
-            "columnDefs": [
+            data: dataSet,
+            columns:columns,
+            "columnDefs":[{
+              "targets":[0,3],
+              "visible":false
+            },
             {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                  if(data.length==0){
+              "targets":[0,1,2,3],
+              "bSortable":false
+            }],
+            "drawCallback": function ( settings ) {
+            var api = this.api();
+            var rows = api.rows( {page:'current'} ).nodes();
+            var last=null;
+            var index = 1;
+            var subindex = 1;
+            //分组
+            api.column(groupColumn, {page:'current'} ).data().each( function ( group, i ) {
+                if ( last !== group ) {
+                    $(rows).eq( i ).before(
+                        '<tr class="group"><td></td><td>'+index+'</td><td colspan="11">'+group+'</td></tr>'
+                    );
+                    index ++;
+                    subindex=1
+                    last = group;
+                }
+                $(rows).eq(i).find("td","")[1].innerHTML = (index-1) + "." + (subindex + 100).toString().substring(1);
+                subindex++;
 
-                    return '';
-                  }
-                    return '<table class="subtable"><tr><td>'+data[0][0]+'</td><td>'+data[0][1]+'</td><td>'+data[0][2]+'</td></tr>' +
-                           '<tr><td>'+data[1][0]+'</td><td>'+data[1][1]+'</td><td>'+data[1][2]+'</td></tr>' +
-                           '<tr><td>'+data[2][0]+'</td><td>'+data[2][1]+'</td><td>'+data[2][2]+'</td></tr></table>' ;
-                },
-                "targets": 7
-            }]
+            } );
+
+        }
 
         });
 
@@ -302,6 +389,26 @@
 
 <script>
 jQuery(document).ready(function() {
+
+  function open_modal(this_tr) {
+      dataTable.$('tr.selected').removeClass('selected');
+      $(this_tr).parents('tr').addClass("selected");
+      var data = dataTable.row('.selected').data();
+      $('#sub_project_id').val(data.subproject.id);
+      $('#planid').val(data.id);
+      $('#projectCode').val(data.subproject.subProjectId);
+      if(data.members.length>0){
+        $('#employee_list').val(data.members[0].id).trigger("change");
+
+      }else{
+        $('#employee_list').val('').trigger("change");
+
+      }
+      $('#planEnd').val(data.planEnd);
+      $('#acturalEnd').val(data.acturalEnd);
+      $('#modal_plan').modal();
+
+  }
    App.init();
 
    qdpm_app_init();

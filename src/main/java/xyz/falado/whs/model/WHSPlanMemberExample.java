@@ -164,63 +164,63 @@ public class WHSPlanMemberExample {
             return (Criteria) this;
         }
 
-        public Criteria andSubprojectIdIsNull() {
-            addCriterion("subproject_id is null");
+        public Criteria andPlanIdIsNull() {
+            addCriterion("plan_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andSubprojectIdIsNotNull() {
-            addCriterion("subproject_id is not null");
+        public Criteria andPlanIdIsNotNull() {
+            addCriterion("plan_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSubprojectIdEqualTo(Integer value) {
-            addCriterion("subproject_id =", value, "subprojectId");
+        public Criteria andPlanIdEqualTo(Long value) {
+            addCriterion("plan_id =", value, "planId");
             return (Criteria) this;
         }
 
-        public Criteria andSubprojectIdNotEqualTo(Integer value) {
-            addCriterion("subproject_id <>", value, "subprojectId");
+        public Criteria andPlanIdNotEqualTo(Long value) {
+            addCriterion("plan_id <>", value, "planId");
             return (Criteria) this;
         }
 
-        public Criteria andSubprojectIdGreaterThan(Integer value) {
-            addCriterion("subproject_id >", value, "subprojectId");
+        public Criteria andPlanIdGreaterThan(Long value) {
+            addCriterion("plan_id >", value, "planId");
             return (Criteria) this;
         }
 
-        public Criteria andSubprojectIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("subproject_id >=", value, "subprojectId");
+        public Criteria andPlanIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("plan_id >=", value, "planId");
             return (Criteria) this;
         }
 
-        public Criteria andSubprojectIdLessThan(Integer value) {
-            addCriterion("subproject_id <", value, "subprojectId");
+        public Criteria andPlanIdLessThan(Long value) {
+            addCriterion("plan_id <", value, "planId");
             return (Criteria) this;
         }
 
-        public Criteria andSubprojectIdLessThanOrEqualTo(Integer value) {
-            addCriterion("subproject_id <=", value, "subprojectId");
+        public Criteria andPlanIdLessThanOrEqualTo(Long value) {
+            addCriterion("plan_id <=", value, "planId");
             return (Criteria) this;
         }
 
-        public Criteria andSubprojectIdIn(List<Integer> values) {
-            addCriterion("subproject_id in", values, "subprojectId");
+        public Criteria andPlanIdIn(List<Long> values) {
+            addCriterion("plan_id in", values, "planId");
             return (Criteria) this;
         }
 
-        public Criteria andSubprojectIdNotIn(List<Integer> values) {
-            addCriterion("subproject_id not in", values, "subprojectId");
+        public Criteria andPlanIdNotIn(List<Long> values) {
+            addCriterion("plan_id not in", values, "planId");
             return (Criteria) this;
         }
 
-        public Criteria andSubprojectIdBetween(Integer value1, Integer value2) {
-            addCriterion("subproject_id between", value1, value2, "subprojectId");
+        public Criteria andPlanIdBetween(Long value1, Long value2) {
+            addCriterion("plan_id between", value1, value2, "planId");
             return (Criteria) this;
         }
 
-        public Criteria andSubprojectIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("subproject_id not between", value1, value2, "subprojectId");
+        public Criteria andPlanIdNotBetween(Long value1, Long value2) {
+            addCriterion("plan_id not between", value1, value2, "planId");
             return (Criteria) this;
         }
 

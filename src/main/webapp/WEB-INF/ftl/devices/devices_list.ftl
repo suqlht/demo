@@ -1,4 +1,3 @@
-<!--  -->
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
@@ -39,8 +38,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/bootstrap-modal/css/bootstrap-modal.css" />
     <script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-1.10.2.min.js"></script>
 
-    <script type="text/javascript" src="${rc.contextPath}/assets/plugins/datatables/jquery.dataTables.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/datatables/jquery.dataTables.css" />
+    <script type="text/javascript" src="${rc.contextPath}/assets/plugins/datatables/jquery.dataTables.js"></script>
 
     <script type="text/javascript" src="${rc.contextPath}/assets/js/app.js"></script>
 
@@ -53,7 +52,7 @@
     <link rel="apple-touch-icon" href="${rc.contextPath}/favicon.png" />
 </head>
 
-<body class="page-header-fixed">
+<body>
 
     <!-- BEGIN HEADER -->
     <#include "/common/config/top.ftl" />
@@ -115,7 +114,7 @@
         <thead>
           <tr>
 
-            <th>设备号</th>
+            <th>设备型号</th>
 
                   <th>设备名称</th>
                     <th>机械装配额定工时</th>

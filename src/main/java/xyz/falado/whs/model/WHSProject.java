@@ -1,5 +1,7 @@
 package xyz.falado.whs.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -12,11 +14,12 @@ public class WHSProject implements Serializable {
 
     private String projectType;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date deliveryDate;
 
     private String projectStatus;
 
-    private String createdBy;
+    private Long createdBy;
 
     private Date createdate;
 
@@ -26,11 +29,21 @@ public class WHSProject implements Serializable {
 
     private String projectPhase;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date orderDate;
+    private String createdUser;
 
-    private Integer assuranceBegin;
+    public String getCreatedUser() {
+        return createdUser;
+    }
 
-    private Integer assuranceDuration;
+    public void setCreatedUser(String createdUser) {
+        this.createdUser = createdUser;
+    }
+
+    private String assuranceBegin;
+
+    private String assuranceDuration;
 
     private String assuranceRemark;
 
@@ -40,7 +53,7 @@ public class WHSProject implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public WHSProject(Long id, String projectCode, String customerName, String projectType, Date deliveryDate, String projectStatus, String createdBy, Date createdate, Date modifydate, Integer projectOwner, String projectPhase, Date orderDate, Integer assuranceBegin, Integer assuranceDuration, String assuranceRemark, String reserve) {
+    public WHSProject(Long id, String projectCode, String customerName, String projectType, Date deliveryDate, String projectStatus, Long createdBy, Date createdate, Date modifydate, Integer projectOwner, String projectPhase, Date orderDate, String assuranceBegin, String assuranceDuration, String assuranceRemark, String reserve) {
         this.id = id;
         this.projectCode = projectCode;
         this.customerName = customerName;
@@ -59,7 +72,7 @@ public class WHSProject implements Serializable {
         this.reserve = reserve;
     }
 
-    public WHSProject(Long id, String projectCode, String customerName, String projectType, Date deliveryDate, String projectStatus, String createdBy, Date createdate, Date modifydate, Integer projectOwner, String projectPhase, Date orderDate, Integer assuranceBegin, Integer assuranceDuration, String assuranceRemark, String reserve, String remark) {
+    public WHSProject(Long id, String projectCode, String customerName, String projectType, Date deliveryDate, String projectStatus, Long createdBy, Date createdate, Date modifydate, Integer projectOwner, String projectPhase, Date orderDate, String assuranceBegin, String assuranceDuration, String assuranceRemark, String reserve, String remark) {
         this.id = id;
         this.projectCode = projectCode;
         this.customerName = customerName;
@@ -131,12 +144,12 @@ public class WHSProject implements Serializable {
         this.projectStatus = projectStatus == null ? null : projectStatus.trim();
     }
 
-    public String getCreatedBy() {
+    public Long getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy == null ? null : createdBy.trim();
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy == null ? null : createdBy;
     }
 
     public Date getCreatedate() {
@@ -179,19 +192,19 @@ public class WHSProject implements Serializable {
         this.orderDate = orderDate;
     }
 
-    public Integer getAssuranceBegin() {
+    public String getAssuranceBegin() {
         return assuranceBegin;
     }
 
-    public void setAssuranceBegin(Integer assuranceBegin) {
+    public void setAssuranceBegin(String assuranceBegin) {
         this.assuranceBegin = assuranceBegin;
     }
 
-    public Integer getAssuranceDuration() {
+    public String getAssuranceDuration() {
         return assuranceDuration;
     }
 
-    public void setAssuranceDuration(Integer assuranceDuration) {
+    public void setAssuranceDuration(String assuranceDuration) {
         this.assuranceDuration = assuranceDuration;
     }
 

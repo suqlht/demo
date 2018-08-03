@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
@@ -191,35 +190,47 @@
 
 
 
+                  <div class="form-group">
+
+                    <button class="btn btn-default date-set" type="button" onclick="openModalBox('${rc.contextPath}/projects/whs/assign_groups')"><i class="fa fa-plus"></i>添加</button>
+
+
+                  </div>
+
 
       <div class="modal-body">
       <input type="hidden" name="projects[id]" id="projects_id" /><input type="hidden" name="projects[created_by]" value="5" id="projects_created_by" /><input type="hidden" name="projects[created_at]" value="2018-05-13 12:31:42" id="projects_created_at" /><input type="hidden" name="projects[_csrf_token]" value="ee31984635362ad4266aee5c9c6ff2b1" id="projects__csrf_token" />
       <input type="hidden" name="redirect_to" id="redirect_to" />
       <ul class="nav nav-tabs">
-      	<li>
-          <a href="#tab_1" data-toggle="tab">10月1日(星期一)</a>
+        <li>
+        <a href="?d=${previousday?date('yyyy-MM-dd')}">  <i class="fa fa-backward"></i>  </a>
         </li>
-        <li class="active">
-          <a href="#tab_2" data-toggle="tab">10月2日(星期二)</a>
+      	<li class="${(currentday==monday)?string('active',' ')}">
+          <a href="#">${monday}(星期一)</a>
+        </li>
+        <li class="${(currentday==tuesday)?string('active',' ')}">
+          <a href="#">${tuesday}(星期二)</a>
+        </li>
+        <li class="${(currentday==wednesday)?string('active',' ')}">
+          <a href="#tab_3">${wednesday}(星期三)</a>
+        </li>
+        <li class="${(currentday==thursday)?string('active',' ')}">
+          <a href="#tab_4">${thursday}(星期四)</a>
+        </li>
+        <li class="${(currentday==friday)?string('active',' ')}">
+          <a href="#tab_5">${friday}(星期五)</a>
+        </li>
+        <li class="${(currentday==saturday)?string('active',' ')}">
+          <a href="">${saturday}(星期六)</a>
+        </li>
+        <li class="${(currentday==sunday)?string('active',' ')}">
+          <a href="#">${sunday}(星期日)</a>
         </li>
         <li>
-          <a href="#tab_3" data-toggle="tab">10月3日(星期三)</a>
-        </li>
-        <li>
-          <a href="#tab_4" data-toggle="tab">10月4日(星期四)</a>
-        </li>
-        <li>
-          <a href="#tab_5" data-toggle="tab">10月5日(星期五)</a>
-        </li>
-        <li>
-          <a href="#tab_6" data-toggle="tab">10月6日(星期六)</a>
-        </li>
-        <li>
-          <a href="#tab_7" data-toggle="tab">10月7日(星期日)</a>
+          <a href="?d=${nextday?date('yyyy-MM-dd')}"> <i class="fa fa-forward"></i></a>
         </li>
       </ul>
       </div>
-
       <div class="tab-content">
           <div class="tab-pane fade" id="tab_1">
               <div class="col-md-1"></div>
@@ -228,13 +239,6 @@
           </div>
           <div class="tab-pane active fade in" id="tab_2">
             <div class="col-md-10">
-              <div class="form-group">
-
-                <button class="btn btn-default date-set" type="button" onclick="openModalBox('${rc.contextPath}/projects/whs/assign_groups')"><i class="fa fa-plus"></i>添加</button>
-                <button class="btn btn-default date-set" type="button"><i class="fa fa-copy"></i>复制</button>
-                <button class="btn btn-default date-set" type="button"><i class="fa fa-upload"></i>导入</button>
-
-              </div>
                     <div class="form-group">
                         <table class="table table-striped table-bordered table-hover" id="comments-table">
                             <thead>

@@ -1,4 +1,3 @@
-<!--  -->
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
@@ -14,8 +13,7 @@
     <meta name="MobileOptimized" content="320">
 
     <title>
-        <@spring.message "system.title"/> |
-        <@spring.message "menu.desktop"/>
+        <@spring.message "system.title"/> |<@spring.message "menu.desktop"/>
     </title>
 
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/jquery-ui-1.11.4/jquery-ui.structure.min.css" />
@@ -72,11 +70,14 @@
                     <div class="panel-footer">
                         <div class="row text-left">
                             <ul class="nav">
+                              <li>
+                                  <a href="${rc.contextPath}/projects/list" class="cursor-pointer"><span class="title">项目列表</span></a>
+                              </li>
                                 <li>
                                     <a href="${rc.contextPath}/projects/new" class="cursor-pointer"><span class="title"><@spring.message "menu.project.new" /></span></a>
                                 </li>
                                 <li>
-                                    <a href="${rc.contextPath}/projects/whs/mechanical_plan"><span class="title"><@spring.message "menu.project.plan" /></span></a>
+                                    <a href="${rc.contextPath}/projects/mechanical_plan"><span class="title"><@spring.message "menu.project.plan" /></span></a>
                                 </li>
                                 <li>
                                     <a href="${rc.contextPath}/projects/whs/project_status" class="cursor-pointer"><span class="title"><@spring.message "menu.project.schedule" /></span></a>

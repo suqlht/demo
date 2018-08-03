@@ -5,19 +5,19 @@ import java.io.Serializable;
 public class WHSPlanMember implements Serializable {
     private Integer id;
 
-    private Integer subprojectId;
+    private Long planId;
 
-    private Integer employeeId;
+    private Long employeeId;
 
-    private Integer executorId;
+    private Long executorId;
 
     private Integer groupId;
 
     private static final long serialVersionUID = 1L;
 
-    public WHSPlanMember(Integer id, Integer subprojectId, Integer employeeId, Integer executorId, Integer groupId) {
+    public WHSPlanMember(Integer id, Long planId, Long employeeId, Long executorId, Integer groupId) {
         this.id = id;
-        this.subprojectId = subprojectId;
+        this.planId = planId;
         this.employeeId = employeeId;
         this.executorId = executorId;
         this.groupId = groupId;
@@ -35,27 +35,27 @@ public class WHSPlanMember implements Serializable {
         this.id = id;
     }
 
-    public Integer getSubprojectId() {
-        return subprojectId;
+    public Long getplanId() {
+        return planId;
     }
 
-    public void setSubprojectId(Integer subprojectId) {
-        this.subprojectId = subprojectId;
+    public void setplanId(Long planId) {
+        this.planId = planId;
     }
 
-    public Integer getEmployeeId() {
+    public Long getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(Integer employeeId) {
+    public void setEmployeeId(Long employeeId) {
         this.employeeId = employeeId;
     }
 
-    public Integer getExecutorId() {
+    public Long getExecutorId() {
         return executorId;
     }
 
-    public void setExecutorId(Integer executorId) {
+    public void setExecutorId(Long executorId) {
         this.executorId = executorId;
     }
 

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class WHSEmployee implements Serializable {
-    private Integer id;
+    private Long id;
 
     private String name;
 
@@ -20,9 +20,30 @@ public class WHSEmployee implements Serializable {
 
     private Integer status;
 
+    public String getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    private String employeeId;
+
+
+
+    private Integer groupId;
+
+    public Integer getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(Integer groupId) {
+        this.groupId = groupId;
+    }
     private static final long serialVersionUID = 1L;
 
-    public WHSEmployee(Integer id, String name, Date birthday, Integer age, String sex, Integer workYears, String skill, Integer status) {
+    public WHSEmployee(Long id, String name, Date birthday, Integer age, String sex, Integer workYears, String skill, Integer status,String employeeId) {
         this.id = id;
         this.name = name;
         this.birthday = birthday;
@@ -31,17 +52,18 @@ public class WHSEmployee implements Serializable {
         this.workYears = workYears;
         this.skill = skill;
         this.status = status;
+        this.employeeId = employeeId;
     }
 
     public WHSEmployee() {
         super();
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

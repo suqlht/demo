@@ -18,7 +18,7 @@ public interface WHSEmployeeMapper {
 
     List<WHSEmployee> selectByExample(WHSEmployeeExample example);
 
-    WHSEmployee selectByPrimaryKey(Integer id);
+    WHSEmployee selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") WHSEmployee record, @Param("example") WHSEmployeeExample example);
 
@@ -27,4 +27,5 @@ public interface WHSEmployeeMapper {
     int updateByPrimaryKeySelective(WHSEmployee record);
 
     int updateByPrimaryKey(WHSEmployee record);
+    List<WHSEmployee> selectNameIdByExample(WHSEmployeeExample example);
 }

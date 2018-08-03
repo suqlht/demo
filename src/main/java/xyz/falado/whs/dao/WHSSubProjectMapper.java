@@ -13,6 +13,8 @@ public interface WHSSubProjectMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(WHSSubProject record);
+    int insertBatchSubs(@Param("newProjectId") Long newProjectId, @Param("list") List<WHSSubProject> records);
+
 
     int insertSelective(WHSSubProject record);
 

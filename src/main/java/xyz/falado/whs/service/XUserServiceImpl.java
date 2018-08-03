@@ -5,7 +5,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import xyz.falado.whs.dao.WHSEmployeeMapper;
 import xyz.falado.whs.dao.XUserMapper;
+import xyz.falado.whs.model.WHSEmployee;
+import xyz.falado.whs.model.WHSEmployeeExample;
 import xyz.falado.whs.model.XUser;
 import xyz.falado.whs.model.XUserExample;
 
@@ -20,6 +23,8 @@ public class XUserServiceImpl implements XUserService {
     private DefaultPasswordService defaultPasswordService = new DefaultPasswordService();
     @Resource
     private XUserMapper userMapper;
+    @Resource
+    private WHSEmployeeMapper employeeMapper;
 
     @Override
     @Transactional
@@ -57,4 +62,9 @@ public class XUserServiceImpl implements XUserService {
 
         return user;
     }
+
+    public List<WHSEmployee> findEmployeeByExample(WHSEmployeeExample example){
+        return employeeMapper.selectNameIdByExample(example);
+    }
+
 }

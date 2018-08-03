@@ -1,4 +1,3 @@
-<!--  -->
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
@@ -69,7 +68,7 @@
     <link rel="apple-touch-icon" href="${rc.contextPath}/favicon.png" />
 </head>
 
-<body class="page-scale-reduced page-header-fixed yui-skin-sam " id="yahoo-com">
+<body class="page-scale-reduced yui-skin-sam " id="yahoo-com">
 
     <!-- BEGIN HEADER -->
     <#include "/common/config/top.ftl" />
@@ -157,10 +156,11 @@
   </form>
 </div>
 <br>
-      <div>
+      <div style="overflow:auto;">
 
 
-      <table class="table table-striped table-bordered table-hover projects-table" id="itmes_listing_4466081"   >
+
+      <table style="width:1500px" class="table table-striped table-bordered table-hover projects-table" id="itmes_listing_4466081"   >
         <thead>
           <tr>
             <th rowspan="2">序号</th>
@@ -170,21 +170,19 @@
             <th rowspan="2" style="width:8%">终止日期</th>
             <th rowspan="2" style="width:8%">项目号</th>
             <th rowspan="2" style="width:8%">设备型号</th>
-            <th colspan="3">出差</th>
-            <th colspan="8">已完成工时</th>
+            <th colspan="1">出差</th>
+            <th colspan="8" class="text-center">已完成工时</th>
           </tr>
           <tr>
-            <th>出发日期</th>
-            <th>回厂日期</th>
-            <th>出差天数</th>
-              <th>周一（2017/12/31）</th>
-              <th>周二（2018/1/1）</th>
-              <th>周三（2017/1/2）</th>
-              <th>周四（2017/1/3）</th>
-              <th>周五（2017/1/4）</th>
-              <th>周六（2017/1/5）</th>
-              <th>周日（2017/1/6）</th>
-              <th>合计完成工时</th>
+            <th style="width:32px">出差天数</th>
+              <th>周一</th>
+              <th>周二</th>
+              <th>周三</th>
+              <th>周四</th>
+              <th>周五</th>
+              <th>周六</th>
+              <th>周日</th>
+              <th style="width:40px">合计完成工时</th>
 
           </tr>
         </thead>
@@ -205,11 +203,11 @@
       var dataSet = [
         [
           "1","装配一组","1001","张三","2018-04-01","2018-12-01","HM001h6","HDQ 3/3",
-          "2018/1/2","2018/1/3","2","10","10","0","0","10","10","0","30"
+          "2","10","10","0","0","10","10","0","30"
         ],
         [
-          "1","装配二组","1003","李四","2018-04-01","2018-12-01","HM001h6","HDQ 3/3",
-          "2018/1/2","2018/1/3","2","10","10","0","0","10","10","0","30"
+          "2","装配二组","1003","李四","2018-04-01","2018-12-01","HM001h6","HDQ 3/3",
+          "2","10","10","出差","出差","10","10","0","30"
         ]
       ]
         $(document).ready(function(){
@@ -220,14 +218,11 @@
           });
           $("#group_members").select2({
           });
-          var table = $('#itmes_listing_4466081').dataTable({
-            scrollY:        "300px",
-          scrollX:        true,
+          var table = $('#itmes_listing_4466081').DataTable({
+
           scrollCollapse: true,
           paging:         false,
-          fixedColumns:   {
-                      leftColumns: 4
-                  },
+
             data:dataSet,
             "iDisplayLength": 10,
             paging:false,

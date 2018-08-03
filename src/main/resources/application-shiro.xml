@@ -54,8 +54,8 @@
                 /**/*.ico = anon
                 /assets/** = anon
                 /user/register = anon
-                /projects/* = user
-                /home = authc
+                /projects/* = anon
+                /home = anon
                 /logout = logout
                 /** = anon
             </value>

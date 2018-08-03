@@ -1,4 +1,3 @@
-<!--  -->
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
@@ -39,9 +38,9 @@
 
 
     <script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-1.10.2.min.js"></script>
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/select2/select2.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/select2/select2_4.0.6.min.css" />
 
-    <script type="text/javascript" src="${rc.contextPath}/assets/plugins/select2/select2.min.js"></script>
+    <script type="text/javascript" src="${rc.contextPath}/assets/plugins/select2/select2_4.0.6.min.js"></script>
 
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/data-tables/DT_bootstrap.css" />
     <script type="text/javascript" src="${rc.contextPath}/assets/plugins/datatables/jquery.dataTables.js"></script>
@@ -63,20 +62,34 @@
     <script>
         var sf_public_path = '/${rc.contextPath}/';
         var selected_items = new Array();
+        var table;
+
     </script>
     <link rel="shortcut icon" href="${rc.contextPath}/favicon.ico" />
-    <link rel="apple-touch-icon" href="${rc.contextPath}/favicon.png"/>
+    <link rel="apple-touch-icon" href="${rc.contextPath}/favicon.png" />
 
 
     <style type="text/css">
-      table.subtable {width:100%};
-      table.subtable th {width:30%};
-      table.subtable td {width:30%};
+        table.subtable {
+            width: 100%
+        }
+
+        ;
+        table.subtable th {
+            width: 30%
+        }
+
+        ;
+        table.subtable td {
+            width: 30%
+        }
+
+        ;
     </style>
 
 </head>
 
-<body class="page-scale-reduced page-header-fixed yui-skin-sam " id="yahoo-com">
+<body class="page-scale-reduced yui-skin-sam " id="yahoo-com">
 
     <!-- BEGIN HEADER -->
     <#include "/common/config/top.ftl" />
@@ -104,123 +117,133 @@
             <div class="page-content-wrapper">
                 <div class="page-content">
                     <div id="ajax-modal" class="modal fade" tabindex="-1" data-replace="true" data-keyboard="false" data-backdrop="static" data-focus-on=".autofocus"></div>
-                    <h3 class="page-title">已发货项目列表</h3>
-
+                    <h3 class="page-title">已发货项目列表</h1>
 <br>
 
 
-<div>
-  <form class="form-inline" role="form" action="projects_report" method="post">
-    <div class="form-group pull-right">
-      <input type="submit" class="btn btn-default"  value="搜素">
 
+<div style="padding-bottom:10px;">
+  <table style="width:100%">
+      <tr>
+          <td>
+            <ul class="nav navbar-nav">
+      				<!-- BEGIN USER LOGIN DROPDOWN -->
+      				<li class="dropdown">
+      					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      						<span>列筛选
+      					 				</span>
+      						<i class="fa fa-angle-down"></i>
+      					</a>
+      					<ul class="dropdown-menu">
+      						<li> <input type="checkbox" checked="checked" value="11,12,13" onchange="toggle_clv(this)"> 机械设计
+      						</li>
+      						<li><input type="checkbox" checked="checked"  value="14,15,16" onchange="toggle_clv(this)">电气设计
+      						</li>
+      						<li><input type="checkbox" checked="checked"  value="17,18" onchange="toggle_clv(this)">采购
+      						</li>
+                  <li><input type="checkbox" checked="checked" value="19" onchange="toggle_clv(this)">油漆
+                  </li>
+                  <li><input type="checkbox" checked="checked"  value="20,21" onchange="toggle_clv(this)">质检
+                  </li>
+                  <li><input type="checkbox" checked="checked"  value="22,23" onchange="toggle_clv(this)">筑炉
+                  </li>
+      					</ul>
+      				</li>
+      				<!-- END USER LOGIN DROPDOWN -->
+      			</ul>
+            
+          </td>
 
-    </div>
-<div class="form-group">
+          <td align="right">
+              <form class="form-search" method="GET">
+                  <input type="hidden" name="pagelength" value="${pagelength?default(10)}" />
+                  <input type="hidden" name="pagecurrent" value="${pagecurrent?default(1)}" />
 
-    <label class="sr-only" for="name">项目号</label>
-     <input type="text" class="form-control" id="name" placeholder="项目号">
+                  <div class="input-group col-md-4">
+                      <input type="text" name="search_keyword" value="${search_keyword}" class="form-control input-small">
+                      <span class="input-group-btn">
+          <button class="btn btn-default" type="submit" id="searchBtn"><i class="fa fa-search"></i>搜索</button>
+      </span>
+                  </div>
+              </form>
+          </td>
+
+      </tr>
+  </table>
+
 </div>
+      <div style="width:100%; overflow:scroll">
 
 
-<div class="form-group">
-  <label class="sr-only" for="name">订货通报日期</label>
-  <div class="input-group input-medium date datepicker">
-    <input type="text" class="form-control" id="name" placeholder="最小订货通报日期">
-<span class="input-group-btn"><button class="btn btn-default date-set" type="button"><i class="fa fa-calendar"></i></button></span>
-</div>
-   <input type="text" class="form-control date datepicker" id="name" placeholder="最大订货通报日期">
-
-</div>
-
-<div class="form-group">
-  <label class="sr-only" for="name">合同交货日期</label>
-   <input type="text" class="form-control date datepicker" id="name" placeholder="最小合同交货日期">
-   <input type="text" class="form-control date datepicker" id="name" placeholder="最大合同交货日期">
-</div>
-
-<div class="form-group">
-  <label class="sr-only" for="name">设备型号</label>
-  <select id="device_type" class="" name="assurance_duration">
-      <option value="">设备型号</option>
-
-      <option value="1">DHQ-3/3</option>
-      <option value="3">HTS-3/3</option>
-  </select>
-</div>
-
-<div class="form-group pull-right">
-  <input type="submit" class="btn btn-default"  value="导出">
-  <input type="submit" class="btn btn-default"  value="打印">
-</div>
-  </form>
-</div>
-<br>
-      <div>
-
-
-      <table class="table table-striped table-bordered table-hover projects-table" id="itmes_listing_4466081"   >
+      <table class="table table-striped table-bordered" id="itmes_listing_4466081"   >
         <thead>
           <tr>
             <th rowspan="3">序号</th>
             <th rowspan="3">项目号</th>
+            <th rowspan="3">项目号</th>
             <th rowspan="3">设备型号</th>
-            <th rowspan="3">订货通报日期</th>
-            <th rowspan="3">合同交货日期</th>
-            <th rowspan="3">调整后交货日期</th>
-            <th rowspan="3" >实际发货日期</th>
-            <th rowspan="3">实际交货天数</th>
-            <th rowspan="3">实际拖期天数</th>
-
-            <th rowspan="3">进度状态</th>
-            <th colspan="2" class="text-center">机械设计部</th>
-            <th colspan="2" class="text-center">电气设计部</th>
-            <th class="text-center">采购</th>
+            <th rowspan="3" style="min-width:70px;text-align:center;">订货通<br/>报日期</th>
+            <th rowspan="3" style="min-width:70px;text-align:center;">合同交<br/>货日期</th>
+            <th rowspan="3" style="min-width:60px;text-align:center;">距交货<br/>期天数</th>
+            <th rowspan="3" style="min-width:70px;text-align:center;">调整后<br/>交货日期</th>
+            <th rowspan="3" style="min-width:70px;text-align:center;">实际发<br/>货日期</th>
+            <th rowspan="3" style="min-width:50px;text-align:center;">进度<br/>状态</th>
+            <th rowspan="3" style="min-width:60px;text-align:center;">当前<br/>瓶颈</th>
+            <th colspan="3">机械设计部</th>
+            <th colspan="3">电气设计部</th>
+            <th colspan="2">采购</th>
             <th>油漆</th>
-            <th colspan="2" class="text-center">质检</th>
-            <th colspan="2" class="text-center">筑炉</th>
-            <th colspan="8" class="text-center">车间生产装配</th>
-            <th colspan="4" class="text-center">车间调试</th>
+            <th colspan="2">质检</th>
+            <th colspan="2">筑炉</th>
+            <th colspan="9">车间生产装配</th>
+            <th colspan="5">车间调试</th>
             <th rowspan="3">备注</th>
           </tr>
           <tr>
-            <th rowspan="2">计划完成日期</th>
-            <th rowspan="2">实际完成日期</th>
-            <th rowspan="2">计划完成日期</th>
-            <th rowspan="2">实际完成日期</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">计划<br/>完成<br/>日期</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">实际<br/>完成<br/>日期</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">当前<br/>问题</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">计划<br/>完成<br/>日期</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">实际<br/>完成<br/>日期</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">当前<br/>问题</th>
+
             <th rowspan="2">
-              <table class="subtable">
-                <thead>
+              <table>
+                <tbody>
                   <tr>
-                    <th>主要零件名称</th>
-                    <th>计划到货日期</th>
-                    <th>实际到货日期</th>
+                    <td style="min-width:60px;text-align:center;">主要<br/>零件<br/>名称</td>
+                    <td style="min-width:60px;text-align:center;">计划<br/>到货<br/>日期</td>
+                    <td style="min-width:60px;text-align:center;">实际<br/>到货<br/>日期</td>
                   </tr>
-                </thead>
+                </tbody>
               </table>
             </th>
-            <th rowspan="2">实际完成日期</th>
-            <th rowspan="2">计划完成日期</th>
-            <th rowspan="2">实际完成日期</th>
-            <th rowspan="2">计划完成日期</th>
-            <th rowspan="2">实际完成日期</th>
-            <th rowspan="2">计划开始日期</th>
-            <th rowspan="2">实际开始日期</th>
-            <th rowspan="2">计划完成日期</th>
-            <th rowspan="2">实际完成日期</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">当前<br/>问题</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">实际<br/>完成<br/>日期</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">计划<br/>完成<br/>日期</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">实际<br/>完成<br/>日期</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">计划<br/>完成<br/>日期</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">实际<br/>完成<br/>日期</th>
 
-            <th colspan="2" class="text-center">机械</th>
-            <th colspan="2" class="text-center">电气</th>
-            <th rowspan="2">计划开始日期</th>
-            <th rowspan="2">实际开始日期</th>
-            <th rowspan="2">计划完成日期</th>
-            <th rowspan="2">实际完成日期</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">计划<br/>开始<br/>日期</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">实际<br/>开始<br/>日期</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">计划<br/>完成<br/>日期</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">实际<br/>完成<br/>日期</th>
+
+            <th colspan="2">机械</th>
+            <th colspan="2">电气</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">当前<br/>问题</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">计划<br/>开始<br/>日期</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">实际<br/>开始<br/>日期</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">计划<br/>完成<br/>日期</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">实际<br/>完成<br/>日期</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">当前<br/>问题</th>
           </tr>
           <tr>
-            <th>已完成工时</th>
-            <th>剩余工时</th>
-            <th>已完成工时</th>
-            <th>剩余工时</th>
+            <th style="min-width:60px;text-align:center;">已完成<br/>工时</th>
+            <th style="min-width:50px;text-align:center;">剩余<br/>工时</th>
+            <th style="min-width:60px;text-align:center;">已完成<br/>工时</th>
+            <th style="min-width:50px;text-align:center;">剩余<br/>工时</th>
           </tr>
         </thead>
 
@@ -237,31 +260,32 @@
 
       <script type="text/javascript">
 
-      var dataSet = [
-        [
-          "1","HM0100-01","","2018-05-30","2018-12-11","2018-12-21","2018-12-01","215","0","已发货","2018-12-31","2018-12-31","2018-12-31","2018-12-31",[['炉壳','2018/1/1','2018/1/1'],['辐射管','2018/1/1','2018/1/1'],['进口电机','2018/1/1','']],"2018-12-31","2018-12-31","2018-12-31","2018-12-31","2018-12-31","2018-12-31","2018-12-31","2018-12-31","2018-12-31", "300","300","100","60","2018-12-31","2018-12-31","2018-12-31","2018-12-31",""
-        ],
-        [
-          "1.01","HM0100-01","DHQ-3/3","2018-05-30","2018-12-11","2018-12-21","2018-12-01","215","0","已发货","2018-12-31","2018-12-31","2018-12-31","2018-12-31",[['炉壳','2018/1/1','2018/1/1'],['辐射管','2018/1/1','2018/1/1'],['进口电机','2018/1/1','']],"2018-12-31","2018-12-31","2018-12-31","2018-12-31","2018-12-31","2018-12-31","2018-12-31","2018-12-31","2018-12-31", "300","300","100","60","2018-12-31","2018-12-31","2018-12-31","2018-12-31",""
-        ]
-      ]
+
+      function toggle_clv(target){
+        var columns = table.columns($(target).val());
+        columns.visible(Boolean($(target).attr('checked')));
+      }
         $(document).ready(function(){
-
-          $("#device_type").select2({
+          var groupColumn = 1;
+          $("#columnsToggle").select2({
+            "multiple":true
               });
-
-          var table = $('#itmes_listing_4466081').DataTable({
-            data:dataSet,
-            "scrollX": true,
-            "scrollY":        "200px",
-            scrollCollapse: true,
+          var dataSet = [
+            [
+            "",  "HM0100","HM0100-01","","2018-05-30","2018-12-11","215","2018-12-21","2018-12-01","已发货","","2018-12-31","2018-12-31","","2018-12-31","2018-12-31","",[],"","2018-12-31","2018-12-31","2018-12-31","2018-12-31","2018-12-31", "2018-12-31","2018-12-31","2018-12-31","2018-12-31","4","4","8","5","","2018-12-31","2018-12-31","2018-12-31","2018-12-31","",""
+            ],
+            [
+            "",  "HM0100","HM0100-02","DHQ-3/3","2018-05-30","2018-12-11","215","2018-12-21","2018-12-01","已发货","","2018-12-31","2018-12-31","","2018-12-31","2018-12-31","",[['炉壳','2018/1/1','2018/1/1'],['辐射管','2018/1/1','2018/1/1'],['进口电机','2018/1/1','']],"","2018-12-31","2018-12-31","2018-12-31","2018-12-31","2018-12-31", "2018-12-31","2018-12-31","2018-12-31","2018-12-31","4","4","8","5","","2018-12-31","2018-12-31","2018-12-31","2018-12-31","",""
+            ]
+          ];
+          table = $('#itmes_listing_4466081').DataTable({
             "iDisplayLength": 10,
             paging:false,
             info:false,
-            "bSort": true,
+            "bSort": false,
             "bFilter":false,
             "bLengthChange":false,
-            "fnInitComplete": function (oSettings, json) { $(this).css('display','') },
+            data: dataSet,
             "columnDefs": [
             {
                 // The `data` parameter refers to the data for the cell (defined by the
@@ -276,13 +300,47 @@
                            '<tr><td>'+data[1][0]+'</td><td>'+data[1][1]+'</td><td>'+data[1][2]+'</td></tr>' +
                            '<tr><td>'+data[2][0]+'</td><td>'+data[2][1]+'</td><td>'+data[2][2]+'</td></tr></table>' ;
                 },
-                "targets": 14
-            }]
+                "targets": 17
+            },
+
+            {"visible":false,
+            "targets": 1}
+          ],
+          "drawCallback": function ( settings ) {
+          var api = this.api();
+          var rows = api.rows( {page:'current'} ).nodes();
+          var last=null;
+          var index = 1;
+          var subindex = 1;
+          //分组
+          api.column(groupColumn, {page:'current'} ).data().each( function ( group, i ) {
+              if ( last !== group ) {
+                  $(rows).eq( i ).before(
+                      '<tr class="group"><td>'+index+'</td><td colspan="50">'+group+'</td></tr>'
+                  );
+                  index ++;
+                  subindex=1
+                  last = group;
+              }
+              $(rows).eq(i).find("td","")[0].innerHTML = (index-1) + "." + (subindex + 100).toString().substring(1);
+              subindex++;
+
+          } );
+
+      }
 
         });
 
       });
 
+      function modify_plan(){
+        window.location="${rc.contextPath}/projects/whs/schedule_edit"
+      }
+      function open_modal(){
+            $('#form_new_device')[0].reset();
+            $('#device_types_id').val("").trigger('change');
+            $('#modal_new_device').modal();
+          }
       </script>
 
 

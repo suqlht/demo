@@ -3,7 +3,7 @@
 <mapper namespace="xyz.falado.whs.dao.WHSEmployeeMapper">
   <resultMap id="BaseResultMap" type="xyz.falado.whs.model.WHSEmployee">
     <constructor>
-      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
       <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="birthday" javaType="java.util.Date" jdbcType="DATE" />
       <arg column="age" javaType="java.lang.Integer" jdbcType="INTEGER" />
@@ -11,7 +11,14 @@
       <arg column="work_years" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="skill" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="status" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="employee_id" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
+  </resultMap>
+  <resultMap id="SimpleResultMap" type="xyz.falado.whs.model.WHSEmployee">
+    <id property="id" column="id"/>
+    <result property="name" column="name"/>
+    <result property="employeeId" column="employee_id"/>
+
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -72,7 +79,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, birthday, age, sex, work_years, skill, status
+    id, name, birthday, age, sex, work_years, skill, status,employee_id
   </sql>
   <select id="selectByExample" parameterType="xyz.falado.whs.model.WHSEmployeeExample" resultMap="BaseResultMap">
     select
@@ -88,7 +95,21 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectNameIdByExample" parameterType="xyz.falado.whs.model.WHSEmployeeExample" resultMap="SimpleResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+id, name,employee_id    from WHS_EMPLOYEES
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from WHS_EMPLOYEES
