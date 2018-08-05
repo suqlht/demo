@@ -361,13 +361,13 @@ blockquote p {
   }
 }
 
-.panel-title a:before {
+.panel-title a:before , th > a.collect:before{
     content: "\f068";
     font-family: FontAwesome;
 
 }
 
-.panel-title a.collapsed:before {
+.panel-title a.collapsed:before, th > a.collapsed:before {
     content: "\f067";
     font-family: FontAwesome;
 

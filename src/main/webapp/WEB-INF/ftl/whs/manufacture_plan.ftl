@@ -132,31 +132,6 @@
   <table style="width:100%">
       <tr>
           <td>
-            <ul class="nav navbar-nav">
-      				<!-- BEGIN USER LOGIN DROPDOWN -->
-      				<li class="dropdown">
-      					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-      						<span>列筛选
-      					 				</span>
-      						<i class="fa fa-angle-down"></i>
-      					</a>
-      					<ul class="dropdown-menu">
-      						<li> <input type="checkbox" checked="checked" value="10,11,12" onchange="toggle_clv(this)"> 机械设计
-      						</li>
-      						<li><input type="checkbox" checked="checked"  value="13,14,15" onchange="toggle_clv(this)">电气设计
-      						</li>
-      						<li><input type="checkbox" checked="checked"  value="16,17" onchange="toggle_clv(this)">采购
-      						</li>
-                  <li><input type="checkbox" checked="checked" value="18" onchange="toggle_clv(this)">油漆
-                  </li>
-                  <li><input type="checkbox" checked="checked"  value="19,20" onchange="toggle_clv(this)">质检
-                  </li>
-                  <li><input type="checkbox" checked="checked"  value="21,22" onchange="toggle_clv(this)">筑炉
-                  </li>
-      					</ul>
-      				</li>
-      				<!-- END USER LOGIN DROPDOWN -->
-      			</ul>
 
           </td>
 
@@ -188,34 +163,38 @@
             <th rowspan="3">项目号</th>
             <th rowspan="3">项目号</th>
             <th rowspan="3">设备型号</th>
-            <th rowspan="3" style="min-width:70px;text-align:center;">订货通<br/>报日期</th>
-            <th rowspan="3" style="min-width:70px;text-align:center;">合同交<br/>货日期</th>
-            <th rowspan="3" style="min-width:60px;text-align:center;">距交货<br/>期天数</th>
-            <th rowspan="3" style="min-width:70px;text-align:center;">调整后<br/>交货日期</th>
-            <th rowspan="3" style="min-width:70px;text-align:center;">实际发<br/>货日期</th>
-            <th rowspan="3" style="min-width:50px;text-align:center;">进度<br/>状态</th>
-            <th rowspan="3" style="min-width:60px;text-align:center;">当前<br/>瓶颈</th>
-            <th colspan="3">机械设计部</th>
-            <th colspan="3">电气设计部</th>
-            <th colspan="2">采购</th>
-            <th>油漆</th>
+            <th colspan="8" style="text-align:center;"><a class="collect" title="项目信息" onclick="toggle_clv(this,[5,6,7,8,9,10,11])" href="#">项目信息</a></th>
+            <th colspan="4" style="text-align:center;"><a class="collect" title="机械设计部" onclick="toggle_clv(this,[13,14,15])" href="#"> 机械设计部</a></th>
+            <th colspan="4" style="text-align:center;"><a class="collect" title="电气设计部" onclick="toggle_clv(this,[17,18,19])" href="#"> 电气设计部</a></th>
+            <th colspan="3" style="text-align:center;"><a class="collect" title="采购" onclick="toggle_clv(this,[21,22])" href="#"> 采购</a></th>
+            <th colspan="2" style="text-align:center;"><a class="collect" title="油漆" onclick="toggle_clv(this,[24,25,26,27,28])" href="#"> 油漆</th>
             <th colspan="2">质检</th>
             <th colspan="2">筑炉</th>
             <th rowspan="3" style="min-width:60px;text-align:center;">预留<br/>车间<br/>冷调<br/>天数</th>
-            <th colspan="6">人员计划安排</th>
-            <th colspan="4">生产时间节点</th>
-            <th colspan="2">计划期内可用人数</th>
-            <th colspan="4">当前完成状态</th>
+            <th colspan="7" style="text-align:center;"><a class="collect" title="人员计划安排" onclick="toggle_clv(this,[31,32,33,34,35,36])" href="#"> 人员计划安排</th>
+            <th colspan="5" style="text-align:center;"><a class="collect" title="生产时间节点" onclick="toggle_clv(this,[38,39,40,41])" href="#"> 生产时间节点</th>
+            <th colspan="3" style="text-align:center;"><a class="collect" title="计划期内可用人数" onclick="toggle_clv(this,[43,44])" href="#"> 计划期内可用人数</th>
+            <th colspan="5" style="text-align:center;"><a class="collect" title="当前完成状态" onclick="toggle_clv(this,[46,47,48,49])" href="#"> 当前完成状态</th>
             <th rowspan="3">操作</th>
           </tr>
           <tr>
+            <th rowspan="2" style="min-width:15px;text-align:center;">项目信息</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">订货通<br/>报日期</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">合同交<br/>货日期</th>
+            <th rowspan="2" style="min-width:50px;text-align:center;">距交货<br/>期天数</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">调整后<br/>交货日期</th>
+            <th rowspan="2" style="min-width:70px;text-align:center;">实际发<br/>货日期</th>
+            <th rowspan="2" style="min-width:50px;text-align:center;">进度<br/>状态</th>
+            <th rowspan="2" style="min-width:60px;text-align:center;">当前<br/>瓶颈</th>
+            <th rowspan="2" style="min-width:15px;text-align:center;">机械设计</th>
             <th rowspan="2" style="min-width:70px;text-align:center;">计划<br/>完成<br/>日期</th>
             <th rowspan="2" style="min-width:70px;text-align:center;">实际<br/>完成<br/>日期</th>
             <th rowspan="2" style="min-width:70px;text-align:center;">当前<br/>问题</th>
+            <th rowspan="2" style="min-width:15px;text-align:center;">电气设计</th>
             <th rowspan="2" style="min-width:70px;text-align:center;">计划<br/>完成<br/>日期</th>
             <th rowspan="2" style="min-width:70px;text-align:center;">实际<br/>完成<br/>日期</th>
             <th rowspan="2" style="min-width:70px;text-align:center;">当前<br/>问题</th>
-
+            <th rowspan="2" style="min-width:15px;text-align:center;">采购</th>
             <th rowspan="2">
               <table>
                 <tbody>
@@ -228,19 +207,25 @@
               </table>
             </th>
             <th rowspan="2" style="min-width:70px;text-align:center;">当前<br/>问题</th>
+            <th rowspan="2" style="min-width:15px;text-align:center;">油漆<br/>...</th>
+
             <th rowspan="2" style="min-width:70px;text-align:center;">实际<br/>完成<br/>日期</th>
             <th rowspan="2" style="min-width:70px;text-align:center;">计划<br/>完成<br/>日期</th>
             <th rowspan="2" style="min-width:70px;text-align:center;">实际<br/>完成<br/>日期</th>
             <th rowspan="2" style="min-width:70px;text-align:center;">计划<br/>完成<br/>日期</th>
             <th rowspan="2" style="min-width:70px;text-align:center;">实际<br/>完成<br/>日期</th>
+            <th rowspan="2" style="min-width:15px;text-align:center;">人员计划</th>
             <th colspan="3">机械</th>
             <th colspan="3">电气</th>
+            <th rowspan="2" style="min-width:15px;text-align:center;">生产时间</th>
             <th rowspan="2" style="min-width:70px;text-align:center;">装配计划<br/>开始日期</th>
             <th rowspan="2" style="min-width:70px;text-align:center;">装配实际<br/>开始日期</th>
             <th rowspan="2" style="min-width:70px;text-align:center;">装配计划<br/>完成日期</th>
             <th rowspan="2" style="min-width:70px;text-align:center;">装配实际<br/>完成日期</th>
+            <th rowspan="2" style="min-width:15px;text-align:center;">可用人数</th>
             <th rowspan="2" style="min-width:60px;text-align:center;">机械<br/>人数</th>
             <th rowspan="2" style="min-width:60px;text-align:center;">电气<br/>人数</th>
+            <th rowspan="2" style="min-width:15px;text-align:center;">当前完成</th>
             <th colspan="2">机械</th>
             <th colspan="2">电气</th>
 
@@ -272,11 +257,23 @@
 
 
       <script type="text/javascript">
+      $('a.collect').click(function(){
+        console.log($(this))
+      })
 
+      function toggle_clv(target,cols){
+        //cols = [3,4,5]
+        console.log(cols)
+        if($(target).hasClass('collapsed')){
+          $(target).removeClass('collapsed')
+          $(target).html(' ' + $(target).attr('title'))
+        }else{
+          $(target).addClass('collapsed')
+          $(target).html(' ')
+        }
+        table.columns(cols).visible(!$(target).hasClass('collapsed'));
+        table.columns(cols[0]-1).visible($(target).hasClass('collapsed'));
 
-      function toggle_clv(target){
-        var columns = table.columns($(target).val());
-        columns.visible(Boolean($(target).attr('checked')));
       }
         $(document).ready(function(){
           var groupColumn = 1;
@@ -285,10 +282,10 @@
               });
           var dataSet = [
             [
-            "",  "HM0100","HM0100-01","","2018-05-30","2018-12-11","215","2018-12-21","2018-12-01","正常","","2018-12-31","2018-12-31","","2018-12-31","2018-12-31","",[],"","2018-12-31","2018-12-31","2018-12-31","2018-12-31","2018-12-31", "3","3","10","6","4","8","5","2018-12-31","2018-12-31","2018-12-31","2018-12-31","10","8","1000","200","400","0",""
+            "",  "HM0100","HM0100-01","DHQ","...","2018-05-30","2018-12-11","215","2018-12-21","2018-12-01","正常","","...","2018-12-31","2018-12-31","","...","2018-12-31","2018-12-31","","...",[],"","...","2018-12-31","2018-12-31","2018-12-31","2018-12-31","2018-12-31", "3","...","3","10","6","4","8","5","...","2018-12-31","2018-12-31","2018-12-31","2018-12-31","...","10","8","...","1000","200","400","0",""
             ],
             [
-            "",  "HM0100","HM0100-02","DHQ-3/3","2018-05-30","2018-12-11","215","2018-12-21","2018-12-01","正常","","2018-12-31","2018-12-31","","2018-12-31","2018-12-31","",[['炉壳','2018/1/1','2018/1/1'],['辐射管','2018/1/1','2018/1/1'],['进口电机','2018/1/1','']],"","2018-12-31","2018-12-31","2018-12-31","2018-12-31","2018-12-31", "3","3","10","6","4","8","5","2018-12-31","2018-12-31","2018-12-31","2018-12-31","10","8","1000","200","400","0",""
+            "",  "HM0100","HM0100-02","DHQ-3/3","...","2018-05-30","2018-12-11","215","2018-12-21","2018-12-01","正常","","...","2018-12-31","2018-12-31","","...","2018-12-31","2018-12-31","","...",[['炉壳','2018/1/1','2018/1/1'],['辐射管','2018/1/1','2018/1/1'],['进口电机','2018/1/1','']],"","...","2018-12-31","2018-12-31","2018-12-31","2018-12-31","2018-12-31","3","...", "3","10","6","4","8","5","...", "2018-12-31","2018-12-31","2018-12-31","2018-12-31","...", "10","8","...", "1000","200","400","0",""
             ]
           ];
           table = $('#itmes_listing_4466081').DataTable({
@@ -313,7 +310,7 @@
                            '<tr><td>'+data[1][0]+'</td><td>'+data[1][1]+'</td><td>'+data[1][2]+'</td></tr>' +
                            '<tr><td>'+data[2][0]+'</td><td>'+data[2][1]+'</td><td>'+data[2][2]+'</td></tr></table>' ;
                 },
-                "targets": 17
+                "targets": 19
             },
             {"render": function ( data, type, row ) {
 
@@ -321,7 +318,7 @@
             },
             "targets": -1},
             {"visible":false,
-            "targets": 1}
+            "targets": [1,4,12,16,20,23,30,37,42,45]}
           ],
           "drawCallback": function ( settings ) {
           var api = this.api();
