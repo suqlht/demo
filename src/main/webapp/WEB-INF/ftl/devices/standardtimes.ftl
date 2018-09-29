@@ -24,7 +24,7 @@
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!-- BEGIN THEME STYLES -->
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/style.css" />
+    
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/style-responsive.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/plugins.css" />
 

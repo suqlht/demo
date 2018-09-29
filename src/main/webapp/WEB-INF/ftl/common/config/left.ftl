@@ -1,93 +1,114 @@
 <#macro menu index>
 
-	<div class="page-sidebar-wrapper">
-		<div class="page-sidebar-wrapper">
-			<div class="page-sidebar navbar-collapse collapse">
+	<aside class="main-sidebar">
 
-				<!-- BEGIN SIDEBAR MENU -->
-				<ul class="page-sidebar-menu">
-					<li class="sidebar-toggler-wrapper">
+		<!-- sidebar: style can be found in sidebar.less -->
+		<section class="sidebar">
 
+			<!-- Sidebar Menu -->
+			<ul class="sidebar-menu" data-widget="tree">
+				<li class="header">导航菜单</li>
+				<!-- Optionally, you can add icons to the links -->
+				<!-- 管理桌面 -->
+				<li class="${(index?index_of('0-')==0)?string('active',' ')}"><a href="${rc.contextPath}/index"><i class="fa fa-home"></i> <span class="title"><@spring.message "menu.desktop" /></span></a>
+				</li>
 
-						<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-						<div class="sidebar-toggler">
-						</div>
-						<div class="clearfix">
-						</div>
-						<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-					</li>
+				<!-- 项目管理 -->
+				<li class="treeview ${(index?index_of('1-')==0)?string('active',' ')}">
+					<a href="${rc.contextPath}/projects/list">
+						<i class="fa fa-sitemap"></i> <span><@spring.message "menu.project.management" /></span>
+						<span class="pull-right-container">
+					              <i class="fa fa-angle-left pull-right"></i>
+					            </span>
+					</a>
+					<ul class="treeview-menu">
+						<li class="${(index?index_of('1-1')==0)?string('active',' ')}"> <a href="${rc.contextPath}/projects/list"><i class="fa fa-circle-o"></i>项目列表</a>
+						</li>
+						<li class="${(index?index_of('1-2')==0)?string('active',' ')}">
+							<a href="${rc.contextPath}/projects/new"><i class="fa fa-circle-o"></i><@spring.message "menu.project.new" /></a>
+						</li>
+						<li class="${(index?index_of('1-3')==0)?string('active',' ')}">
+							<a href="${rc.contextPath}/plan/mechanical_plan"><i class="fa fa-circle-o"></i><@spring.message "menu.project.plan" /></a>
+						</li>
+						<li class="${(index?index_of('1-4')==0)?string('active',' ')}">
+							<a href="${rc.contextPath}/projects/whs/project_status"><i class="fa fa-circle-o"></i><@spring.message "menu.project.schedule" /></a>
+						</li>
+						<li class="${(index?index_of('1-5')==0)?string('active',' ')}"><a href="${rc.contextPath}/projects/whs/project_delivery"><i class="fa fa-circle-o"></i><@spring.message "menu.project.delivery" /></a>
+						</li>
+						<li class="${(index?index_of('1-6')==0)?string('active',' ')}"><a href="${rc.contextPath}/projects/whs/project_debugNassurance"><i class="fa fa-circle-o"></i><@spring.message "menu.project.debugservice" /></a>
+						</li>
+					</ul>
 
-					<li class="start  active">
-						<a href="${rc.contextPath}/home"><i class="fa fa-home"></i> <span class="title"><@spring.message "menu.desktop" /></span></a>
-					</li>
-					<li class="${(index==1)?string('open',' ')}">
-						<a href="${rc.contextPath}/projects/list"><i class="fa fa-sitemap"></i> <span class="title"><@spring.message "menu.project.management" /></span><span class="arrow ${(index==1)?string('open',' ')}"></span></a>
-						<ul class="sub-menu" style="display:${(index==1)?string('block','none')}">
-							<li>
-								<a href="${rc.contextPath}/projects/list" class="cursor-pointer"><span class="title">项目列表</span></a>
-							</li>
-							<li>
-								<a href="${rc.contextPath}/projects/new" class="cursor-pointer"><span class="title"><@spring.message "menu.project.new" /></span></a>
-							</li>
-							<li>
-								<a href="${rc.contextPath}/projects/mechanical_plan"><span class="title"><@spring.message "menu.project.plan" /></span></a>
-							</li>
-							<li>
-								<a href="${rc.contextPath}/projects/whs/project_status" class="cursor-pointer"><span class="title"><@spring.message "menu.project.schedule" /></span></a>
-							</li>
-							<li><a href="${rc.contextPath}/projects/whs/project_delivery"><span class="title"><@spring.message "menu.project.delivery" /></span></a>
-							</li>
-							<li><a href="${rc.contextPath}/projects/whs/project_debugNassurance"><span class="title"><@spring.message "menu.project.debugservice" /></span></a>
-							</li>
-						</ul>
-					</li>
-					<li class="${(index==2)?string('open',' ')}">
-						<a href="#"><i class="fa fa-tasks"></i> <span class="title"><@spring.message "menu.workhours.management" /></span><span class="arrow ${(index==2)?string('open',' ')}"></span></a>
-						<ul class="sub-menu" style="display:${(index==2)?string('block','none')}">
-							<li>
-								<a href="${rc.contextPath}/projects/whs/workhours_input"><span class="title"><@spring.message "menu.workhours.apply" /></span></a>
-							</li>
-							<li>
-								<a href="${rc.contextPath}/projects/check_workhours" class="cursor-pointer"><span class="title"><@spring.message "menu.workhours.approval" /></span></a>
-							</li>
-						</ul>
-					</li>
-					<li class="${(index==3)?string('open',' ')}">
-						<a href="#"><i class="fa fa-bar-chart-o"></i> <span class="title"><@spring.message "menu.report.statistics" /></span><span class="arrow ${(index==3)?string('open',' ')}"></span></a>
-						<ul class="sub-menu" style="display:${(index==3)?string('block','none')}">
-							<li>
-								<a href="${rc.contextPath}/projects/whs/projects_report"><span class="title"><@spring.message "menu.report.project" /></span></a>
-							</li>
-							<li>
-								<a href="${rc.contextPath}/projects/whs/workhours_report"><span class="title"><@spring.message "menu.report.workhours" /></span></a>
-							</li>
+				</li>
 
-						</ul>
-					</li>
-					<li class="${(index==4)?string('open',' ')}">
-						<a href="#"><i class="fa fa-bar-chart-o"></i> <span class="title"><@spring.message "menu.device.standard.database" /></span><span class="arrow ${(index==4)?string('open',' ')}"></span></a>
-						<ul class="sub-menu" style="display:${(index==4)?string('block','none')}">
+				<!--  工时管理  -->
+				<li class="treeview ${(index?index_of('2-')==0)?string('active',' ')}">
+					<a href="#"><i class="fa fa-tasks"></i> <span><@spring.message "menu.workhours.management" /></span>
+						<span class="pull-right-container">
+												<i class="fa fa-angle-left pull-right"></i>
+											</span>
+					</a>
+					<ul class="treeview-menu">
+						<li class="${(index?index_of('2-1')==0)?string('active',' ')}">
+							<a href="${rc.contextPath}/projects/whs/workhours_input"><i class="fa fa-circle-o"></i><span class="title"><@spring.message "menu.workhours.apply" /></span></a>
+						</li>
+						<li class="${(index?index_of('2-2')==0)?string('active',' ')}">
+							<a href="${rc.contextPath}/projects/check_workhours"><i class="fa fa-circle-o"></i><span class="title"><@spring.message "menu.workhours.approval" /></span></a>
+						</li>
+					</ul>
+				</li>
 
-							<li>
-								<a href="${rc.contextPath}/devices/list"><span class="title"><@spring.message "menu.device.standard.times" /></span></a>
-							</li>
-						</ul>
-					</li>
-					<li class="${(index==5)?string('open',' ')}">
-						<a href="#"><i class="fa fa-bar-chart-o"></i> <span class="title"><@spring.message "menu.employee.database" /></span><span class="arrow ${(index==5)?string('open',' ')}"></span></a>
-						<ul class="sub-menu" style="display:${(index==5)?string('block','none')}">
-							<li>
-								<a href="#"><span class="title"><@spring.message "menu.employee.list" /></span></a>
-							</li>
-							<li>
-								<a href="#"><span class="title"><@spring.message "menu.employee.new" /></span></a>
-							</li>
+				<!-- 报表统计 -->
+				<li class="treeview ${(index?index_of('3-')==0)?string('active',' ')}">
+					<a href="#"><i class="fa fa-bar-chart-o"></i>
+						 <span><@spring.message "menu.report.statistics" /></span>
+						 <span class="pull-right-container">
+						 						<i class="fa fa-angle-left pull-right"></i>
+						 					</span>
+						 </a>
+					<ul class="treeview-menu">
+						<li class="${(index?index_of('3-1')==0)?string('active',' ')}">
+							<a href="${rc.contextPath}/projects/whs/projects_report"><i class="fa fa-circle-o"></i><@spring.message "menu.report.project" /></a>
+						</li>
+						<li class="${(index?index_of('3-2')==0)?string('active',' ')}">
+							<a href="${rc.contextPath}/projects/whs/workhours_report"><i class="fa fa-circle-o"></i><@spring.message "menu.report.workhours" /></a>
+						</li>
+					</ul>
+				</li>
 
-						</ul>
-					</li>
-				</ul>
-				<!-- END SIDEBAR MENU -->
-			</div>
-		</div>
-	</div>
+				<li  class="treeview ${(index?index_of('4-')==0)?string('active',' ')}">
+					<a href="#"><i class="fa fa-cog"></i> <span><@spring.message "menu.device.standard.database" /></span>
+						<span class="pull-right-container">
+											 <i class="fa fa-angle-left pull-right"></i>
+										 </span>
+					</a>
+					<ul class="treeview-menu">
+
+						<li class="${(index?index_of('4-1')==0)?string('active',' ')}">
+							<a href="${rc.contextPath}/devices/list"><i class="fa fa-circle-o"></i><@spring.message "menu.device.standard.times" /></a>
+						</li>
+					</ul>
+				</li>
+
+				<li  class="treeview ${(index?index_of('5-')==0)?string('active',' ')}">
+					<a href="#"><i class="fa fa-user"></i> <span><@spring.message "menu.employee.database" /></span>
+						<span class="pull-right-container">
+											 <i class="fa fa-angle-left pull-right"></i>
+										 </span>
+					</a>
+					<ul class="treeview-menu">
+						<li class="${(index?index_of('5-1')==0)?string('active',' ')}">
+							<a href="#"><i class="fa fa-circle-o"></i><@spring.message "menu.employee.list" /></a>
+						</li>
+						<li class="${(index?index_of('5-2')==0)?string('active',' ')}">
+							<a href="#"><i class="fa fa-circle-o"></i><@spring.message "menu.employee.new" /></a>
+						</li>
+
+					</ul>
+				</li>
+			</ul>
+			<!-- /.sidebar-menu -->
+		</section>
+		<!-- /.sidebar -->
+	</aside>
 </#macro>

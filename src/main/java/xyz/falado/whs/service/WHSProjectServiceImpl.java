@@ -34,13 +34,19 @@ public class WHSProjectServiceImpl implements WHSProjectService {
     @Resource
     private WHSProjectPlanMapper planmapper;
 
-
     @Override
     @Transactional
     public WHSProjectSubs createNew(WHSProjectSubs projectSubs) {
         projectSubs.getProject().setProjectStatus("新建");
         mapper.insert(projectSubs.getProject());
         submapper.insertBatchSubs(projectSubs.getProject().getId(), projectSubs.getSubprojects());
+
+        WHSSubProjectExample example = new WHSSubProjectExample();
+        example.createCriteria().andProjectIdEqualTo(projectSubs.getProject().getId());
+        List<WHSSubProject> subProjects = submapper.selectByExample(example);
+        logger.info("newsubs:{}",subProjects);
+        //init plans
+        planmapper.insertBatchPlans(subProjects);
         return projectSubs;
     }
     @Override
@@ -59,6 +65,7 @@ public class WHSProjectServiceImpl implements WHSProjectService {
     public PageInfo<WHSProject> findPageByExample(WHSProjectExample example, int pageSize, int currentPage) {
         PageHelper.startPage(currentPage, pageSize);
 
+        example.setOrderByClause("id desc");
         List<WHSProject> results = mapper.selectByExample(example);
         PageInfo<WHSProject> pageInfo = new PageInfo<>(results);
 
@@ -132,13 +139,28 @@ public class WHSProjectServiceImpl implements WHSProjectService {
     }
 
     @Override
-    public PageInfo<WHSProjectPlan> findPlans(WHSProjectExample example, int pageSize, int currentPage) {
+    public WHSProject Update(WHSProject project) {
+        mapper.updateByPrimaryKeySelective(project);
+        return project;
+    }
 
-        PageHelper.startPage(currentPage, pageSize);
+    @Override
+    public WHSSubProject updateSubProject(WHSSubProject subProject) {
+        submapper.updateByPrimaryKeySelective(subProject);
+        return subProject;
+    }
 
-        List<WHSProjectPlan> results = planmapper.selectByProjectExample(example);
-        PageInfo<WHSProjectPlan> pageInfo = new PageInfo<>(results);
+    @Override
+    public WHSSubProject createSubProject(WHSSubProject subProject) {
+        submapper.insert(subProject);
+        return subProject;
+    }
 
-        return pageInfo;
-           }
+    @Override
+    public int deleteSubProject(List<Long> ids, Long projectid) {
+        WHSSubProjectExample example = new WHSSubProjectExample();
+        example.createCriteria().andProjectIdEqualTo(projectid).andIdIn(ids);
+        return submapper.deleteByExample(example);
+    }
+
 }

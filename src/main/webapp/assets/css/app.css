@@ -23,7 +23,6 @@
 
 .navbar-inverse .navbar-brand{
   color: white;
-  margin-left: 20px;
 }
 
 label.error, div.error {
@@ -165,7 +164,7 @@ input.error, textarea.error{
 }
 
 .header .navbar-nav li.dropdown .dropdown-toggle{
-  height: 45px;
+  height: 50px;
 }
 
 .dropdown-menu li a{
@@ -323,16 +322,18 @@ blockquote p {
   }
 
   .page-scale-reduced .navbar-brand{
-    padding: 10px 15px;
+    padding-left: 15px;
   }
 
   .page-scale-reduced .navbar-nav>li>a{
     padding-top: 10px;
     padding-bottom: 10px;
+    color:#fff;
   }
 
   .page-scale-reduced .navbar{
     min-height: 40px;
+    border-radius:0px;
   }
 
   .page-scale-reduced .page-title{

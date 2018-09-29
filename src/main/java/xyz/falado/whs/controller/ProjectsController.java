@@ -47,6 +47,8 @@ public class ProjectsController {
 
     @Autowired
     private WHSProjectService projectService;
+
+
     private final static Logger logger = LoggerFactory.getLogger(ProjectsController.class);
 
 
@@ -290,7 +292,7 @@ public class ProjectsController {
 
     @RequestMapping(value = "update", method = RequestMethod.POST)
     @ResponseBody
-    public WHSProjectSubs updateProject(@RequestBody WHSProjectSubs whsProjectSubs) {
+    public WHSProjectSubs updateProjectSub(@RequestBody WHSProjectSubs whsProjectSubs) {
         org.apache.shiro.subject.Subject subject = SecurityUtils.getSubject();
 
         projectService.createUpdate(whsProjectSubs);
@@ -298,61 +300,46 @@ public class ProjectsController {
         return whsProjectSubs;
     }
 
-    @RequestMapping(value = "mechanical_plan", method = RequestMethod.GET)
-    public String mechanical_plan(Model model, Integer pagelength, Integer pagecurrent) {
-        PageInfo<WHSProjectPlan> plans;
-        if (pagelength == null) {
-            pagelength = 10;
+    @RequestMapping(value = "{n}", method = RequestMethod.POST)
+    @ResponseBody
+    public WHSProject updateProject(@RequestBody WHSProject whsProject,@PathVariable(value = "n") Long n) {
+        org.apache.shiro.subject.Subject subject = SecurityUtils.getSubject();
 
-        }
-        if (pagecurrent == null) {
-            pagecurrent = 1;
+        whsProject.setId(n);
+        projectService.Update(whsProject);
 
-        }
+        return whsProject;
+    }
+    @RequestMapping(value = "subproject/{n}", method = RequestMethod.POST)
+    @ResponseBody
+    public WHSSubProject updateSubProject(@RequestBody WHSSubProject whsSubProject,@PathVariable(value = "n") Long n) {
+        org.apache.shiro.subject.Subject subject = SecurityUtils.getSubject();
+        whsSubProject.setId(n);
+        projectService.updateSubProject(whsSubProject);
+        return whsSubProject;
+    }
+    @RequestMapping(value = "subproject", method = RequestMethod.POST)
+    @ResponseBody
+    public WHSSubProject addSubProject(@RequestBody WHSSubProject whsSubProject) {
+        org.apache.shiro.subject.Subject subject = SecurityUtils.getSubject();
+        projectService.createSubProject(whsSubProject);
+        return whsSubProject;
+    }
 
-        plans = projectService.findPlans(null, pagelength, pagecurrent);
-        logger.info("list:{}",plans.getList().size());
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd"));
-
-        String json = "";
+    @RequestMapping(value = "{n}/subproject/remove", method = RequestMethod.POST)
+    @ResponseBody
+    public OperationResult deleteSubProject(@RequestBody Long[] subprojectids,@PathVariable(value = "n") Long n) {
+        org.apache.shiro.subject.Subject subject = SecurityUtils.getSubject();
+        OperationResult result = new OperationResult();
         try {
-            json = objectMapper.writeValueAsString(plans.getList()); //obj为要传的对象
-        } catch (Exception e) {
-            json = "[]";
-            logger.error(e.getMessage());
-            model.addAttribute("errors", "系统错误");
-
+             int i = projectService.deleteSubProject(Arrays.asList(subprojectids), n);
+             result.setMessage("已删除" + i + "行");
+        }catch (Exception e){
+            result.setCode("0001");
+            result.setMessage(e.getMessage());
         }
-        model.addAttribute("plans", json);
 
-        model.addAttribute("total", plans.getTotal());
-        model.addAttribute("pages",plans.getPages());
-        model.addAttribute("pageNum",plans.getPageNum());
-        return "whs/mechanical_plan";
-    }
-    @RequestMapping(value = "electric_plan", method = RequestMethod.GET)
-    public String electric_plan(Model model, Integer pagelength, Integer pagecurrent) {
-
-        return "whs/electric_plan";
-    }
-
-    @RequestMapping(value = "purchase_plan", method = RequestMethod.GET)
-    public String purchase_plan(Model model, Integer pagelength, Integer pagecurrent) {
-
-        return "whs/purchase_plan";
-    }
-    @RequestMapping(value = "plan/assets", method = RequestMethod.GET)
-    public String purchase_assets(Model model, Integer pagelength, Integer pagecurrent) {
-
-        return "whs/purchase_assets";
-    }
-
-    @RequestMapping(value = "manufacture_plan", method = RequestMethod.GET)
-    public String manufacture_plan(Model model, Integer pagelength, Integer pagecurrent) {
-
-        return "whs/manufacture_plan";
+        return result;
     }
 
 

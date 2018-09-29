@@ -9,7 +9,7 @@ import java.util.List;
 public class WHSProjectPlan implements Serializable {
     private Long id;
 
-    private Integer subprojectId;
+    private Long subprojectId;
 
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date planBegin;
@@ -23,9 +23,9 @@ public class WHSProjectPlan implements Serializable {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date acturalEnd;
 
-    private Integer assignerId;
+    private Long assignerId;
 
-    private String planType;
+    private Integer planType;
 
     private Integer workNumber;
 
@@ -34,27 +34,17 @@ public class WHSProjectPlan implements Serializable {
     private Integer weekDays;
 
     private List<WHSEmployee> members;
-    private WHSProject project;
 
-    public WHSSubProject getSubproject() {
-        return subproject;
+    public String getProblems() {
+        return problems;
     }
 
-    public WHSDevice getDevice() {
-        return device;
+    public void setProblems(String problems) {
+        this.problems = problems;
     }
 
-    public void setDevice(WHSDevice device) {
-        this.device = device;
-    }
+    private String problems;
 
-    private WHSDevice device;
-
-    public void setSubproject(WHSSubProject subproject) {
-        this.subproject = subproject;
-    }
-
-    private WHSSubProject subproject;
 
     public List<WHSEmployee> getMembers() {
         return members;
@@ -64,17 +54,10 @@ public class WHSProjectPlan implements Serializable {
         this.members = members;
     }
 
-    public WHSProject getProject() {
-        return project;
-    }
-
-    public void setProject(WHSProject project) {
-        this.project = project;
-    }
 
     private static final long serialVersionUID = 1L;
 
-    public WHSProjectPlan(Long id, Integer subprojectId, Date planBegin, Date planEnd, Date acturalBegin, Date acturalEnd, Integer assignerId, String planType, Integer workNumber, Integer dayhours, Integer weekDays) {
+    public WHSProjectPlan(Long id, Long subprojectId, Date planBegin, Date planEnd, Date acturalBegin, Date acturalEnd, Long assignerId, Integer planType, Integer workNumber, Integer dayhours, Integer weekDays) {
         this.id = id;
         this.subprojectId = subprojectId;
         this.planBegin = planBegin;
@@ -100,11 +83,11 @@ public class WHSProjectPlan implements Serializable {
         this.id = id;
     }
 
-    public Integer getSubprojectId() {
+    public Long getSubprojectId() {
         return subprojectId;
     }
 
-    public void setSubprojectId(Integer subprojectId) {
+    public void setSubprojectId(Long subprojectId) {
         this.subprojectId = subprojectId;
     }
 
@@ -140,20 +123,20 @@ public class WHSProjectPlan implements Serializable {
         this.acturalEnd = acturalEnd;
     }
 
-    public Integer getAssignerId() {
+    public Long getAssignerId() {
         return assignerId;
     }
 
-    public void setAssignerId(Integer assignerId) {
+    public void setAssignerId(Long assignerId) {
         this.assignerId = assignerId;
     }
 
-    public String getPlanType() {
+    public Integer getPlanType() {
         return planType;
     }
 
-    public void setPlanType(String planType) {
-        this.planType = planType == null ? null : planType.trim();
+    public void setPlanType(Integer planType) {
+        this.planType = planType ;
     }
 
     public Integer getWorkNumber() {

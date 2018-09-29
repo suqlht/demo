@@ -26,6 +26,34 @@ public class WHSSubProject implements Serializable {
     private String deviceSpec;
     private Integer mechanicalHours;
     private Integer electricalHours;
+    private Integer workshopCool;
+
+    public Integer getMcPeopleCount() {
+        return mcPeopleCount;
+    }
+
+    public void setMcPeopleCount(Integer mcPeopleCount) {
+        this.mcPeopleCount = mcPeopleCount;
+    }
+
+    public Integer getElcPeopleCount() {
+        return elcPeopleCount;
+    }
+
+    public void setElcPeopleCount(Integer elcPeopleCount) {
+        this.elcPeopleCount = elcPeopleCount;
+    }
+
+    private Integer mcPeopleCount;
+    private Integer elcPeopleCount;
+
+    public Integer getWorkshopCool() {
+        return workshopCool;
+    }
+
+    public void setWorkshopCool(Integer workshopCool) {
+        this.workshopCool = workshopCool;
+    }
 
     public Integer getTotalMechanicalHours() {
         return totalMechanicalHours;

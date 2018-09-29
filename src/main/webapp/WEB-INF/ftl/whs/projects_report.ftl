@@ -1,194 +1,223 @@
 <!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
-<html class="no-js">
-<!--<![endif]-->
-<!-- BEGIN HEAD -->
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
 
 <head>
-    <title>
-        <@spring.message "system.title"/> | 管理面板</title>
-
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta name="MobileOptimized" content="320">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/jquery-ui-1.11.4/jquery-ui.structure.min.css" />
-
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/uniform/css/uniform.default.css" />
-
-    <!-- BEGIN GLOBAL MANDATORY STYLES -->
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" />
-    <!-- END GLOBAL MANDATORY STYLES -->
-
-    <!-- BEGIN THEME STYLES -->
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/style.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/style-responsive.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/plugins.css" />
-
-
-    <!-- END THEME STYLES -->
-
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/bootstrap-modal/css/bootstrap-modal.css" />
-
-
-
-    <script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-1.10.2.min.js"></script>
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/select2/select2.css" />
-
-    <script type="text/javascript" src="${rc.contextPath}/assets/plugins/select2/select2.min.js"></script>
-
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/data-tables/DT_bootstrap.css" />
-    <script type="text/javascript" src="${rc.contextPath}/assets/plugins/datatables/jquery.dataTables.js"></script>
+    <title>        <@spring.message "system.title"/> |<@spring.message "menu.desktop"/>
+</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="${rc.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="${rc.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="${rc.contextPath}/assets/plugins/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="${rc.contextPath}/assets/dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+    <link rel="stylesheet" href="${rc.contextPath}/assets/dist/css/skins/skin-blue.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/datatables/jquery.dataTables.css" />
-
-
-
-    <script type="text/javascript" src="${rc.contextPath}/assets/js/app.js"></script>
-
-
-
-
-
+    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/select2/select2_4.0.6.min.css" />
+    
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/app.css" />
 
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/skins/default/default.css" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
 
-
-    <script>
-        var sf_public_path = '/${rc.contextPath}/';
-        var selected_items = new Array();
-    </script>
-    <link rel="shortcut icon" href="${rc.contextPath}/favicon.ico" />
-    <link rel="apple-touch-icon" href="${rc.contextPath}/favicon.png" />
 </head>
 
-<body class="page-scale-reduced page-header-fixed yui-skin-sam " id="yahoo-com">
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
 
-    <!-- BEGIN HEADER -->
-    <#include "/common/config/top.ftl" />
+        <!-- BEGIN HEADER -->
+        <#include "/common/config/top.ftl" />
 
-    <@top 1/>
+        <@top 1/>
 
-    <!-- END HEADER -->
-
-    <div class="clearfix">
-    </div>
-
-    <!-- BEGIN CONTAINER -->
-    <div class="page-container">
-
-        <!-- BEGIN SIDEBAR -->
+        <!-- END HEADER -->
+        <!-- Left side column. contains the logo and sidebar -->
         <#include "/common/config/left.ftl" />
 
-        <@menu 3/>
+        <@menu '3-1' />
 
-        <!-- END SIDEBAR -->
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+        报表统计 <small>项目报表</small>
+      </h1>
 
-        <!-- BEGIN CONTENT -->
+            </section>
 
-        <div class="page-content-wrapper">
-            <div class="page-content-wrapper">
-                <div class="page-content">
-                    <div id="ajax-modal" class="modal fade" tabindex="-1" data-replace="true" data-keyboard="false" data-backdrop="static" data-focus-on=".autofocus"></div>
-                    <h3 class="page-title">项目报表</h1>
+            <!-- Main content -->
+            <section class="content container-fluid">
 
-<div>
-  <form class="form-inline" role="form" action="projects_report" method="post">
-    <div class="pull-right">
-      <input type="submit" class="btn btn-default"  value="搜素">
+              <div class="nav-tabs-custom">
+              <div class="tab-content">
+
+              <form class="form-group" role="form" method="GET">
+                <input type="hidden" name="pagelength" value="${pagelength?default(10)}" />
+                <input type="hidden" name="pagecurrent" value="${pagecurrent?default(1)}" />
+
+                <div class="input-group col-md-4">
+                    <input type="text" name="search_keyword" value="${search_keyword}" class="form-control">
+                    <span class="input-group-btn">
+            <button class="btn btn-default" type="submit" id="searchBtn"><i class="fa fa-search"></i>搜索</button>
+            </span>
+                </div>
+
+              </form>
 
 
+                    <table class="table table-striped table-bordered table-hover projects-table" id="itmes_listing_4466081"   >
+                      <thead>
+                        <tr>
+                          <th rowspan="2">序号</th>
+                          <th rowspan="2">项目号</th>
+                          <th rowspan="2" style="width:8%">客户名称</th>
+                          <th rowspan="2">设备型号</th><th rowspan="2" style="width:8%">订货通报日期</th>
+                          <th rowspan="2" style="width:8%">合同交货日期</th><th rowspan="2" style="width:8%">调整后交货日期</th>
+                          <th rowspan="2" style="width:8%">实际发货日期</th><th rowspan="2">实际拖期天数</th>
+                          <th rowspan="2">实际交货天数</th><th rowspan="2">机械设计部拖期天数</th>
+                          <th rowspan="2">电气设计部拖期天数</th><th rowspan="2">采购部到货累计拖期天数</th>
+                          <th colspan="3">生产部</th>
+                          <th rowspan="2">车间调试拖期天数</th>
+                        </tr>
+                        <tr>
+
+                          <th>拖期天数</th>
+
+                          <th>机械完成总工时数</th>
+
+                          <th>电器完成总工时数</th>
+
+                        </tr>
+                      </thead>
+
+                      <tbody>
+
+
+                            </tbody>
+                    </table>
+
+
+              <#include "/common/config/pager.ftl" />
+              <@pageShow pages, total ,pageNum />
+              </div>
+            </div>
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+        <#include "/common/config/footer.ftl" />
+
+        <@footer />
+
+        <!-- Control Sidebar -->
+
+        <!-- Add the sidebar's background. This div must be placed
+  immediately after the control sidebar -->
     </div>
-<div class="form-group">
 
-    <label class="sr-only" for="name">项目号</label>
-     <input type="text" class="form-control" id="name" placeholder="项目号">
-</div>
-<div class="form-group">
-  <label class="sr-only" for="name">客户名称</label>
-   <input type="text" class="form-control" id="name" placeholder="客户名称">
-</div>
+    <div id="modal_plan" class="modal fade col-md-6 col-md-offset-3" tabindex="-1">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">计划安排</h5>
+            </div>
 
 
+            <div class="modal-body">
+                <form id="form_plan" class="form-horizontal" role="form" action="" method="POST">
+                  <input type="hidden"  value="" class="form-control" name="id" id="planid" />
+                  <input type="hidden" value="" class="form-control" name="subprojectId" id="sub_project_id" />
 
-<div class="form-group">
-  <label class="sr-only" for="name">订货通报日期</label>
-  <div class="input-group input-medium date datepicker">
-    <input type="text" class="form-control" id="name" placeholder="最小订货通报日期">
-<span class="input-group-btn"><button class="btn btn-default date-set" type="button"><i class="fa fa-calendar"></i></button></span>
-</div>
-   <input type="text" class="form-control date datepicker" id="name" placeholder="最大订货通报日期">
+                    <div class="form-body">
+                      <div class="form-group">
+                          <label class="col-md-4 control-label">子项目号</label>
+                          <div class="col-md-6">
+                                <input  value="" class="form-control" id="projectCode" readonly />
+                          </div>
+                      </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">人员安排</label>
+                            <div class="col-md-6">
 
-</div>
-
-<div class="form-group">
-  <label class="sr-only" for="name">合同交货日期</label>
-   <input type="text" class="form-control date datepicker" id="name" placeholder="最小合同交货日期">
-   <input type="text" class="form-control date datepicker" id="name" placeholder="最大合同交货日期">
-</div>
-
-<div class="form-group">
-  <label class="sr-only" for="name">设备型号</label>
-  <select id="device_type" class="" name="assurance_duration">
-      <option value="">设备型号</option>
-
-      <option value="1">DHQ-3/3</option>
-      <option value="3">HTS-3/3</option>
-  </select>
-</div>
-
-<div class="form-group pull-right">
-  <input type="submit" class="btn btn-default"  value="导出">
-  <input type="submit" class="btn btn-default"  value="打印">
-</div>
-  </form>
-</div>
-<br>
-      <div>
+                                    <select style="width:100%" class="input-medium" name="members" id="employee_list">
+                                        <option value="" selected="selected"></option>
+                                    </select>
 
 
-      <table class="table table-striped table-bordered table-hover projects-table" id="itmes_listing_4466081"   >
-        <thead>
-          <tr>
-            <th rowspan="2">序号</th>
-            <th rowspan="2">项目号</th>
-            <th rowspan="2" style="width:8%">客户名称</th>
-            <th rowspan="2">设备型号</th><th rowspan="2" style="width:8%">订货通报日期</th>
-            <th rowspan="2" style="width:8%">合同交货日期</th><th rowspan="2" style="width:8%">调整后交货日期</th>
-            <th rowspan="2" style="width:8%">实际发货日期</th><th rowspan="2">实际拖期天数</th>
-            <th rowspan="2">实际交货天数</th><th rowspan="2">机械设计部拖期天数</th>
-            <th rowspan="2">电气设计部拖期天数</th><th rowspan="2">采购部到货累计拖期天数</th>
-            <th colspan="3">生产部</th>
-            <th rowspan="2">车间调试拖期天数</th>
-          </tr>
-          <tr>
+                            </div>
+    <!-- <button  onClick="openModalBox('${rc.contextPath}/devices/modal_new'); return false;">新建</button> -->
 
-            <th>拖期天数</th>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label"><span class="required">*</span>计划完成日期</label>
+                            <div class="col-md-6">
+                                <div class="input-group input-medium date datepicker">
+                                    <input type="text" id="planEnd" name="planEnd" value="" class="form-control" /><span class="input-group-btn"><button class="btn btn-default date-set" type="button"><i class="fa fa-calendar"></i></button></span></div>
+                            </div>
+                        </div>
 
-            <th>机械完成总工时数</th>
+                        <div id="form_error_handler" style="display:none"></div>
 
-            <th>电器完成总工时数</th>
+                    </div>
 
-          </tr>
-        </thead>
-
-        <tbody>
+                </form>
 
 
-              </tbody>
-      </table>
 
-      </div>
+            </div>
 
-      <br />
+            <div class="modal-footer">
+                <input type="hidden" id="deviceOperation" value="">
+                <button type="button" class="btn btn-primary" id="okbtn" onclick="save_plan()">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
 
 
-      <script type="text/javascript">
+        </div>
+    </div>
+
+    <!-- ./wrapper -->
+
+
+
+    <!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+</body>
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 3 -->
+<script src="${rc.contextPath}/assets/plugins/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="${rc.contextPath}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="${rc.contextPath}/assets/dist/js/adminlte.min.js"></script>
+<script type="text/javascript" src="${rc.contextPath}/assets/plugins/datatables/jquery.dataTables.js"></script>
+<script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-datepicker/js/locales/bootstrap-datepicker.zh-CN.js"></script>
+<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+<script type="text/javascript" src="${rc.contextPath}/assets/plugins/select2/select2_4.0.6.min.js"></script>
+
+<script type="text/javascript">
+
 
       var dataSet = [
         [
@@ -219,66 +248,7 @@
 
       });
 
-      </script>
-
-
-
-
-
-
-          <!-- END PAGE CONTENT-->
-      		</div>
-      	</div>
-      </div>
-      <!-- END CONTENT -->
-
-    </div>
-    <!-- END CONTAINER -->
-
-
-<!-- BEGIN FOOTER -->
-<#include "/common/config/footer.ftl" />
-
-<@footer />
-<!-- END FOOTER -->
-
-<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-<!-- BEGIN CORE PLUGINS -->
-<!--[if lt IE 9]>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/respond.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/excanvas.min.js"></script>
-<![endif]-->
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-ui-1.11.4/jquery-ui.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery.blockui.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery.cokie.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/uniform/jquery.uniform.min.js"></script>
-<!-- END CORE PLUGINS -->
-
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-modal/js/bootstrap-modalmanager.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-modal/js/bootstrap-modal.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-validation/dist/additional-methods.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-nestable/jquery.nestable.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-
-<script type="text/javascript" src="${rc.contextPath}/assets/scripts/app.js"></script>
-
-<script>
-jQuery(document).ready(function() {
-   App.init();
-
-   qdpm_app_init();
-
-});
 
 </script>
 
-<!-- END JAVASCRIPTS -->
-
-  </body>
 </html>

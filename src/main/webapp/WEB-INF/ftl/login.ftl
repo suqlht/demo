@@ -19,7 +19,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" />
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN THEME STYLES -->
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/style.css" />
+    
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/pages/login.css" />
 
     <!-- END THEME STYLES -->

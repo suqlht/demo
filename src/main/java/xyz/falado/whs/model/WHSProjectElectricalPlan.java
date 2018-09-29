@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class WHSProjectPlan implements Serializable {
+public class WHSProjectElectricalPlan implements Serializable {
     private Long id;
 
     private Integer subprojectId;
@@ -74,7 +74,7 @@ public class WHSProjectPlan implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public WHSProjectPlan(Long id, Integer subprojectId, Date planBegin, Date planEnd, Date acturalBegin, Date acturalEnd, Integer assignerId, String planType, Integer workNumber, Integer dayhours, Integer weekDays) {
+    public WHSProjectElectricalPlan(Long id, Integer subprojectId, Date planBegin, Date planEnd, Date acturalBegin, Date acturalEnd, Integer assignerId, String planType, Integer workNumber, Integer dayhours, Integer weekDays) {
         this.id = id;
         this.subprojectId = subprojectId;
         this.planBegin = planBegin;
@@ -88,7 +88,7 @@ public class WHSProjectPlan implements Serializable {
         this.weekDays = weekDays;
     }
 
-    public WHSProjectPlan() {
+    public WHSProjectElectricalPlan() {
         super();
     }
 

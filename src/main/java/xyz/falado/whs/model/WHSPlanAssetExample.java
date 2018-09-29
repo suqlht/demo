@@ -115,32 +115,32 @@ public class WHSPlanAssetExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Integer value) {
+        public Criteria andIdEqualTo(Long value) {
             addCriterion("id =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Integer value) {
+        public Criteria andIdNotEqualTo(Long value) {
             addCriterion("id <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Integer value) {
+        public Criteria andIdGreaterThan(Long value) {
             addCriterion("id >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andIdGreaterThanOrEqualTo(Long value) {
             addCriterion("id >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Integer value) {
+        public Criteria andIdLessThan(Long value) {
             addCriterion("id <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Integer value) {
+        public Criteria andIdLessThanOrEqualTo(Long value) {
             addCriterion("id <=", value, "id");
             return (Criteria) this;
         }
@@ -150,17 +150,17 @@ public class WHSPlanAssetExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Integer> values) {
+        public Criteria andIdNotIn(List<Long> values) {
             addCriterion("id not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Integer value1, Integer value2) {
+        public Criteria andIdBetween(Long value1, Long value2) {
             addCriterion("id between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andIdNotBetween(Long value1, Long value2) {
             addCriterion("id not between", value1, value2, "id");
             return (Criteria) this;
         }
@@ -425,32 +425,32 @@ public class WHSPlanAssetExample {
             return (Criteria) this;
         }
 
-        public Criteria andSubprojectIdEqualTo(Integer value) {
+        public Criteria andSubprojectIdEqualTo(Long value) {
             addCriterion("subproject_id =", value, "subprojectId");
             return (Criteria) this;
         }
 
-        public Criteria andSubprojectIdNotEqualTo(Integer value) {
+        public Criteria andSubprojectIdNotEqualTo(Long value) {
             addCriterion("subproject_id <>", value, "subprojectId");
             return (Criteria) this;
         }
 
-        public Criteria andSubprojectIdGreaterThan(Integer value) {
+        public Criteria andSubprojectIdGreaterThan(Long value) {
             addCriterion("subproject_id >", value, "subprojectId");
             return (Criteria) this;
         }
 
-        public Criteria andSubprojectIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andSubprojectIdGreaterThanOrEqualTo(Long value) {
             addCriterion("subproject_id >=", value, "subprojectId");
             return (Criteria) this;
         }
 
-        public Criteria andSubprojectIdLessThan(Integer value) {
+        public Criteria andSubprojectIdLessThan(Long value) {
             addCriterion("subproject_id <", value, "subprojectId");
             return (Criteria) this;
         }
 
-        public Criteria andSubprojectIdLessThanOrEqualTo(Integer value) {
+        public Criteria andSubprojectIdLessThanOrEqualTo(Long value) {
             addCriterion("subproject_id <=", value, "subprojectId");
             return (Criteria) this;
         }
@@ -465,12 +465,12 @@ public class WHSPlanAssetExample {
             return (Criteria) this;
         }
 
-        public Criteria andSubprojectIdBetween(Integer value1, Integer value2) {
+        public Criteria andSubprojectIdBetween(Long value1, Long value2) {
             addCriterion("subproject_id between", value1, value2, "subprojectId");
             return (Criteria) this;
         }
 
-        public Criteria andSubprojectIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andSubprojectIdNotBetween(Long value1, Long value2) {
             addCriterion("subproject_id not between", value1, value2, "subprojectId");
             return (Criteria) this;
         }

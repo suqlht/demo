@@ -25,7 +25,7 @@
 Default theme
 ***/
 /***
-Reset and overrides  
+Reset and overrides
 ***/
 body {
   color: #111111;
@@ -42,11 +42,11 @@ Page header
 .header {
   filter: none;
   background-image: none;
-  background-color: #444444;
+  background-color: #3c8dbc;
 }
 .header .navbar-nav .dropdown-toggle:hover,
 .header .navbar-nav .dropdown.open .dropdown-toggle {
-  background-color: #4e4e4e !important;
+  background-color: #367fa9 !important;
 }
 .header .navbar-nav li.dropdown .dropdown-toggle i {
   color: #919191 !important;
@@ -75,7 +75,7 @@ Page sidebar
   margin-left: 13px;
 }
 .page-sidebar {
-  background: #dddddd;
+  background: #263238;
 }
 ul.page-sidebar-menu > li > a {
   border-top: 1px solid #eaeaea;
@@ -145,7 +145,7 @@ ul.page-sidebar-menu > li.active > a .arrow.open:before {
   background-color: #dddddd;
 }
 /***
-Footer 
+Footer
 ***/
 .footer .footer-inner {
   color: #5e5e5e;
@@ -204,7 +204,7 @@ Footer
   }
   .page-boxed.page-sidebar-reversed.page-sidebar-fixed .page-sidebar {
     border-right: 1px solid #f7f7f7;
-    border-left: 0; 
+    border-left: 0;
   }
   .page-boxed.page-sidebar-fixed.page-footer-fixed .footer {
     background-color: #d0d0d0 !important;

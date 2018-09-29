@@ -7,6 +7,16 @@ import java.util.List;
 public class WHSProjectPlanExample {
     protected String orderByClause;
 
+    public String getLimit() {
+        return limit;
+    }
+
+    public void setLimit(String limit) {
+        this.limit = limit;
+    }
+
+    protected String limit;
+
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
@@ -772,6 +782,16 @@ public class WHSProjectPlanExample {
 
         public Criteria andWeekDaysNotBetween(Integer value1, Integer value2) {
             addCriterion("week_days not between", value1, value2, "weekDays");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectCodeLike(String value) {
+            addCriterion("project_code like", value, "projectCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectPlanIdEquals(String value) {
+            addCriterion("project_code like", value, "projectCode");
             return (Criteria) this;
         }
     }

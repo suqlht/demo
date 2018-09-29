@@ -18,6 +18,10 @@ public interface WHSProjectService {
     public int deleteInBatch(Long[] ids, Long current_userid);
     public WHSProjectSubs createUpdate(WHSProjectSubs projectSubs);
 
-    public PageInfo<WHSProjectPlan> findPlans(WHSProjectExample example, int pageSize, int pageIndex);
+    public WHSProject Update(WHSProject project);
+
+    public WHSSubProject updateSubProject(WHSSubProject subProject);
+    public WHSSubProject createSubProject(WHSSubProject subProject);
+    public int deleteSubProject(List<Long> ids,Long projectid);
 
 }

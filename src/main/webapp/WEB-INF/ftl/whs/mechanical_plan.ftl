@@ -1,417 +1,335 @@
 <!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
-<html class="no-js">
-<!--<![endif]-->
-<!-- BEGIN HEAD -->
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
 
 <head>
-    <title>
-        <@spring.message "system.title"/> | 管理面板</title>
-
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta name="MobileOptimized" content="320">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/jquery-ui-1.11.4/jquery-ui.structure.min.css" />
-
-
-    <!-- BEGIN GLOBAL MANDATORY STYLES -->
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/uniform/css/uniform.default.css" />
-
-    <!-- END GLOBAL MANDATORY STYLES -->
-
-    <!-- BEGIN THEME STYLES -->
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/style-conquer.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/style.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/style-responsive.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/plugins.css" />
-
-
-    <!-- END THEME STYLES -->
-
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/bootstrap-modal/css/bootstrap-modal.css" />
-
-
-
-    <script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-1.10.2.min.js"></script>
-
+    <title>        <@spring.message "system.title"/> |<@spring.message "menu.desktop"/>
+</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="${rc.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="${rc.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="${rc.contextPath}/assets/plugins/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="${rc.contextPath}/assets/dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+    <link rel="stylesheet" href="${rc.contextPath}/assets/dist/css/skins/skin-blue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/datatables/jquery.dataTables.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/select2/select2_4.0.6.min.css" />
 
-    <script type="text/javascript" src="${rc.contextPath}/assets/plugins/select2/select2_4.0.6.min.js"></script>
-
-    <!-- <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/data-tables/DT_bootstrap.css" /> -->
-    <script type="text/javascript" src="${rc.contextPath}/assets/plugins/datatables/jquery.dataTables.js"></script>
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/datatables/jquery.dataTables.css" />
-
-
-
-    <script type="text/javascript" src="${rc.contextPath}/assets/js/app.js"></script>
-    <script>
-        var sf_public_path = '${rc.contextPath}/';
-        var selected_items = new Array();
-        var dataTable;
-    </script>
-
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/app.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/skins/default/default.css" />
 
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
 
-    <link rel="shortcut icon" href="${rc.contextPath}/favicon.ico" />
-    <link rel="apple-touch-icon" href="${rc.contextPath}/favicon.png" />
 </head>
 
-<body class="page-scale-reduced yui-skin-sam ">
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
 
-    <!-- BEGIN HEADER -->
-    <#include "/common/config/top.ftl" />
+        <!-- BEGIN HEADER -->
+        <#include "/common/config/top.ftl" />
 
-    <@top 1/>
+        <@top 1/>
 
-    <!-- END HEADER -->
-
-    <div class="clearfix">
-    </div>
-
-    <!-- BEGIN CONTAINER -->
-    <div class="page-container">
-
-        <!-- BEGIN SIDEBAR -->
+        <!-- END HEADER -->
+        <!-- Left side column. contains the logo and sidebar -->
         <#include "/common/config/left.ftl" />
 
-        <@menu 1/>
+        <@menu '1-3' />
 
-        <!-- END SIDEBAR -->
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+        项目管理 <small>项目计划安排</small>
+      </h1>
 
-        <!-- BEGIN CONTENT -->
-        <div class="page-content-wrapper">
-            <div class="page-content-wrapper">
-                <div class="page-content">
-                    <div id="ajax-modal" class="modal fade" tabindex="-1" data-replace="true" data-keyboard="false" data-backdrop="static" data-focus-on=".autofocus"></div>
-                    <h3 class="page-title">项目计划安排</h1>
-        <div>
-        <#include "/common/config/plan.ftl" />
+            </section>
 
-        <@plan 1/>
-        </div>
+            <!-- Main content -->
+            <section class="content container-fluid">
 
-        <br>
+              <div class="nav-tabs-custom">
+              <#include "/common/config/plan.ftl" />
 
+              <@plan 1/>
+              <div class="tab-content">
 
-        <div>
-        <form class="form-inline" role="form" method="GET">
-          <input type="hidden" name="pagelength" value="${pagelength?default(10)}" />
-          <input type="hidden" name="pagecurrent" value="${pagecurrent?default(1)}" />
+              <form class="form-group" role="form" method="GET">
+                <input type="hidden" name="pagelength" value="${pagelength?default(10)}" />
+                <input type="hidden" name="pagecurrent" value="${pagecurrent?default(1)}" />
 
-        <div class="form-group pull-right">
-        <input type="submit" class="btn btn-default" id="searchBtn"  value="搜索">
-
-
-        </div>
-        <div class="form-group">
-
-        <label class="sr-only" for="name">项目号</label>
-        <input type="text" class="form-control" id="name" placeholder="项目号">
-        </div>
-
-
-        <div class="form-group">
-        <label class="sr-only" for="name">合同交货日期</label>
-        <input type="text" class="form-control date datepicker" id="name" placeholder="最小交货日期">
-        <input type="text" class="form-control date datepicker" id="name" placeholder="最大交货日期">
-        </div>
-
-
-        </form>
-        </div>
-        <br>
-        <div>
-
-
-        <table class="table table-striped table-bordered table-hover projects-table" id="itmes_listing_4466081"   >
-        <thead>
-          <tr>
-            <th></th>
-            <th>操作</th>
-            <th>序号</th>
-            <th>项目号</th>
-            <th>项目号</th>
-            <th>设备型号</th>
-            <th>数量</th>
-            <th style="text-aling:center;">订货通<br/>报日期</th>
-            <th style="text-aling:center;">合同交<br/>货日期</th>
-            <th>人员安排</th>
-            <th style="text-aling:center;">机械计划<br/>完成日期</th>
-            <th style="text-aling:center;">机械实际<br/>完成日期</th>
-            <th>备注</th>
-          </tr>
-        </thead>
-
-        <tbody>
-
-              </tbody>
-        </table>
-
-        <#include "/common/config/pager.ftl" />
-        <@pageShow pages, total ,pageNum />
-        </div>
-
-        <br />
-
-
-        <script type="text/javascript">
-
-        $(document).ready(function(){
-
-          var groupColumn = 3;
-
-          var columns = [{data:"id"},
-            {data:null,
-            render:function(){
-              return '<a href="#" onclick="open_modal(this)" title="调整计划"> <i class="fa fa-edit"></i> </a>'
-            }
-            },
-            {data:null},
-            {data:"project.projectCode"},
-            {data:"subproject.subProjectId"},
-            {data:"device.model"},
-            {data:"subproject.deviceQuantity"},
-            {data:"project.orderDate"},
-            {data:"project.deliveryDate"},
-            {data:"members",
-              render:function(data, type, row, meta) {
-                  if(data.length>0){
-                    return data[0].name;
-                  }else{
-                    return "";
-                  }
-
-              }
-            },
-            {data:"planEnd"},
-            {data:"acturalEnd"},
-            {data:"subproject.remark"}
-          ];
-          var dataSet = JSON.parse('${plans}');
-
-          dataTable = $('#itmes_listing_4466081').DataTable({
-            "iDisplayLength": 10,
-            paging:false,
-            info:false,
-            "bSort": true,
-            "bFilter":false,
-            "bLengthChange":false,
-            data: dataSet,
-            columns:columns,
-            "columnDefs":[{
-              "targets":[0,3],
-              "visible":false
-            },
-            {
-              "targets":[0,1,2,3],
-              "bSortable":false
-            }],
-            "drawCallback": function ( settings ) {
-            var api = this.api();
-            var rows = api.rows( {page:'current'} ).nodes();
-            var last=null;
-            var index = 1;
-            var subindex = 1;
-            //分组
-            api.column(groupColumn, {page:'current'} ).data().each( function ( group, i ) {
-                if ( last !== group ) {
-                    $(rows).eq( i ).before(
-                        '<tr class="group"><td></td><td>'+index+'</td><td colspan="9">'+group+'</td></tr>'
-                    );
-                    index ++;
-                    subindex=1
-                    last = group;
-                }
-                $(rows).eq(i).find("td","")[1].innerHTML = (index-1) + "." + (subindex + 100).toString().substring(1);
-                subindex++;
-
-            } );
-
-        }
-
-        });
-
-        });
-
-        function updatePlan(data){
-          console.log(data);
-        }
-
-
-        </script>
-
-
-
-
-
-
-          <!-- END PAGE CONTENT-->
-          </div>
-        </div>
-        </div>
-
-      <!-- END CONTENT -->
-
-    </div>
-    <!-- END CONTAINER -->
-
-
-<!-- BEGIN FOOTER -->
-<#include "/common/config/footer.ftl" />
-
-<@footer />
-<!-- END FOOTER -->
-
-
-
-<div id="modal_plan" class="modal fade col-md-6 col-md-offset-3" tabindex="-1">
-    <div class="modal-content">
-
-        <div class="modal-header">
-            <h5 class="modal-title">计划安排</h5>
-        </div>
-
-
-        <div class="modal-body">
-            <form id="form_plan" class="form-horizontal" role="form" action="" method="POST">
-              <input type="hidden"  value="" class="form-control" name="id" id="planid" />
-              <input type="hidden" value="" class="form-control" name="subprojectId" id="sub_project_id" />
-
-                <div class="form-body">
-                  <div class="form-group">
-                      <label class="col-md-4 control-label">子项目号</label>
-                      <div class="col-md-6">
-                          <div class="input-group  input-medium">
-                            <input  value="" class="form-control" id="projectCode" readonly />
-
-                          </div>
-                      </div>
-                  </div>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">人员安排</label>
-                        <div class="col-md-6">
-                            <div class="input-group">
-
-                                <select class="input-medium" name="members" id="employee_list">
-                                    <option value="" selected="selected"></option>
-                                </select>
-
-                            </div>
-
-                        </div>
-<!-- <button  onClick="openModalBox('${rc.contextPath}/devices/modal_new'); return false;">新建</button> -->
-
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label"><span class="required">*</span>计划完成日期</label>
-                        <div class="col-md-6">
-                            <div class="input-group input-medium date datepicker">
-                                <input type="text" id="planEnd" name="planEnd" value="" class="form-control" /><span class="input-group-btn"><button class="btn btn-default date-set" type="button"><i class="fa fa-calendar"></i></button></span></div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-md-4 control-label"><span class="required">*</span>实际完成日期</label>
-                        <div class="col-md-6">
-                            <div class="input-group input-medium date datepicker">
-                                <input type="text" id="acturalEnd" name="acturalEnd" value="" class="form-control" /><span class="input-group-btn"><button class="btn btn-default date-set" type="button"><i class="fa fa-calendar"></i></button></span></div>
-                        </div>
-                    </div>
-
-                    <script type="text/javascript">
-                        $(document).ready(function() {
-                            $.extend($.validator.messages, {
-                                required: '必须填写此域！'
-                            });
-
-                            $("#form_plan").validate({
-                                ignore: '',
-                                invalidHandler: function(e, validator) {
-                                    var errors = validator.numberOfInvalids();
-                                    if (errors) {
-                                        var message = '<div class="alert alert-danger">Some fields are required. They have been highlighted above.</div>';
-                                        $("#form_error_handler").fadeIn().html(message).delay(2000).fadeOut();
-                                    }
-                                }
-                            });
-                        });
-                    </script>
-
-                    <div id="form_error_handler" style="display:none"></div>
-
+                <div class="input-group col-md-4">
+                    <input type="text" name="search_keyword" value="${search_keyword}" class="form-control">
+                    <span class="input-group-btn">
+            <button class="btn btn-default" type="submit" id="searchBtn"><i class="fa fa-search"></i>搜索</button>
+            </span>
                 </div>
 
-            </form>
+              </form>
 
 
+              <table class="table table-striped table-bordered table-hover projects-table" id="items_list"  style="width:100%"  >
+              <thead>
+                <tr>
+                  <th>操作</th>
+                  <th>序号</th>
+                  <th>项目号</th>
+                  <th>项目号</th>
+                  <th>设备型号</th>
+                  <th>数量</th>
+                  <th style="text-aling:center;">订货通<br/>报日期</th>
+                  <th style="text-aling:center;">合同交<br/>货日期</th>
+                  <th>人员安排</th>
+                  <th style="text-aling:center;">机械计划<br/>完成日期</th>
+                  <th style="text-aling:center;">机械实际<br/>完成日期</th>
+                  <th>备注</th>
+                </tr>
+              </thead>
 
+              <tbody>
+
+                    </tbody>
+              </table>
+
+              <#include "/common/config/pager.ftl" />
+              <@pageShow pages, total ,pageNum />
+              </div>
+            </div>
+
+            </section>
+            <!-- /.content -->
         </div>
+        <!-- /.content-wrapper -->
 
-        <div class="modal-footer">
-            <input type="hidden" id="deviceOperation" value="">
-            <button type="button" class="btn btn-primary" id="okbtn" onclick="save_plan()">确定</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-        </div>
+        <#include "/common/config/footer.ftl" />
 
+        <@footer />
 
+        <!-- Control Sidebar -->
+
+        <!-- Add the sidebar's background. This div must be placed
+  immediately after the control sidebar -->
     </div>
-</div>
 
-<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-<!-- BEGIN CORE PLUGINS -->
-<!--[if lt IE 9]>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/respond.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/excanvas.min.js"></script>
-<![endif]-->
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-ui-1.11.4/jquery-ui.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery.blockui.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery.cokie.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/uniform/jquery.uniform.min.js"></script>
-<!-- END CORE PLUGINS -->
+    <div id="modal_plan" class="modal fade col-md-6 col-md-offset-3" tabindex="-1">
+        <div class="modal-content">
 
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-modal/js/bootstrap-modalmanager.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-modal/js/bootstrap-modal.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-validation/dist/additional-methods.min.js"></script>
+            <div class="modal-header">
+                <h5 class="modal-title">计划安排</h5>
+            </div>
+
+
+            <div class="modal-body">
+                <form id="form_plan" class="form-horizontal" role="form" action="" method="POST">
+                  <input type="hidden"  value="" class="form-control" name="id" id="planid" />
+                  <input type="hidden" value="" class="form-control" name="subprojectId" id="sub_project_id" />
+
+                    <div class="form-body">
+                      <div class="form-group">
+                          <label class="col-md-4 control-label">子项目号</label>
+                          <div class="col-md-6">
+                                <input  value="" class="form-control" id="projectCode" readonly />
+                          </div>
+                      </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">人员安排</label>
+                            <div class="col-md-6">
+
+                                    <select style="width:100%" class="input-medium" name="members" id="employee_list">
+                                        <option value="" selected="selected"></option>
+                                    </select>
+
+
+                            </div>
+    <!-- <button  onClick="openModalBox('${rc.contextPath}/devices/modal_new'); return false;">新建</button> -->
+
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label"><span class="required">*</span>计划完成日期</label>
+                            <div class="col-md-6">
+                                <div class="input-group input-medium date datepicker">
+                                    <input type="text" id="planEnd" name="planEnd" value="" class="form-control" /><span class="input-group-btn"><button class="btn btn-default date-set" type="button"><i class="fa fa-calendar"></i></button></span></div>
+                            </div>
+                        </div>
+
+                        <div id="form_error_handler" style="display:none"></div>
+
+                    </div>
+
+                </form>
+
+
+
+            </div>
+
+            <div class="modal-footer">
+                <input type="hidden" id="deviceOperation" value="">
+                <button type="button" class="btn btn-primary" id="okbtn" onclick="save_plan()">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="modal fade" id="message_dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="message_dialog_title">提示</h4>
+                </div>
+                <div class="modal-body" id="message_dialog_body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+    </div>
+    <!-- ./wrapper -->
+
+
+
+    <!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+</body>
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 3 -->
+<script src="${rc.contextPath}/assets/plugins/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="${rc.contextPath}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="${rc.contextPath}/assets/dist/js/adminlte.min.js"></script>
+<script type="text/javascript" src="${rc.contextPath}/assets/plugins/datatables/jquery.dataTables.js"></script>
 <script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-datepicker/js/locales/bootstrap-datepicker.zh-CN.js"></script>
+<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+<script type="text/javascript" src="${rc.contextPath}/assets/plugins/select2/select2_4.0.6.min.js"></script>
 
-<script type="text/javascript" src="${rc.contextPath}/assets/scripts/app.js"></script>
+<script type="text/javascript">
+var dataTable;
 
-<script>
+$(document).ready(function(){
+  var groupColumn = 2;
+
+  var columns = [
+    {data:null,
+    render:function(){
+      return '<a href="#" onclick="open_modal(this)" title="调整计划"> <i class="fa fa-edit"></i> </a>'
+    }
+    },
+    {data:null},
+    {data:"project_code"},
+    {data:"sub_project_id"},
+    {data:"device_model"},
+    {data:"device_quantity"},
+    {data:"order_date"},
+    {data:"delivery_date"},
+    {data:"employee_name"},
+    {data:"plan_end"},
+    {data:"actural_end"},
+    {data:"remark"}
+  ];
+  var dataSet = JSON.parse('${plans}');
+  dataTable = $('#items_list').DataTable({
+    "iDisplayLength": 10,
+    paging:false,
+    info:false,
+    "bSort":false,
+    "bFilter":false,
+    "bLengthChange":false,
+    data: dataSet,
+    columns:columns,
+    "columnDefs":[{
+      "targets":[2],
+      "visible":false
+    },
+    {
+      "targets":[0,1],
+      "bSortable":false
+    }],
+    "drawCallback": function ( settings ) {
+    var api = this.api();
+    var rows = api.rows( {page:'current'} ).nodes();
+    var last=null;
+    var index = 1;
+    var subindex = 1;
+    //分组
+    api.column(groupColumn, {page:'current'} ).data().each( function ( group, i ) {
+        if ( last !== group ) {
+            $(rows).eq( i ).before(
+                '<tr class="group"><td></td><td>'+index+'</td><td colspan="9">'+group+'</td></tr>'
+            );
+            index ++;
+            subindex=1
+            last = group;
+        }
+        $(rows).eq(i).find("td","")[1].innerHTML = (index-1) + "." + (subindex + 100).toString().substring(1);
+        subindex++;
+
+    } );
+
+}
+
+});
+
+});
+
+function updatePlan(data){
+  console.log(data);
+}
+
+$(document).ready(function() {
+    $.extend($.validator.messages, {
+        required: '必须填写此域！'
+    });
+
+    $("#form_plan").validate({
+        ignore: '',
+        invalidHandler: function(e, validator) {
+            var errors = validator.numberOfInvalids();
+            if (errors) {
+                var message = '<div class="alert alert-danger">Some fields are required. They have been highlighted above.</div>';
+                $("#form_error_handler").fadeIn().html(message).delay(2000).fadeOut();
+            }
+        }
+    });
+});
+
+
 
 function open_modal(this_tr) {
-    console.log($(this_tr));
-    dataTable.$('tr.selected').removeClass('selected');
-    $(this_tr).parents('tr').addClass("selected");
-    var data = dataTable.row('.selected').data();
-    console.log(data)
-    $('#sub_project_id').val(data.subproject.id);
-    $('#planid').val(data.id);
-    $('#projectCode').val(data.subproject.subProjectId);
-    if(data.members.length>0){
-      $('#employee_list').val(data.members[0].id).trigger("change");
+    var data = dataTable.row($(this_tr).parents('tr')).data();
+    $('#sub_project_id').val(data.subs_id);
+    $('#planid').val(data.plan_id);
+    $('#projectCode').val(data.sub_project_id);
+    if(data.employee_id>0){
+      $('#employee_list').val(data.employee_id).trigger("change");
 
     }else{
       $('#employee_list').val('').trigger("change");
 
     }
-    $('#planEnd').val(data.planEnd);
-    $('#acturalEnd').val(data.acturalEnd);
+    $('#planEnd').val(data.plan_end);
     $('#modal_plan').modal();
 
 }
@@ -423,8 +341,7 @@ function save_plan(){
     "subprojectId":$('#sub_project_id').val(),
     "members":[{"id":$('#employee_list').val()}],
     "planEnd":$('#planEnd').val(),
-    "acturalEnd":$('#acturalEnd').val(),
-    "planType":"10"
+    "planType":10
   }
 
   $.ajax({
@@ -435,7 +352,7 @@ function save_plan(){
       success: function(response) {
               var result = eval(response);
               if(result.code == "0000"){
-                window.location = '${rc.contextPath}/projects/mechanical_plan'
+                window.location = '${rc.contextPath}/plan/mechanical_plan'
               }else{
                 $('#message_dialog_body').html(result.message);
                 $('#message_dialog').modal();
@@ -450,8 +367,6 @@ function save_plan(){
 }
 
 jQuery(document).ready(function() {
-    App.init();
-
 
     var employee_options = [];
 
@@ -477,7 +392,6 @@ jQuery(document).ready(function() {
 
             new_option.id = json[index].id;
             new_option.text = json[index].employeeId+ '_' + json[index].name ;
-            console.log(new_option);
             employee_options.push(new_option);
         });
 
@@ -496,8 +410,6 @@ jQuery(document).ready(function() {
 
     }
 
-    qdpm_app_init();
-
 });
 
 function getPage(index) {
@@ -505,9 +417,13 @@ function getPage(index) {
     $('#searchBtn').click();
 }
 
+
+    $('.datepicker').datepicker({
+        autoclose: true,
+        format: 'yyyy-mm-dd',
+        todayHighlight: true,
+        language: "zh-CN"
+    });
 </script>
 
-<!-- END JAVASCRIPTS -->
-
-  </body>
 </html>

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class WHSPlanAsset implements Serializable {
-    private Integer id;
+    private Long id;
 
     private String assetName;
 
@@ -14,13 +14,13 @@ public class WHSPlanAsset implements Serializable {
 
     private Date deadlineTime;
 
-    private Integer subprojectId;
+    private Long subprojectId;
 
     private String status;
 
     private static final long serialVersionUID = 1L;
 
-    public WHSPlanAsset(Integer id, String assetName, Date planFinishTime, Date acturalFinishTime, Date deadlineTime, Integer subprojectId, String status) {
+    public WHSPlanAsset(Long id, String assetName, Date planFinishTime, Date acturalFinishTime, Date deadlineTime, Long  subprojectId, String status) {
         this.id = id;
         this.assetName = assetName;
         this.planFinishTime = planFinishTime;
@@ -34,11 +34,11 @@ public class WHSPlanAsset implements Serializable {
         super();
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -74,11 +74,11 @@ public class WHSPlanAsset implements Serializable {
         this.deadlineTime = deadlineTime;
     }
 
-    public Integer getSubprojectId() {
+    public Long getSubprojectId() {
         return subprojectId;
     }
 
-    public void setSubprojectId(Integer subprojectId) {
+    public void setSubprojectId(Long subprojectId) {
         this.subprojectId = subprojectId;
     }
 

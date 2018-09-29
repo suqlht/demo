@@ -1,161 +1,201 @@
 <!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
-<html class="no-js">
-<!--<![endif]-->
-<!-- BEGIN HEAD -->
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
 
 <head>
-    <title>
-        <@spring.message "system.title"/> | 管理面板</title>
-
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta name="MobileOptimized" content="320">
+    <title>
+        <@spring.message "system.title"/> |
+        <@spring.message "menu.desktop"/>
+    </title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="${rc.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="${rc.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="${rc.contextPath}/assets/plugins/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="${rc.contextPath}/assets/dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+    <link rel="stylesheet" href="${rc.contextPath}/assets/dist/css/skins/skin-blue.min.css">
 
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
 
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/uniform/css/uniform.default.css" />
-
-    <!-- BEGIN GLOBAL MANDATORY STYLES -->
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" />
-    <!-- END GLOBAL MANDATORY STYLES -->
-
-    <!-- BEGIN THEME STYLES -->
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/style.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/style-responsive.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/plugins.css" />
-
-    <!-- END THEME STYLES -->
-
-
-
-    <!-- END THEME STYLES -->
-
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/bootstrap-modal/css/bootstrap-modal.css" />
-    <script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-1.10.2.min.js"></script>
 
     <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/plugins/datatables/jquery.dataTables.css" />
-    <script type="text/javascript" src="${rc.contextPath}/assets/plugins/datatables/jquery.dataTables.js"></script>
 
-    <script type="text/javascript" src="${rc.contextPath}/assets/js/app.js"></script>
-
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/app.css" />
-
-    <link rel="stylesheet" type="text/css" media="screen" href="${rc.contextPath}/assets/css/skins/default/default.css" />
-
-
-    <link rel="shortcut icon" href="${rc.contextPath}/favicon.ico" />
-    <link rel="apple-touch-icon" href="${rc.contextPath}/favicon.png" />
 </head>
 
-<body>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
 
-    <!-- BEGIN HEADER -->
-    <#include "/common/config/top.ftl" />
+        <!-- BEGIN HEADER -->
+        <#include "/common/config/top.ftl" />
 
-    <@top 1/>
+        <@top />
 
-    <!-- END HEADER -->
-
-    <div class="clearfix">
-    </div>
-
-    <!-- BEGIN CONTAINER -->
-    <div class="page-container">
-
-        <!-- BEGIN SIDEBAR -->
+        <!-- END HEADER -->
+        <!-- Left side column. contains the logo and sidebar -->
         <#include "/common/config/left.ftl" />
 
-        <@menu 4/>
+        <@menu '4-1' />
 
-        <!-- END SIDEBAR -->
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+        项目管理 <small>项目列表</small>
+      </h1>
 
-        <!-- BEGIN CONTENT -->
+            </section>
 
-        <div class="page-content-wrapper">
-            <div class="page-content-wrapper">
-                <div class="page-content">
-                    <div id="ajax-modal" class="modal fade" tabindex="-1" data-replace="true" data-keyboard="false" data-backdrop="static" data-focus-on=".autofocus"></div>
-                    <h3 class="page-title">设备列表</h1>
-
-      <table width="100%">
-        <tr>
-          <td>
-            <table>
-              <tr>
-                          <td style="padding-right: 15px;"><button  onClick="openModalBox('${rc.contextPath}/devices/modal_new'); return false;">新建</button></td>
-                          <td style="padding-right: 15px;"></td>
-              </tr>
-            </table>
-          </td>
-
-          <td align="right">
-            <form action="${rc.contextPath}/devices/list" method="GET">
-              <input type="hidden" name="pagelength" value="${pagelength?default(10)}"/>
-              <input type="hidden" name="pagecurrent" value="${pagecurrent?default(1)}"/>
-
-              <input type="text" name="search_keywords" value="${search_keywords}" >
-              <input type="submit"  id="searchBtn" value="搜素">
-            </form>
-          </td>
-
-        </tr>
-      </table>
+            <!-- Main content -->
+            <section class="content container-fluid">
+                <table width="100%">
+                    <tr>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn btn-default"  onClick="openModalBox('${rc.contextPath}/devices/modal_new'); return false;"><i class="fa fa-plus"></i>添加</button>
 
 
-      <div>
+                            </div>
+                        </td>
+
+                        <td align="right">
+                            <form class="form-search" method="GET">
+                                <input type="hidden" name="pagelength" value="${pagelength?default(10)}" />
+                                <input type="hidden" name="pagecurrent" value="${pagecurrent?default(1)}" />
+
+                                <div class="input-group col-md-6">
+                                    <input type="text" name="search_keyword" value="${search_keyword}" class="form-control">
+                                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="submit" id="searchBtn"><i class="fa fa-search"></i>搜索</button>
+                  </span>
+                                </div>
+                            </form>
+                        </td>
+
+                    </tr>
+                </table>
+
+                <div class="clearfix" style="padding-bottom:15px">
+
+                </div>
+                <div>
 
 
-      <table class="table table-striped table-bordered" id="device_list"   >
-        <thead>
-          <tr>
+                    <table class="table table-striped table-bordered" id="device_list">
+                        <thead>
+                            <tr>
 
-            <th>设备型号</th>
+                                <th>设备型号</th>
 
-                  <th>设备名称</th>
-                    <th>机械装配额定工时</th>
-                      <th>电气装配额定工时</th>
-                      <th>其他额定工时</th>
+                                <th>设备名称</th>
+                                <th>机械装配额定工时</th>
+                                <th>电气装配额定工时</th>
+                                <th>其他额定工时</th>
 
-            <th data-bSortable="false">操作</th>
+                                <th data-bSortable="false">操作</th>
 
-          </tr>
+                            </tr>
 
-        </thead>
+                        </thead>
 
-        <tbody>
-<#if devices.list?? && (devices.list?size > 0) >
-<#list devices.list as device>
+                        <tbody>
+                            <#if devices.list?? && (devices.list?size> 0) >
+                                <#list devices.list as device>
 
-<tr>
+                                    <tr>
 
-<td>${device.deviceCode}</td>
-<td>${device.deviceName}</td>
-<td>${device.mechanicalHours}</td>
-<td>${device.electricalHours}</td>
-<td>${device.otherHours}</td>
+                                        <td>${device.deviceCode}</td>
+                                        <td>${device.deviceName}</td>
+                                        <td>${device.mechanicalHours}</td>
+                                        <td>${device.electricalHours}</td>
+                                        <td>${device.otherHours}</td>
 
-<td><a class="btn btn-default btn-xs purple" onclick="if(confirm('确定删除吗')){(window.location='${rc.contextPath}/devices/delete/${device.id}')};return false;"><i class="fa fa-trash-o"></i>删除</a> <a href="#" class="btn btn-default btn-xs purple" onClick="openModalBox('${rc.contextPath}/devices/edit/${device.id}'); return false;"><i class="fa fa-edit"></i>修改</a></td>
-</tr>
-</#list>
-</#if>
-              </tbody>
-      </table>
-<#include "/common/config/pager.ftl" />
-      <@pageShow devices.pages, devices.total ,devices.pageNum />
+                                        <td><a class="btn btn-default btn-xs purple" onclick="if(confirm('确定删除吗')){(window.location='${rc.contextPath}/devices/delete/${device.id}')};return false;"><i class="fa fa-trash-o"></i>删除</a> <a href="#" class="btn btn-default btn-xs purple"
+                                                onClick="openModalBox('${rc.contextPath}/devices/edit/${device.id}'); return false;"><i class="fa fa-edit"></i>修改</a></td>
+                                    </tr>
+                                </#list>
+                            </#if>
+                        </tbody>
+                    </table>
 
-      </div>
+                    <#include "/common/config/pager.ftl" />
+                    <@pageShow projects.pages, projects.total ,projects.pageNum />
+                </div>
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+        <#include "/common/config/footer.ftl" />
+
+        <@footer />
+
+        <!-- Control Sidebar -->
+
+        <!-- Add the sidebar's background. This div must be placed
+  immediately after the control sidebar -->
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- REQUIRED JS SCRIPTS -->
 
 
-      <script type="text/javascript">
+    <!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+
+
+    <div class="modal fade" id="message_dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="message_dialog_title">提示</h4>
+                </div>
+                <div class="modal-body" id="message_dialog_body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+    </div>
+
+</body>
+
+<!-- jQuery 3 -->
+<script src="${rc.contextPath}/assets/plugins/jquery/dist/jquery.min.js"></script>
+
+<!-- Bootstrap 3.3.7 -->
+<script src="${rc.contextPath}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="${rc.contextPath}/assets/dist/js/adminlte.min.js"></script>
+<script type="text/javascript" src="${rc.contextPath}/assets/plugins/datatables/jquery.dataTables.js"></script>
+<script src="${rc.contextPath}/assets/js/common.js" charset="utf-8"></script>
+
+<script type="text/javascript">
+
 
         $(document).ready(function(){
 
-          appHandleUniformCheckboxes();
           var columnSort = new Array;
           var selected_items = new Array();
 
@@ -239,65 +279,6 @@
           $('#searchBtn').click();
         }
 
-      </script>
+</script>
 
-
-
-
-
-
-          <!-- END PAGE CONTENT-->
-      		</div>
-      	</div>
-      </div>
-      <!-- END CONTENT -->
-
-    </div>
-    <!-- END CONTAINER -->
-
-
-<!-- BEGIN FOOTER -->
-<#include "/common/config/footer.ftl" />
-
-<@footer />
-<!-- END FOOTER -->
-
-<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-<!-- BEGIN CORE PLUGINS -->
-<!--[if lt IE 9]>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/respond.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/excanvas.min.js"></script>
-<![endif]-->
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-ui-1.11.4/jquery-ui.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery.blockui.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery.cokie.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/uniform/jquery.uniform.min.js"></script>
-<!-- END CORE PLUGINS -->
-
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-modal/js/bootstrap-modalmanager.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-modal/js/bootstrap-modal.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/jquery-validation/dist/additional-methods.min.js"></script>
-
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-<script type="text/javascript" src="${rc.contextPath}/assets/scripts/app.js"></script>
-
-<!-- END JAVASCRIPTS -->
-
-    <script>
-        jQuery(document).ready(function() {
-            App.init();
-
-            qdpm_app_init();
-
-        });
-    </script>
-
-  </body>
 </html>

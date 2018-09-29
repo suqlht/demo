@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.falado.whs.dao.WHSProjectPlanMapper">
+  <resultMap id="BaseResultMap" type="xyz.falado.whs.model.WHSProjectPlan">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="subproject_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="plan_begin" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="plan_end" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="actural_begin" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="actural_end" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="assigner_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="plan_type" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="work_number" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="dayhours" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="week_days" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <resultMap id="BaseResultMapJoin" type="xyz.falado.whs.model.WHSProjectPlan">
+    <id property="id" column="plan_id"/>
+    <result property="planBegin" column="plan_begin"/>
+    <result property="planEnd" column="plan_end"/>
+    <result property="acturalBegin" column="actural_begin"/>
+    <result property="acturalEnd" column="actural_end"/>
+    <association property="project" javaType="xyz.falado.whs.model.WHSProject">
+      <id property="id" column="project_id"/>
+      <result property="projectCode" column="project_code"/>
+      <result property="customerName" column="customer_name"/>
+      <result property="projectType" column="project_type"/>
+      <result property="deliveryDate" column="delivery_date"/>
+      <result property="projectStatus" column="project_status"/>
+      <result property="createdBy" column="created_by"/>
+      <result property="createdUser" column="created_user"/>
+      <result property="createdate" column="createdate"/>
+      <result property="modifydate" column="modifydate"/>
+      <result property="orderDate" column="order_date"/>
+      <result property="assuranceBegin" column="assurance_begin"/>
+      <result property="assuranceDuration" column="assurance_duration"/>
+      <result property="assuranceRemark" column="assurance_remark"/>
+    </association>
+    <association property="subproject" javaType="xyz.falado.whs.model.WHSSubProject">
+      <id property="id" column="subs_id"/>
+      <result property="deviceQuantity" column="device_quantity"/>
+      <result property="remark" column="remark"/>
+      <result property="subProjectId" column="sub_project_id"/>
+
+
+    </association>
+    <association property="device" javaType="xyz.falado.whs.model.WHSDevice">
+      <id property="id" column="device_id"/>
+      <result property="model" column="device_model"/>
+    </association>
+    <collection property="members" ofType="xyz.falado.whs.model.WHSEmployee">
+      <id property="id" column="employee_id"/>
+      <result property="name" column="employee_name"/>
+    </collection>
+
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, subproject_id, plan_begin, plan_end, actural_begin, actural_end, assigner_id, 
+    plan_type, work_number, dayhours, week_days
+  </sql>
+  <select id="selectByExample" parameterType="xyz.falado.whs.model.WHSProjectPlanExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from WHS_PROJECT_PLAN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByProjectExample" parameterType="xyz.falado.whs.model.WHSProjectPlanExample" resultMap="BaseResultMapJoin">
+    select
+    pp.id as plan_id,
+    pp.plan_end,
+    pp.actural_end,
+    pp.actural_begin,
+    pp.plan_begin,
+    p.id as project_id,
+    p.project_code,
+    p.project_owner,
+    project_code,
+    customer_name,
+    project_type,
+    delivery_date,
+    project_status,
+    e.id as employee_id,
+    e.name as employee_name,
+    createdate,
+    modifydate,
+    order_date,
+    assurance_begin,
+    assurance_duration,
+    assurance_remark,
+    sp.id as subs_id,
+    sp.project_id as refer_project_id,
+    sp.sub_project_id as sub_project_id,
+    sp.device_id,
+    sp.device_quantity,
+    sp.remark,
+    sp.mechanical_hours,
+    sp.electrical_hours,
+    sp.total_mechanical_hours,
+    sp.total_electrical_hours,
+    sp.device_spec,
+    d.device_name,
+    d.device_code ,
+    d.model as device_model,
+    d.mechanical_hours as device_mechanical_hours,
+    d.electrical_hours as device_electrical_hours ,
+    d.remark as device_remark
+    from
+    WHS_PROJECTS p
+    left join
+    WHS_SUB_PROJECTS sp on p.id = sp.project_id
+    left join
+    WHS_DEVICES d on d.id=sp.device_id
+    left join
+    WHS_PROJECT_PLAN pp on sp.id=pp.subproject_id
+    left join
+    WHS_PLAN_MEMBERS pm on pp.id=pm.plan_id
+    left join
+    WHS_EMPLOYEES e on pm.executor_id = e.id
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from WHS_PROJECT_PLAN
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from WHS_PROJECT_PLAN
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="xyz.falado.whs.model.WHSProjectPlanExample">
+    delete from WHS_PROJECT_PLAN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyProperty="id" useGeneratedKeys="true" parameterType="xyz.falado.whs.model.WHSProjectPlan">
+    insert into WHS_PROJECT_PLAN (id, subproject_id, plan_begin, 
+      plan_end, actural_begin, actural_end, 
+      assigner_id, plan_type, work_number, 
+      dayhours, week_days)
+    values (#{id,jdbcType=INTEGER}, #{subprojectId,jdbcType=INTEGER}, #{planBegin,jdbcType=TIMESTAMP}, 
+      #{planEnd,jdbcType=TIMESTAMP}, #{acturalBegin,jdbcType=TIMESTAMP}, #{acturalEnd,jdbcType=TIMESTAMP}, 
+      #{assignerId,jdbcType=INTEGER}, #{planType,jdbcType=VARCHAR}, #{workNumber,jdbcType=INTEGER}, 
+      #{dayhours,jdbcType=INTEGER}, #{weekDays,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="xyz.falado.whs.model.WHSProjectPlan">
+    insert into WHS_PROJECT_PLAN
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="subprojectId != null">
+        subproject_id,
+      </if>
+      <if test="planBegin != null">
+        plan_begin,
+      </if>
+      <if test="planEnd != null">
+        plan_end,
+      </if>
+      <if test="acturalBegin != null">
+        actural_begin,
+      </if>
+      <if test="acturalEnd != null">
+        actural_end,
+      </if>
+      <if test="assignerId != null">
+        assigner_id,
+      </if>
+      <if test="planType != null">
+        plan_type,
+      </if>
+      <if test="workNumber != null">
+        work_number,
+      </if>
+      <if test="dayhours != null">
+        dayhours,
+      </if>
+      <if test="weekDays != null">
+        week_days,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="subprojectId != null">
+        #{subprojectId,jdbcType=INTEGER},
+      </if>
+      <if test="planBegin != null">
+        #{planBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="planEnd != null">
+        #{planEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="acturalBegin != null">
+        #{acturalBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="acturalEnd != null">
+        #{acturalEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="assignerId != null">
+        #{assignerId,jdbcType=INTEGER},
+      </if>
+      <if test="planType != null">
+        #{planType,jdbcType=VARCHAR},
+      </if>
+      <if test="workNumber != null">
+        #{workNumber,jdbcType=INTEGER},
+      </if>
+      <if test="dayhours != null">
+        #{dayhours,jdbcType=INTEGER},
+      </if>
+      <if test="weekDays != null">
+        #{weekDays,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="xyz.falado.whs.model.WHSProjectPlanExample" resultType="java.lang.Long">
+    select count(*) from WHS_PROJECT_PLAN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update WHS_PROJECT_PLAN
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.subprojectId != null">
+        subproject_id = #{record.subprojectId,jdbcType=INTEGER},
+      </if>
+      <if test="record.planBegin != null">
+        plan_begin = #{record.planBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.planEnd != null">
+        plan_end = #{record.planEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.acturalBegin != null">
+        actural_begin = #{record.acturalBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.acturalEnd != null">
+        actural_end = #{record.acturalEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.assignerId != null">
+        assigner_id = #{record.assignerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.planType != null">
+        plan_type = #{record.planType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workNumber != null">
+        work_number = #{record.workNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.dayhours != null">
+        dayhours = #{record.dayhours,jdbcType=INTEGER},
+      </if>
+      <if test="record.weekDays != null">
+        week_days = #{record.weekDays,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update WHS_PROJECT_PLAN
+    set id = #{record.id,jdbcType=INTEGER},
+      subproject_id = #{record.subprojectId,jdbcType=INTEGER},
+      plan_begin = #{record.planBegin,jdbcType=TIMESTAMP},
+      plan_end = #{record.planEnd,jdbcType=TIMESTAMP},
+      actural_begin = #{record.acturalBegin,jdbcType=TIMESTAMP},
+      actural_end = #{record.acturalEnd,jdbcType=TIMESTAMP},
+      assigner_id = #{record.assignerId,jdbcType=INTEGER},
+      plan_type = #{record.planType,jdbcType=VARCHAR},
+      work_number = #{record.workNumber,jdbcType=INTEGER},
+      dayhours = #{record.dayhours,jdbcType=INTEGER},
+      week_days = #{record.weekDays,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="xyz.falado.whs.model.WHSProjectPlan">
+    update WHS_PROJECT_PLAN
+    <set>
+      <if test="subprojectId != null">
+        subproject_id = #{subprojectId,jdbcType=INTEGER},
+      </if>
+      <if test="planBegin != null">
+        plan_begin = #{planBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="planEnd != null">
+        plan_end = #{planEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="acturalBegin != null">
+        actural_begin = #{acturalBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="acturalEnd != null">
+        actural_end = #{acturalEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="assignerId != null">
+        assigner_id = #{assignerId,jdbcType=INTEGER},
+      </if>
+      <if test="planType != null">
+        plan_type = #{planType,jdbcType=VARCHAR},
+      </if>
+      <if test="workNumber != null">
+        work_number = #{workNumber,jdbcType=INTEGER},
+      </if>
+      <if test="dayhours != null">
+        dayhours = #{dayhours,jdbcType=INTEGER},
+      </if>
+      <if test="weekDays != null">
+        week_days = #{weekDays,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="xyz.falado.whs.model.WHSProjectPlan">
+    update WHS_PROJECT_PLAN
+    set subproject_id = #{subprojectId,jdbcType=INTEGER},
+      plan_begin = #{planBegin,jdbcType=TIMESTAMP},
+      plan_end = #{planEnd,jdbcType=TIMESTAMP},
+      actural_begin = #{acturalBegin,jdbcType=TIMESTAMP},
+      actural_end = #{acturalEnd,jdbcType=TIMESTAMP},
+      assigner_id = #{assignerId,jdbcType=INTEGER},
+      plan_type = #{planType,jdbcType=VARCHAR},
+      work_number = #{workNumber,jdbcType=INTEGER},
+      dayhours = #{dayhours,jdbcType=INTEGER},
+      week_days = #{weekDays,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

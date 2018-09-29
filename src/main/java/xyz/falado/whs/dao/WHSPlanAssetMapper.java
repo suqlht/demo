@@ -1,5 +1,6 @@
 package xyz.falado.whs.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import xyz.falado.whs.model.WHSPlanAsset;
@@ -27,4 +28,6 @@ public interface WHSPlanAssetMapper {
     int updateByPrimaryKeySelective(WHSPlanAsset record);
 
     int updateByPrimaryKey(WHSPlanAsset record);
+
+    void insertBatchAssets(@Param("subporject_id") Long id, @Param("list")  List<WHSPlanAsset> newSubList);
 }
